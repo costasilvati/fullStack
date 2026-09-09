@@ -2,7 +2,6 @@
 
 **Disciplina:** Programação Web Full Stack — Engenharia de Software
 **Tema da aula:** Fundamentos do React (biblioteca JavaScript para interfaces)
-**Duração sugerida:** 1 aula (100 min) teórica + prática guiada
 
 **Referências desta aula:**
 - W3Schools React Tutorial — [Introduction](https://www.w3schools.com/react/react_intro.asp), [Get Started](https://www.w3schools.com/react/react_getstarted.asp), [Start a New React App](https://www.w3schools.com/react/react_first_app.asp)
