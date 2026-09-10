@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 2 React - Quick start | Full Stack: Conceitos Fundamentais</title>
+  <meta name="description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 2 React - Quick start | Full Stack: Conceitos Fundamentais" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  <meta name="github-repo" content="costasilvati/fullStack" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 2 React - Quick start | Full Stack: Conceitos Fundamentais" />
+  
+  <meta name="twitter:description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  
+
+<meta name="author" content="Juliana Costa-Silva" />
+
+
+<meta name="date" content="2026-09-10" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Full Stack: Conceitos Fundamentais</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#como-usar"><i class="fa fa-check"></i><b>1.1</b> Como usar?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="quick-start.html"><a href="quick-start.html"><i class="fa fa-check"></i><b>2</b> React - Quick start</a>
+<ul>
+<li class="chapter" data-level="" data-path="quick-start.html"><a href="quick-start.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="2.1" data-path="quick-start.html"><a href="quick-start.html#o-que-%C3%A9-o-react"><i class="fa fa-check"></i><b>2.1</b> O que é o React?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="quick-start.html"><a href="quick-start.html#por-que-o-react-%C3%A9-t%C3%A3o-usado"><i class="fa fa-check"></i><b>2.1.1</b> Por que o React é tão usado?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="quick-start.html"><a href="quick-start.html#como-o-react-atualiza-a-tela-virtual-dom"><i class="fa fa-check"></i><b>2.1.2</b> Como o React atualiza a tela (Virtual DOM)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="quick-start.html"><a href="quick-start.html#jsx-misturando-html-e-javascript"><i class="fa fa-check"></i><b>2.2</b> JSX: misturando HTML e JavaScript</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="quick-start.html"><a href="quick-start.html#regras-importantes-do-jsx"><i class="fa fa-check"></i><b>2.2.1</b> Regras importantes do JSX</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="quick-start.html"><a href="quick-start.html#componentes"><i class="fa fa-check"></i><b>2.3</b> Componentes</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="quick-start.html"><a href="quick-start.html#props-e-state"><i class="fa fa-check"></i><b>2.3.1</b> Props e State</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="quick-start.html"><a href="quick-start.html#criando-o-primeiro-projeto-react"><i class="fa fa-check"></i><b>2.4</b> Criando o primeiro projeto React</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="quick-start.html"><a href="quick-start.html#pr%C3%A9-requisitos"><i class="fa fa-check"></i><b>2.4.1</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="2.4.2" data-path="quick-start.html"><a href="quick-start.html#passo-a-passo"><i class="fa fa-check"></i><b>2.4.2</b> Passo a passo</a></li>
+<li class="chapter" data-level="2.4.3" data-path="quick-start.html"><a href="quick-start.html#estrutura-de-pastas-gerada"><i class="fa fa-check"></i><b>2.4.3</b> Estrutura de pastas gerada</a></li>
+<li class="chapter" data-level="2.4.4" data-path="quick-start.html"><a href="quick-start.html#o-que-e-vite"><i class="fa fa-check"></i><b>2.4.4</b> O que é o Vite e como ele funciona?</a></li>
+<li class="chapter" data-level="2.4.5" data-path="quick-start.html"><a href="quick-start.html#arquivo-de-entrada"><i class="fa fa-check"></i><b>2.4.5</b> Onde é definido o arquivo de início do projeto?</a></li>
+<li class="chapter" data-level="2.4.6" data-path="quick-start.html"><a href="quick-start.html#conte%C3%BAdo-dos-arquivos-gerados-automaticamente"><i class="fa fa-check"></i><b>2.4.6</b> Conteúdo dos arquivos gerados automaticamente</a></li>
+<li class="chapter" data-level="2.4.7" data-path="quick-start.html"><a href="quick-start.html#executando-parando-e-reiniciando-o-projeto"><i class="fa fa-check"></i><b>2.4.7</b> Executando, parando e reiniciando o projeto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="quick-start.html"><a href="quick-start.html#primeiro-componente-na-pr%C3%A1tica"><i class="fa fa-check"></i><b>2.5</b> Primeiro componente na prática</a></li>
+<li class="chapter" data-level="2.6" data-path="quick-start.html"><a href="quick-start.html#atividade-pr%C3%A1tica"><i class="fa fa-check"></i><b>2.6</b> Atividade prática</a></li>
+<li class="chapter" data-level="2.7" data-path="quick-start.html"><a href="quick-start.html#resumo-dos-conceitos-chave"><i class="fa fa-check"></i><b>2.7</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="2.8" data-path="quick-start.html"><a href="quick-start.html#para-saber-mais-leitura-complementar"><i class="fa fa-check"></i><b>2.8</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Full Stack: Conceitos Fundamentais</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="quick-start" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Capítulo 2</span> React - Quick start<a href="quick-start.html#quick-start" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Referências:</strong></p>
+<ul>
+<li>W3Schools React Tutorial — <a href="https://www.w3schools.com/react/react_intro.asp">Introduction</a>, <a href="https://www.w3schools.com/react/react_getstarted.asp">Get Started</a>, <a href="https://www.w3schools.com/react/react_first_app.asp">Start a New React App</a></li>
+<li>Documentação oficial — <a href="https://react.dev/learn">react.dev/learn</a></li>
+</ul>
+<hr />
+<div id="objetivos" class="section level2 unnumbered hasAnchor">
+<h2>Objetivos<a href="quick-start.html#objetivos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ao final desta leitura, você deve ser capaz de:</p>
+<ol style="list-style-type: decimal">
+<li>Explicar o que é o React e por que ele é usado no desenvolvimento web moderno.</li>
+<li>Entender os conceitos de <strong>componente</strong>, <strong>JSX</strong>, <strong>props</strong> e <strong>state</strong>.</li>
+<li>Criar um projeto React do zero usando o Vite e entender o papel de cada arquivo gerado.</li>
+<li>Executar, parar e reiniciar o servidor de desenvolvimento com segurança.</li>
+<li>Construir e renderizar um primeiro componente funcional.</li>
+</ol>
+<hr />
+</div>
+<div id="o-que-é-o-react" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> O que é o React?<a href="quick-start.html#o-que-%C3%A9-o-react" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>React é uma <strong>biblioteca JavaScript</strong> de código aberto, mantida pela Meta, usada para construir <strong>interfaces de usuário (UI)</strong>, especialmente para aplicações de página única (<em>Single Page Applications</em> — SPA).</p>
+<p>Diferente de um framework completo, o React cuida apenas da <strong>camada de visualização</strong> (a “V” do padrão MVC). Ele se integra facilmente com outras bibliotecas (roteamento, gerenciamento de estado global, requisições HTTP), o que o torna flexível para diferentes arquiteturas de projeto.</p>
+<div id="por-que-o-react-é-tão-usado" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Por que o React é tão usado?<a href="quick-start.html#por-que-o-react-%C3%A9-t%C3%A3o-usado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<table>
+<caption><span id="tab:tabela-motivos-react">Table 2.1: </span> Motivos para a popularidade do React</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Motivo</th>
+<th>Explicação</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Componentização</strong></td>
+<td>A interface é dividida em pequenas peças reutilizáveis (componentes), o que organiza e facilita a manutenção do código.</td>
+</tr>
+<tr class="even">
+<td><strong>Virtual DOM</strong></td>
+<td>O React mantém uma representação em memória da interface e atualiza o DOM real de forma otimizada, só onde houve mudança.</td>
+</tr>
+<tr class="odd">
+<td><strong>Declarativo</strong></td>
+<td>Descrevemos <em>como a interface deve parecer</em> para cada estado da aplicação, e o React se encarrega de atualizar a tela.</td>
+</tr>
+<tr class="even">
+<td><strong>Ecossistema maduro</strong></td>
+<td>Grande comunidade, muitas bibliotecas complementares (React Router, Redux, Zustand, etc.) e forte demanda no mercado de trabalho.</td>
+</tr>
+<tr class="odd">
+<td><strong>Reutilização entre plataformas</strong></td>
+<td>Conceitos e boa parte do código podem ser aproveitados em React Native para aplicativos mobile.</td>
+</tr>
+</tbody>
+</table>
+<p>Ver Tabela <a href="quick-start.html#tab:tabela-motivos-react">2.1</a>.</p>
+</div>
+<div id="como-o-react-atualiza-a-tela-virtual-dom" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Como o React atualiza a tela (Virtual DOM)<a href="quick-start.html#como-o-react-atualiza-a-tela-virtual-dom" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Manipular o DOM real do navegador diretamente é uma operação custosa. O React resolve isso mantendo uma cópia leve da interface em memória (a <em>Virtual DOM</em>) e comparando versões antes de tocar o DOM real, conforme ilustrado na Figura <a href="#fig:figura-virtual-dom">2.1</a>.</p>
+<p><img src="images/01-virtual-dom.png" alt="Fluxo de atualização do React: mudança de estado, recriação da Virtual DOM, comparação (diff) e aplicação apenas das mudanças no DOM real." /></p>
+<hr />
+</div>
+</div>
+<div id="jsx-misturando-html-e-javascript" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> JSX: misturando HTML e JavaScript<a href="quick-start.html#jsx-misturando-html-e-javascript" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>JSX</strong> (<em>JavaScript XML</em>) é uma extensão de sintaxe que permite escrever elementos parecidos com HTML dentro do código JavaScript. O navegador não entende JSX diretamente — ferramentas de build (o Vite, usando o compilador <strong>esbuild</strong>/<strong>Babel</strong>) convertem o JSX em chamadas <code>React.createElement()</code> antes da execução.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb1-1"><a href="quick-start.html#cb1-1" tabindex="-1"></a><span class="kw">const</span> elemento <span class="op">= </span><span class="kw">&lt;h1&gt;</span>Olá, turma de Full Stack!<span class="kw">&lt;/h1&gt;</span><span class="op">;</span></span></code></pre></div>
+<p>Isso é equivalente, “por baixo dos panos”, a:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb2-1"><a href="quick-start.html#cb2-1" tabindex="-1"></a><span class="kw">const</span> elemento <span class="op">=</span> React<span class="op">.</span><span class="fu">createElement</span>(<span class="st">&#39;h1&#39;</span><span class="op">,</span> <span class="kw">null</span><span class="op">,</span> <span class="st">&#39;Olá, turma de Full Stack!&#39;</span>)<span class="op">;</span></span></code></pre></div>
+<div id="regras-importantes-do-jsx" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Regras importantes do JSX<a href="quick-start.html#regras-importantes-do-jsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Todo componente deve retornar <strong>um único elemento raiz</strong> (ou usar um <em>Fragment</em> <code>&lt;&gt;...&lt;/&gt;</code>).</li>
+<li>Atributos HTML usam <strong>camelCase</strong>: <code>class</code> vira <code>className</code>, <code>onclick</code> vira <code>onClick</code>.</li>
+<li>Expressões JavaScript são inseridas entre chaves <code>{ }</code>:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb3-1"><a href="quick-start.html#cb3-1" tabindex="-1"></a><span class="kw">const</span> nome <span class="op">=</span> <span class="st">&quot;Juliana&quot;</span><span class="op">;</span></span>
+<span id="cb3-2"><a href="quick-start.html#cb3-2" tabindex="-1"></a><span class="kw">const</span> saudacao <span class="op">= </span><span class="kw">&lt;p&gt;</span>Bem-vinda, <span class="va">{</span>nome<span class="va">}</span>!<span class="kw">&lt;/p&gt;</span><span class="op">;</span></span></code></pre></div>
+<ul>
+<li>Tags devem ser sempre fechadas, inclusive as que não têm par no HTML: <code>&lt;img /&gt;</code>, <code>&lt;br /&gt;</code>.</li>
+</ul>
+<hr />
+</div>
+</div>
+<div id="componentes" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Componentes<a href="quick-start.html#componentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Um <strong>componente</strong> é uma função (ou, historicamente, uma classe) que retorna JSX descrevendo um pedaço da interface. É a unidade fundamental de reutilização no React.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb4-1"><a href="quick-start.html#cb4-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">BemVindo</span>() {</span>
+<span id="cb4-2"><a href="quick-start.html#cb4-2" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;h2&gt;</span>Bem-vindo(a) à disciplina de Programação Web Full Stack!<span class="kw">&lt;/h2&gt;</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="quick-start.html#cb4-3" tabindex="-1"></a>}</span>
+<span id="cb4-4"><a href="quick-start.html#cb4-4" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="quick-start.html#cb4-5" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> BemVindo<span class="op">;</span></span></code></pre></div>
+<p>Componentes podem ser combinados como peças de Lego, formando uma <strong>árvore de componentes</strong>: um componente pai renderiza outros componentes filhos, passando dados para eles.</p>
+<div id="props-e-state" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Props e State<a href="quick-start.html#props-e-state" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Props</strong> (<em>properties</em>): dados enviados de um componente pai para um componente filho. São <strong>somente leitura</strong> — o filho não pode alterá-las diretamente.</li>
+<li><strong>State</strong>: dados internos e mutáveis de um componente, controlados pelo próprio componente (por meio do hook <code>useState</code>). Quando o state muda, o React re-renderiza o componente automaticamente.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb5-1"><a href="quick-start.html#cb5-1" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="quick-start.html#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="quick-start.html#cb5-3" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Contador</span>() {</span>
+<span id="cb5-4"><a href="quick-start.html#cb5-4" tabindex="-1"></a>  <span class="kw">const</span> [contagem<span class="op">,</span> setContagem] <span class="op">=</span> <span class="fu">useState</span>(<span class="dv">0</span>)<span class="op">;</span></span>
+<span id="cb5-5"><a href="quick-start.html#cb5-5" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="quick-start.html#cb5-6" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb5-7"><a href="quick-start.html#cb5-7" tabindex="-1"></a>    <span class="kw">&lt;div&gt;</span></span>
+<span id="cb5-8"><a href="quick-start.html#cb5-8" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Você clicou <span class="va">{</span>contagem<span class="va">}</span> vezes<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb5-9"><a href="quick-start.html#cb5-9" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">onClick</span><span class="op">=</span><span class="va">{</span>() <span class="kw">=&gt;</span> <span class="fu">setContagem</span>(contagem <span class="op">+</span> <span class="dv">1</span>)<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb5-10"><a href="quick-start.html#cb5-10" tabindex="-1"></a>        Clique aqui</span>
+<span id="cb5-11"><a href="quick-start.html#cb5-11" tabindex="-1"></a>      <span class="kw">&lt;/button&gt;</span></span>
+<span id="cb5-12"><a href="quick-start.html#cb5-12" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb5-13"><a href="quick-start.html#cb5-13" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb5-14"><a href="quick-start.html#cb5-14" tabindex="-1"></a>}</span></code></pre></div>
+<p>A Figura <a href="#fig:figura-componentes-props-state">2.2</a> mostra como as props descem pela árvore de componentes e como o state pode ser local a um componente.</p>
+<p><img src="images/02-componentes-props-state.png" alt="Árvore de componentes: App como componente pai passando props para Header, ListaDeTarefas e Footer, com o componente Tarefa mantendo seu próprio state." /></p>
+<hr />
+</div>
+</div>
+<div id="criando-o-primeiro-projeto-react" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Criando o primeiro projeto React<a href="quick-start.html#criando-o-primeiro-projeto-react" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A forma recomendada atualmente pela documentação oficial (react.dev) é usar uma ferramenta de build moderna, como o <strong>Vite</strong>, em vez do antigo <code>create-react-app</code> (hoje descontinuado).</p>
+<div id="pré-requisitos" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Pré-requisitos<a href="quick-start.html#pr%C3%A9-requisitos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Node.js</strong> instalado (versão LTS recomendada) — inclui o <code>npm</code>.</li>
+<li>Um editor de código (recomendado: VS Code).</li>
+</ul>
+</div>
+<div id="passo-a-passo" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Passo a passo<a href="quick-start.html#passo-a-passo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="quick-start.html#cb6-1" tabindex="-1"></a><span class="co"># 1. Criar o projeto</span></span>
+<span id="cb6-2"><a href="quick-start.html#cb6-2" tabindex="-1"></a><span class="ex">npm</span> create vite@latest meu-app <span class="at">--</span> <span class="at">--template</span> react</span>
+<span id="cb6-3"><a href="quick-start.html#cb6-3" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="quick-start.html#cb6-4" tabindex="-1"></a><span class="co"># 2. Entrar na pasta do projeto</span></span>
+<span id="cb6-5"><a href="quick-start.html#cb6-5" tabindex="-1"></a><span class="bu">cd</span> meu-app</span>
+<span id="cb6-6"><a href="quick-start.html#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="quick-start.html#cb6-7" tabindex="-1"></a><span class="co"># 3. Instalar as dependências</span></span>
+<span id="cb6-8"><a href="quick-start.html#cb6-8" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb6-9"><a href="quick-start.html#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="quick-start.html#cb6-10" tabindex="-1"></a><span class="co"># 4. Rodar o servidor de desenvolvimento</span></span>
+<span id="cb6-11"><a href="quick-start.html#cb6-11" tabindex="-1"></a><span class="ex">npm</span> run dev</span></code></pre></div>
+<p>Após o último comando, o terminal exibirá um endereço local (geralmente <code>http://localhost:5173</code>). Basta abri-lo no navegador para ver a aplicação React rodando.</p>
+</div>
+<div id="estrutura-de-pastas-gerada" class="section level3 hasAnchor" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Estrutura de pastas gerada<a href="quick-start.html#estrutura-de-pastas-gerada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A Figura <a href="#fig:figura-estrutura-projeto">2.3</a> mostra a estrutura de pastas criada automaticamente pelo Vite ao gerar um projeto React.</p>
+<p><img src="images/03-estrutura-projeto.png" alt="Estrutura de pastas de um projeto React criado com Vite: node_modules, public, src (com main.jsx, App.jsx, App.css e components), além de index.html, package.json e vite.config.js." /></p>
+<p>Os arquivos mais importantes para o dia a dia de desenvolvimento são:</p>
+<ul>
+<li><strong><code>src/main.jsx</code></strong>: ponto de entrada da aplicação; “monta” o componente <code>App</code> dentro do <code>index.html</code>.</li>
+<li><strong><code>src/App.jsx</code></strong>: componente principal, geralmente o ponto de partida da interface.</li>
+<li><strong><code>src/components/</code></strong>: pasta (a ser criada pelo próprio desenvolvedor) para organizar os demais componentes.</li>
+</ul>
+<p>As próximas quatro subseções respondem, em mais detalhe, perguntas comuns de quem está vendo o React (e o Vite) pela primeira vez.</p>
+</div>
+<div id="o-que-e-vite" class="section level3 hasAnchor" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> O que é o Vite e como ele funciona?<a href="quick-start.html#o-que-e-vite" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Vite</strong> (pronuncia-se “vit”, do francês para “rápido”) é uma ferramenta de build e um servidor de desenvolvimento para projetos front-end. Ele não é exclusivo do React — também funciona com Vue, Svelte, JavaScript puro, etc. — mas é a opção recomendada pela documentação oficial do React para começar um novo projeto.</p>
+<p>O Vite resolve um problema antigo das ferramentas de build (como o Webpack, usado pelo antigo <code>create-react-app</code>): antes de o servidor de desenvolvimento ficar pronto, essas ferramentas precisavam “empacotar” (<em>bundle</em>) toda a aplicação de uma vez, o que ficava cada vez mais lento à medida que o projeto crescia.</p>
+<p>O Vite funciona em duas etapas bem distintas:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Durante o desenvolvimento (<code>npm run dev</code>):</strong> o Vite <strong>não</strong> empacota a aplicação inteira. Ele sobe um servidor local que serve os arquivos usando <strong>módulos ES nativos do navegador</strong> (<code>import</code>/<code>export</code>), transformando cada arquivo <strong>sob demanda</strong>, só quando o navegador o solicita. Isso torna a inicialização do servidor quase instantânea, mesmo em projetos grandes. Dependências de terceiros (como o próprio <code>react</code> e <code>react-dom</code>) são pré-otimizadas uma única vez com uma ferramenta chamada <strong>esbuild</strong>, escrita em Go e muito mais rápida que ferramentas baseadas em JavaScript.</li>
+<li><strong>Durante a build de produção (<code>npm run build</code>):</strong> para gerar os arquivos finais que serão publicados em um servidor, o Vite usa o <strong>Rollup</strong> por baixo dos panos para empacotar, minificar e otimizar todo o código em poucos arquivos estáticos (HTML, CSS e JavaScript), prontos para produção.</li>
+</ol>
+<p>Além disso, o Vite oferece <strong>Hot Module Replacement (HMR)</strong>: quando você salva uma alteração em um componente, apenas aquele módulo é atualizado no navegador — sem recarregar a página inteira e, na maioria dos casos, sem perder o state atual da aplicação (por exemplo, o valor de um contador continua o mesmo após a atualização).</p>
+<blockquote>
+<p><strong>Para pensar:</strong> pense no Vite como o “motor” que (a) serve os arquivos do projeto durante o desenvolvimento, atualizando a tela quase instantaneamente a cada <code>Ctrl+S</code>, e (b) empacota tudo de forma otimizada quando o projeto está pronto para ir ao ar.</p>
+</blockquote>
+</div>
+<div id="arquivo-de-entrada" class="section level3 hasAnchor" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> Onde é definido o arquivo de início do projeto?<a href="quick-start.html#arquivo-de-entrada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uma dúvida comum é: <em>“quando eu rodo <code>npm run dev</code>, qual arquivo é executado primeiro?”</em> A resposta envolve três arquivos que trabalham em conjunto:</p>
+<ol style="list-style-type: decimal">
+<li><strong><code>index.html</code> (raiz do projeto)</strong> — é o <strong>ponto de entrada real</strong> de qualquer aplicação Vite, e não um arquivo JavaScript. O Vite trata o <code>index.html</code> como o arquivo inicial e procura, dentro dele, uma tag <code>&lt;script type="module"&gt;</code> apontando para o JavaScript da aplicação:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb7-1"><a href="quick-start.html#cb7-1" tabindex="-1"></a><span class="dt">&lt;!doctype</span> html<span class="dt">&gt;</span></span>
+<span id="cb7-2"><a href="quick-start.html#cb7-2" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">html</span><span class="ot"> lang</span><span class="op">=</span><span class="st">&quot;pt-br&quot;</span><span class="dt">&gt;</span></span>
+<span id="cb7-3"><a href="quick-start.html#cb7-3" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-4"><a href="quick-start.html#cb7-4" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">meta</span><span class="ot"> charset</span><span class="op">=</span><span class="st">&quot;UTF-8&quot;</span><span class="ot"> </span><span class="dt">/&gt;</span></span>
+<span id="cb7-5"><a href="quick-start.html#cb7-5" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Meu App React<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
+<span id="cb7-6"><a href="quick-start.html#cb7-6" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb7-7"><a href="quick-start.html#cb7-7" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb7-8"><a href="quick-start.html#cb7-8" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">div</span><span class="ot"> id</span><span class="op">=</span><span class="st">&quot;root&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb7-9"><a href="quick-start.html#cb7-9" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">script</span><span class="ot"> type=</span><span class="st">&quot;module&quot;</span><span class="ot"> src</span><span class="op">=</span><span class="st">&quot;/src/main.jsx&quot;</span><span class="dt">&gt;&lt;/</span><span class="kw">script</span><span class="dt">&gt;</span></span>
+<span id="cb7-10"><a href="quick-start.html#cb7-10" tabindex="-1"></a>  <span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
+<span id="cb7-11"><a href="quick-start.html#cb7-11" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong><code>src/main.jsx</code></strong> — é o arquivo referenciado pelo <code>&lt;script&gt;</code> acima. É o <strong>padrão</strong> definido automaticamente pelo template <code>react</code> do Vite, e é ele quem efetivamente “liga” o React à página, procurando o elemento <code>&lt;div id="root"&gt;</code> do <code>index.html</code> e renderizando o componente <code>App</code> dentro dele:</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb8-1"><a href="quick-start.html#cb8-1" tabindex="-1"></a><span class="im">import</span> { StrictMode } <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="quick-start.html#cb8-2" tabindex="-1"></a><span class="im">import</span> { createRoot } <span class="im">from</span> <span class="st">&#39;react-dom/client&#39;</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="quick-start.html#cb8-3" tabindex="-1"></a><span class="im">import</span> App <span class="im">from</span> <span class="st">&#39;./App.jsx&#39;</span><span class="op">;</span></span>
+<span id="cb8-4"><a href="quick-start.html#cb8-4" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;./index.css&#39;</span><span class="op">;</span></span>
+<span id="cb8-5"><a href="quick-start.html#cb8-5" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="quick-start.html#cb8-6" tabindex="-1"></a><span class="fu">createRoot</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;root&#39;</span>))<span class="op">.</span><span class="fu">render</span>(</span>
+<span id="cb8-7"><a href="quick-start.html#cb8-7" tabindex="-1"></a>  <span class="fu">&lt;StrictMode&gt;</span></span>
+<span id="cb8-8"><a href="quick-start.html#cb8-8" tabindex="-1"></a>    <span class="fu">&lt;App</span> <span class="fu">/&gt;</span></span>
+<span id="cb8-9"><a href="quick-start.html#cb8-9" tabindex="-1"></a>  <span class="fu">&lt;/StrictMode&gt;</span><span class="op">,</span></span>
+<span id="cb8-10"><a href="quick-start.html#cb8-10" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong><code>src/App.jsx</code></strong> — é o componente importado por <code>main.jsx</code>. Na prática, é onde a maior parte do código da aula é escrita.</li>
+</ol>
+<p><strong>Ou seja:</strong> <code>index.html</code> → carrega <code>main.jsx</code> → que renderiza <code>App.jsx</code> → que pode importar quantos outros componentes forem necessários.</p>
+<div id="como-alterar-o-arquivo-de-entrada" class="section level4 hasAnchor" number="2.4.5.1">
+<h4><span class="header-section-number">2.4.5.1</span> Como alterar o arquivo de entrada?<a href="quick-start.html#como-alterar-o-arquivo-de-entrada" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>O padrão (<code>src/main.jsx</code> sendo carregado por <code>index.html</code>) pode ser alterado de duas formas, caso o projeto precise de outra organização:</p>
+<ul>
+<li><strong>Trocando o <code>src</code> do <code>&lt;script&gt;</code> no <code>index.html</code>.</strong> Por exemplo, para renomear o ponto de entrada para <code>src/app.jsx</code> (ou outro caminho), basta editar a linha <code>&lt;script type="module" src="/src/main.jsx"&gt;&lt;/script&gt;</code> para o novo caminho desejado.</li>
+<li><strong>Configurando o arquivo <code>vite.config.js</code></strong>, usado para casos mais avançados (por exemplo, projetos com múltiplas páginas HTML de entrada), por meio da opção <code>build.rollupOptions.input</code>. Para a maioria dos projetos didáticos, <strong>não é necessário mexer aqui</strong> — o padrão gerado automaticamente já é o recomendado.</li>
+</ul>
+<blockquote>
+<p><strong>Para testar:</strong> renomeie <code>src/main.jsx</code> para <code>src/index.jsx</code>, atualize o <code>src</code> no <code>index.html</code> para <code>/src/index.jsx</code> e rode <code>npm run dev</code> novamente. A aplicação deve continuar funcionando normalmente — isso ajuda a fixar que o nome do arquivo em si não é “mágico”, é apenas o caminho referenciado no <code>index.html</code> que importa.</p>
+</blockquote>
+</div>
+</div>
+<div id="conteúdo-dos-arquivos-gerados-automaticamente" class="section level3 hasAnchor" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> Conteúdo dos arquivos gerados automaticamente<a href="quick-start.html#conte%C3%BAdo-dos-arquivos-gerados-automaticamente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quando o comando <code>npm create vite@latest</code> termina, vários arquivos e pastas já vêm prontos. A Tabela <a href="quick-start.html#tab:tabela-arquivos-gerados">2.2</a> resume a função de cada um.</p>
+<table>
+<caption><span id="tab:tabela-arquivos-gerados">Table 2.2: </span> Arquivos e pastas gerados automaticamente por um projeto Vite + React</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Arquivo / pasta</th>
+<th>O que contém</th>
+<th>Deve ser editado na aula?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>index.html</code></td>
+<td>HTML mínimo da aplicação; contém a <code>&lt;div id="root"&gt;</code> onde o React será “encaixado” e o <code>&lt;script&gt;</code> que carrega <code>main.jsx</code>.</td>
+<td>Raramente (apenas título da página, favicon, meta tags).</td>
+</tr>
+<tr class="even">
+<td><code>src/main.jsx</code></td>
+<td>Ponto de entrada em JavaScript; importa <code>React</code>, <code>ReactDOM</code> e o componente <code>App</code>, e manda renderizá-lo dentro da <code>&lt;div id="root"&gt;</code>.</td>
+<td>Raramente.</td>
+</tr>
+<tr class="odd">
+<td><code>src/App.jsx</code></td>
+<td>Componente principal da aplicação; é o “coração” do projeto e o arquivo mais editado durante a aula.</td>
+<td><strong>Sim, o tempo todo.</strong></td>
+</tr>
+<tr class="even">
+<td><code>src/App.css</code></td>
+<td>Estilos CSS específicos do componente <code>App</code>.</td>
+<td>Sim, ao estilizar a interface.</td>
+</tr>
+<tr class="odd">
+<td><code>src/index.css</code></td>
+<td>Estilos CSS globais, aplicados à aplicação inteira (reset de margens, fontes padrão, etc.).</td>
+<td>Ocasionalmente.</td>
+</tr>
+<tr class="even">
+<td><code>src/assets/</code></td>
+<td>Pasta para imagens e outros arquivos estáticos importados diretamente no código JavaScript/JSX.</td>
+<td>Sim, ao adicionar imagens.</td>
+</tr>
+<tr class="odd">
+<td><code>public/</code></td>
+<td>Arquivos estáticos servidos “como estão”, sem passar pelo processo de build (ex.: <code>favicon</code>). Diferente de <code>src/assets</code>, nada aqui é processado pelo Vite.</td>
+<td>Ocasionalmente.</td>
+</tr>
+<tr class="even">
+<td><code>package.json</code></td>
+<td>“Ficha técnica” do projeto: nome, versão, lista de dependências (<code>react</code>, <code>react-dom</code>, <code>vite</code>, etc.) e os <strong>scripts</strong> disponíveis (<code>dev</code>, <code>build</code>, <code>preview</code>, <code>lint</code>).</td>
+<td>Sim, ao instalar novas bibliotecas.</td>
+</tr>
+<tr class="odd">
+<td><code>package-lock.json</code></td>
+<td>Registra as versões <strong>exatas</strong> de cada dependência instalada, garantindo que todos os integrantes da equipe usem as mesmas versões.</td>
+<td><strong>Nunca editar manualmente.</strong></td>
+</tr>
+<tr class="even">
+<td><code>vite.config.js</code></td>
+<td>Arquivo de configuração do Vite (plugins, alias de caminhos, opções de build). O template React já vem com o plugin <code>@vitejs/plugin-react</code> configurado.</td>
+<td>Raramente, em projetos introdutórios.</td>
+</tr>
+<tr class="odd">
+<td><code>node_modules/</code></td>
+<td>Todas as dependências baixadas pelo <code>npm install</code>. Pasta pesada e gerada automaticamente — nunca deve ser editada nem enviada ao controle de versão (Git).</td>
+<td><strong>Nunca.</strong></td>
+</tr>
+<tr class="even">
+<td><code>.gitignore</code></td>
+<td>Lista de arquivos/pastas que o Git deve ignorar (por exemplo, <code>node_modules/</code> e arquivos de build).</td>
+<td>Ocasionalmente, para adicionar novas exceções.</td>
+</tr>
+</tbody>
+</table>
+<p>O arquivo <code>package.json</code> merece atenção especial, pois é nele que os <strong>scripts</strong> executados pelo <code>npm</code> são definidos:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb9-1"><a href="quick-start.html#cb9-1" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb9-2"><a href="quick-start.html#cb9-2" tabindex="-1"></a>  <span class="dt">&quot;scripts&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb9-3"><a href="quick-start.html#cb9-3" tabindex="-1"></a>    <span class="dt">&quot;dev&quot;</span><span class="fu">:</span> <span class="st">&quot;vite&quot;</span><span class="fu">,</span></span>
+<span id="cb9-4"><a href="quick-start.html#cb9-4" tabindex="-1"></a>    <span class="dt">&quot;build&quot;</span><span class="fu">:</span> <span class="st">&quot;vite build&quot;</span><span class="fu">,</span></span>
+<span id="cb9-5"><a href="quick-start.html#cb9-5" tabindex="-1"></a>    <span class="dt">&quot;lint&quot;</span><span class="fu">:</span> <span class="st">&quot;eslint .&quot;</span><span class="fu">,</span></span>
+<span id="cb9-6"><a href="quick-start.html#cb9-6" tabindex="-1"></a>    <span class="dt">&quot;preview&quot;</span><span class="fu">:</span> <span class="st">&quot;vite preview&quot;</span></span>
+<span id="cb9-7"><a href="quick-start.html#cb9-7" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb9-8"><a href="quick-start.html#cb9-8" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Quando digitamos <code>npm run dev</code> no terminal, o <code>npm</code> simplesmente procura a chave <code>"dev"</code> dentro de <code>"scripts"</code> e executa o comando associado a ela (<code>vite</code>, que sobe o servidor de desenvolvimento). É por isso que <strong>o nome do comando (<code>dev</code>) é uma convenção do template</strong>, e não uma palavra reservada do npm — o <code>package.json</code> poderia, em tese, renomeá-lo para outra coisa, mas a comunidade React/Vite mantém <code>dev</code>, <code>build</code> e <code>preview</code> como padrão em praticamente todos os projetos.</p>
+</div>
+<div id="executando-parando-e-reiniciando-o-projeto" class="section level3 hasAnchor" number="2.4.7">
+<h3><span class="header-section-number">2.4.7</span> Executando, parando e reiniciando o projeto<a href="quick-start.html#executando-parando-e-reiniciando-o-projeto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Uma dúvida frequente em aula é: <em>“depois de fechar o terminal ou o VS Code, como eu volto a rodar o projeto? <code>npm run dev</code> é sempre a opção certa?”</em></p>
+<p>A Tabela <a href="quick-start.html#tab:tabela-scripts-npm">2.3</a> resume os comandos disponíveis por padrão e quando usar cada um.</p>
+<table>
+<caption><span id="tab:tabela-scripts-npm">Table 2.3: </span> Scripts padrão do npm em um projeto Vite + React</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Comando</th>
+<th>O que faz</th>
+<th>Quando usar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>npm run dev</code></td>
+<td>Sobe o <strong>servidor de desenvolvimento</strong> do Vite, com Hot Module Replacement (HMR) e recarregamento automático a cada alteração salva.</td>
+<td><strong>Sim — é a opção correta durante o desenvolvimento e para as aulas/atividades práticas.</strong> É o comando que você vai usar quase o tempo todo.</td>
+</tr>
+<tr class="even">
+<td><code>npm run build</code></td>
+<td>Gera a versão <strong>otimizada para produção</strong> (arquivos minificados) na pasta <code>dist/</code>.</td>
+<td>Apenas quando o projeto estiver pronto para ser publicado/hospedado.</td>
+</tr>
+<tr class="odd">
+<td><code>npm run preview</code></td>
+<td>Sobe um servidor local simples servindo os arquivos já otimizados da pasta <code>dist/</code>, para conferir como a aplicação ficará em produção.</td>
+<td>Para testar a build de produção antes de publicar.</td>
+</tr>
+</tbody>
+</table>
+<div id="como-parar-o-servidor" class="section level4 hasAnchor" number="2.4.7.1">
+<h4><span class="header-section-number">2.4.7.1</span> Como parar o servidor<a href="quick-start.html#como-parar-o-servidor" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Com o terminal focado na janela onde <code>npm run dev</code> está rodando, basta pressionar:</p>
+<pre class="text"><code>Ctrl + C</code></pre>
+<p>Isso encerra o processo do Vite e libera a porta (geralmente <code>5173</code>) que estava em uso. O prompt do terminal volta a ficar disponível para novos comandos.</p>
+</div>
+<div id="como-rodar-novamente" class="section level4 hasAnchor" number="2.4.7.2">
+<h4><span class="header-section-number">2.4.7.2</span> Como rodar novamente<a href="quick-start.html#como-rodar-novamente" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Depois de parar o servidor (ou de reabrir o projeto em outro dia), <strong>não é necessário repetir <code>npm install</code> nem recriar o projeto</strong> — essa etapa só é preciso refazer se a pasta <code>node_modules/</code> tiver sido apagada ou se o projeto for aberto em um computador novo. O fluxo normal é:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="quick-start.html#cb11-1" tabindex="-1"></a><span class="co"># 1. Entrar na pasta do projeto (se ainda não estiver nela)</span></span>
+<span id="cb11-2"><a href="quick-start.html#cb11-2" tabindex="-1"></a><span class="bu">cd</span> meu-app</span>
+<span id="cb11-3"><a href="quick-start.html#cb11-3" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="quick-start.html#cb11-4" tabindex="-1"></a><span class="co"># 2. (Só é necessário se node_modules/ não existir ou estiver desatualizado)</span></span>
+<span id="cb11-5"><a href="quick-start.html#cb11-5" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb11-6"><a href="quick-start.html#cb11-6" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="quick-start.html#cb11-7" tabindex="-1"></a><span class="co"># 3. Rodar o servidor de desenvolvimento novamente</span></span>
+<span id="cb11-8"><a href="quick-start.html#cb11-8" tabindex="-1"></a><span class="ex">npm</span> run dev</span></code></pre></div>
+<p>Ou seja: <strong>sim, <code>npm run dev</code> é a melhor opção</strong> para parar e retomar o trabalho durante o desenvolvimento — é rápido (o Vite não precisa reconstruir a aplicação inteira) e já vem com o HMR ativado, que é o que torna produtivo editar componentes e ver o resultado quase instantaneamente no navegador.</p>
+<blockquote>
+<p><strong>Atenção:</strong> se o terminal for fechado sem usar <code>Ctrl + C</code> (por exemplo, fechando a janela diretamente), o processo do Vite pode continuar rodando “preso” na porta <code>5173</code>. Nesse caso, ao rodar <code>npm run dev</code> novamente, o Vite normalmente detecta a porta ocupada e sobe automaticamente em outra porta livre (ex.: <code>5174</code>), avisando isso no terminal.</p>
+</blockquote>
+</div>
+<div id="como-testar-se-está-tudo-funcionando" class="section level4 hasAnchor" number="2.4.7.3">
+<h4><span class="header-section-number">2.4.7.3</span> Como testar se está tudo funcionando<a href="quick-start.html#como-testar-se-est%C3%A1-tudo-funcionando" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ol style="list-style-type: decimal">
+<li>Rode <code>npm run dev</code> no terminal, dentro da pasta do projeto.</li>
+<li>Copie o endereço mostrado no terminal (algo como <code>➜ Local: http://localhost:5173/</code>) e abra-o no navegador.</li>
+<li>A página deve exibir o conteúdo atual de <code>src/App.jsx</code>.</li>
+<li>Com o servidor ainda rodando, edite um texto em <code>src/App.jsx</code>, salve o arquivo (<code>Ctrl + S</code>) e observe a página no navegador: ela deve atualizar sozinha, sem precisar apertar F5 — esse é o efeito do Hot Module Replacement descrito na Seção <a href="quick-start.html#o-que-e-vite">2.4.4</a>.</li>
+<li>Se a página não abrir, confira no terminal se não houve nenhuma mensagem de erro (em vermelho) — geralmente indica um problema de sintaxe no JSX.</li>
+</ol>
+<hr />
+</div>
+</div>
+</div>
+<div id="primeiro-componente-na-prática" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Primeiro componente na prática<a href="quick-start.html#primeiro-componente-na-pr%C3%A1tica" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Edite o arquivo <code>src/App.jsx</code> com o conteúdo abaixo:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb12-1"><a href="quick-start.html#cb12-1" tabindex="-1"></a><span class="im">import</span> { useState } <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></span>
+<span id="cb12-2"><a href="quick-start.html#cb12-2" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;./App.css&#39;</span><span class="op">;</span></span>
+<span id="cb12-3"><a href="quick-start.html#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="quick-start.html#cb12-4" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb12-5"><a href="quick-start.html#cb12-5" tabindex="-1"></a>  <span class="kw">const</span> [nome] <span class="op">=</span> <span class="fu">useState</span>(<span class="st">&#39;Turma de Full Stack&#39;</span>)<span class="op">;</span></span>
+<span id="cb12-6"><a href="quick-start.html#cb12-6" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="quick-start.html#cb12-7" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb12-8"><a href="quick-start.html#cb12-8" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;App&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb12-9"><a href="quick-start.html#cb12-9" tabindex="-1"></a>      <span class="kw">&lt;h1&gt;</span>Meu primeiro app em React<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb12-10"><a href="quick-start.html#cb12-10" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Olá, <span class="va">{</span>nome<span class="va">}</span>! Este componente foi criado durante a aula de introdução ao React.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb12-11"><a href="quick-start.html#cb12-11" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb12-12"><a href="quick-start.html#cb12-12" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb12-13"><a href="quick-start.html#cb12-13" tabindex="-1"></a>}</span>
+<span id="cb12-14"><a href="quick-start.html#cb12-14" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="quick-start.html#cb12-15" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code></pre></div>
+<p>Salve o arquivo e observe o navegador: como o servidor do Vite está com <strong>hot reload</strong> ativado (ver Seção <a href="quick-start.html#o-que-e-vite">2.4.4</a>), a página é atualizada automaticamente a cada alteração salva, sem a necessidade de reiniciar <code>npm run dev</code>.</p>
+<hr />
+</div>
+<div id="atividade-prática" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Atividade prática<a href="quick-start.html#atividade-pr%C3%A1tica" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Criar um novo projeto React com Vite, seguindo o passo a passo da seção “Criando o primeiro projeto React”.</li>
+<li>Identificar, no próprio projeto criado, os arquivos <code>index.html</code>, <code>src/main.jsx</code> e <code>src/App.jsx</code>, relacionando-os com a explicação da Seção <a href="quick-start.html#arquivo-de-entrada">2.4.5</a>.</li>
+<li>Criar um componente chamado <code>CartaoAluno</code> que recebe via <strong>props</strong> o nome e a matrícula de um(a) estudante e exibe essas informações em um cartão estilizado.</li>
+<li>Renderizar três instâncias de <code>CartaoAluno</code> dentro do componente <code>App</code>, cada uma com dados diferentes.</li>
+<li>Parar o servidor com <code>Ctrl + C</code> e executá-lo novamente com <code>npm run dev</code>, confirmando que o projeto volta a funcionar sem precisar de <code>npm install</code>.</li>
+<li><strong>Desafio extra:</strong> adicionar um <code>useState</code> para controlar um contador de “curtidas” em cada cartão, com um botão que incrementa o valor ao ser clicado.</li>
+</ol>
+<hr />
+</div>
+<div id="resumo-dos-conceitos-chave" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Resumo dos conceitos-chave<a href="quick-start.html#resumo-dos-conceitos-chave" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<caption><span id="tab:tabela-resumo-conceitos">Table 2.4: </span> Resumo dos conceitos-chave apresentados na aula</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Definição resumida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>React</strong></td>
+<td>Biblioteca JavaScript para construção de interfaces baseadas em componentes.</td>
+</tr>
+<tr class="even">
+<td><strong>JSX</strong></td>
+<td>Sintaxe que mistura HTML e JavaScript, convertida em código JS pelo compilador do Vite.</td>
+</tr>
+<tr class="odd">
+<td><strong>Componente</strong></td>
+<td>Função que retorna JSX; unidade reutilizável de interface.</td>
+</tr>
+<tr class="even">
+<td><strong>Props</strong></td>
+<td>Dados somente leitura passados de um componente pai para um filho.</td>
+</tr>
+<tr class="odd">
+<td><strong>State</strong></td>
+<td>Dados internos e mutáveis de um componente, gerenciados com <code>useState</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Virtual DOM</strong></td>
+<td>Representação em memória da interface, usada para otimizar atualizações no DOM real.</td>
+</tr>
+<tr class="odd">
+<td><strong>Vite</strong></td>
+<td>Ferramenta de build e servidor de desenvolvimento usada para criar e rodar projetos React localmente, com HMR e build otimizada via Rollup.</td>
+</tr>
+<tr class="even">
+<td><strong><code>index.html</code> / <code>main.jsx</code></strong></td>
+<td>Par de arquivos que formam o ponto de entrada da aplicação: o HTML carrega o script, que renderiza o componente <code>App</code>.</td>
+</tr>
+<tr class="odd">
+<td><strong><code>npm run dev</code></strong></td>
+<td>Comando padrão para iniciar (ou reiniciar) o servidor de desenvolvimento durante toda a fase de construção do projeto.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="para-saber-mais-leitura-complementar" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Para saber mais (leitura complementar)<a href="quick-start.html#para-saber-mais-leitura-complementar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Documentação oficial: <a href="https://react.dev/learn">react.dev/learn</a></li>
+<li>W3Schools React Tutorial: <a href="https://www.w3schools.com/react/react_intro.asp">w3schools.com/react</a></li>
+<li>Documentação oficial do Vite: <a href="https://vitejs.dev">vitejs.dev</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/costasilvati/fullStack/edit/main/01-intro.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>

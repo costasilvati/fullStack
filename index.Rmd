@@ -1,0 +1,22 @@
+--- 
+title: "Full Stack: Conceitos Fundamentais"
+author: "Juliana Costa-Silva"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+url: https://costasilvati.github.io/fullStack/
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack. 
+link-citations: yes
+github-repo: costasilvati/fullStack
+---
+
+# Sobre
+
+Este e-book tem como objetivo apresentar os conceitos fundamentais de de _Desenvolvimento Web Full Stack_ no contexto de gradução. Desse modo, a autora apresenta conceitos fundamentais e exemplos variados para facilitar a compreensão. 
+
+## Como usar? 
+
+Cada **capítulo** deste livro representa um ou mais conceitos, estes podem ser trabalhados em vários formatos, e este livro deve ser usado como apoio. Um capítulo deve ser usado de forma completa, e se necessário se apoiará em capítulos anteriores. Você deve começar seus estudos pelo capítulo \@ref(quick-start).
