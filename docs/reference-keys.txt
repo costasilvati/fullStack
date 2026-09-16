@@ -31,3 +31,7 @@ primeiro-componente-na-prática
 atividade-prática
 resumo-dos-conceitos-chave
 para-saber-mais-leitura-complementar
+projeto-1---reactjs
+descrição-do-projeto
+regras-e-orinetações
+cada-equipe-deverá
