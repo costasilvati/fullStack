@@ -1,0 +1,28 @@
+# Projeto 1 - REACTJS
+
+## Descrição do projeto
+
+O Projeto 1 da disciplina **Programação Web Fullstack** trata-se do desenvolvimento da camada Frontend de uma aplicação web, utilizando React.js e AJAX. A aplicação deve ser desenvolvida seguindo o conceito de SPA - *Single Page Application*, em que todas as funcionalidades serão implementadas em uma única página HTML, sem a necessidade de redirecionamento entre páginas para atualização da interface.
+
+Cada equipe deve selecionar para implementar em seu projeto:
+
+- uma API JSON aberta para utilizar em seu trabalho (**sugestão de escolha:** https://github.com/public-apis/public-apis);
+- um Hook ou funcionalidade do React.js, entre: *useMemo*, *useReducer*, *react-redux*, *useRef*, *forwardRef*, *memo*, *lazy* e *createPortal*;
+- uma biblioteca externa que pode ser utilizada juntamente com o React.js, como: https://mui.com/material-ui/, https://react-hook-form.com/, https://swiperjs.com/react, https://github.com/jquense/yup, https://formik.org/, https://react-bootstrap.github.io/, https://styled-components.com/, https://reactrouter.com/, entre outras.
+
+O projeto avaliará a capacidade da equipe em desenvolver uma aplicação com JavaScript no lado cliente de uma aplicação web com React.js, que consiga consumir os dados disponíveis em APIs JSON.
+
+O projeto poderá ser desenvolvido em equipes de até 3 pessoas.
+
+## Regras e orinetações
+
+As atividades *deverão ser apresentadas* conforme a data estipulada. A simples entrega não garante nota, sendo obrigatória a apresentação. As equipes devem ser compostas por *até 3 alunos*.
+
+### Cada equipe deverá:
+
+ - manter repositório público no GitHub
+ - registrar as atividades realizadas por cada integrante via commit (o aluno recebrá parte da nota pela cadência de desenvolvimento visualizada no github);
+ - documentar o uso de ferramentas de apoio (incluindo IA, quando utilizada);
+ - garantir que cada integrante seja responsável por uma parte bem definida da aplicação;
+ - O sistema desenvolvido deve ser uma aplicação funcional, não sendo aceitos CRUDs isolados sem integração.
+
