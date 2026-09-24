@@ -1,4 +1,4 @@
-# React - Quick start {#quick-start}
+# React - Quick start {#introducao-react}
 
 **Referências:**
 

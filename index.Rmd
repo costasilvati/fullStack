@@ -19,4 +19,4 @@ Este e-book tem como objetivo apresentar os conceitos fundamentais de de _Desenv
 
 ## Como usar? 
 
-Cada **capítulo** deste livro representa um ou mais conceitos, estes podem ser trabalhados em vários formatos, e este livro deve ser usado como apoio. Um capítulo deve ser usado de forma completa, e se necessário se apoiará em capítulos anteriores. Você deve começar seus estudos pelo capítulo \@ref(quick-start).
+Cada **capítulo** deste livro representa um ou mais conceitos, estes podem ser trabalhados em vários formatos, e este livro deve ser usado como apoio. Um capítulo deve ser usado de forma completa, e se necessário se apoiará em capítulos anteriores. Você deve começar seus estudos pelo capítulo \@ref(introducao-react).

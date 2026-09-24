@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Elementos Básicos de HTML em React | Full Stack: Conceitos Fundamentais</title>
+  <meta name="description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Elementos Básicos de HTML em React | Full Stack: Conceitos Fundamentais" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  <meta name="github-repo" content="costasilvati/fullStack" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Elementos Básicos de HTML em React | Full Stack: Conceitos Fundamentais" />
+  
+  <meta name="twitter:description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  
+
+<meta name="author" content="Juliana Costa-Silva" />
+
+
+<meta name="date" content="2026-09-24" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="projeto-1---reactjs.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Full Stack: Conceitos Fundamentais</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#como-usar"><i class="fa fa-check"></i><b>1.1</b> Como usar?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducao-react.html"><a href="introducao-react.html"><i class="fa fa-check"></i><b>2</b> React - Quick start</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducao-react.html"><a href="introducao-react.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="2.1" data-path="introducao-react.html"><a href="introducao-react.html#o-que-%C3%A9-o-react"><i class="fa fa-check"></i><b>2.1</b> O que é o React?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introducao-react.html"><a href="introducao-react.html#por-que-o-react-%C3%A9-t%C3%A3o-usado"><i class="fa fa-check"></i><b>2.1.1</b> Por que o React é tão usado?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introducao-react.html"><a href="introducao-react.html#como-o-react-atualiza-a-tela-virtual-dom"><i class="fa fa-check"></i><b>2.1.2</b> Como o React atualiza a tela (Virtual DOM)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introducao-react.html"><a href="introducao-react.html#jsx-misturando-html-e-javascript"><i class="fa fa-check"></i><b>2.2</b> JSX: misturando HTML e JavaScript</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introducao-react.html"><a href="introducao-react.html#regras-importantes-do-jsx"><i class="fa fa-check"></i><b>2.2.1</b> Regras importantes do JSX</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introducao-react.html"><a href="introducao-react.html#componentes"><i class="fa fa-check"></i><b>2.3</b> Componentes</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introducao-react.html"><a href="introducao-react.html#props-e-state"><i class="fa fa-check"></i><b>2.3.1</b> Props e State</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introducao-react.html"><a href="introducao-react.html#criando-o-primeiro-projeto-react"><i class="fa fa-check"></i><b>2.4</b> Criando o primeiro projeto React</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introducao-react.html"><a href="introducao-react.html#pr%C3%A9-requisitos"><i class="fa fa-check"></i><b>2.4.1</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introducao-react.html"><a href="introducao-react.html#passo-a-passo"><i class="fa fa-check"></i><b>2.4.2</b> Passo a passo</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introducao-react.html"><a href="introducao-react.html#estrutura-de-pastas-gerada"><i class="fa fa-check"></i><b>2.4.3</b> Estrutura de pastas gerada</a></li>
+<li class="chapter" data-level="2.4.4" data-path="introducao-react.html"><a href="introducao-react.html#o-que-e-vite"><i class="fa fa-check"></i><b>2.4.4</b> O que é o Vite e como ele funciona?</a></li>
+<li class="chapter" data-level="2.4.5" data-path="introducao-react.html"><a href="introducao-react.html#arquivo-de-entrada"><i class="fa fa-check"></i><b>2.4.5</b> Onde é definido o arquivo de início do projeto?</a></li>
+<li class="chapter" data-level="2.4.6" data-path="introducao-react.html"><a href="introducao-react.html#conte%C3%BAdo-dos-arquivos-gerados-automaticamente"><i class="fa fa-check"></i><b>2.4.6</b> Conteúdo dos arquivos gerados automaticamente</a></li>
+<li class="chapter" data-level="2.4.7" data-path="introducao-react.html"><a href="introducao-react.html#executando-parando-e-reiniciando-o-projeto"><i class="fa fa-check"></i><b>2.4.7</b> Executando, parando e reiniciando o projeto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introducao-react.html"><a href="introducao-react.html#primeiro-componente-na-pr%C3%A1tica"><i class="fa fa-check"></i><b>2.5</b> Primeiro componente na prática</a></li>
+<li class="chapter" data-level="2.6" data-path="introducao-react.html"><a href="introducao-react.html#atividade-pr%C3%A1tica"><i class="fa fa-check"></i><b>2.6</b> Atividade prática</a></li>
+<li class="chapter" data-level="2.7" data-path="introducao-react.html"><a href="introducao-react.html#resumo-dos-conceitos-chave"><i class="fa fa-check"></i><b>2.7</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="2.8" data-path="introducao-react.html"><a href="introducao-react.html#para-saber-mais-leitura-complementar"><i class="fa fa-check"></i><b>2.8</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html"><i class="fa fa-check"></i><b>3</b> Projeto 1 - REACTJS</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html#descri%C3%A7%C3%A3o-do-projeto"><i class="fa fa-check"></i><b>3.1</b> Descrição do projeto</a></li>
+<li class="chapter" data-level="3.2" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html#regras-e-orineta%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>3.2</b> Regras e orinetações</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html#cada-equipe-dever%C3%A1"><i class="fa fa-check"></i><b>3.2.1</b> Cada equipe deverá:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="elementos-html-react.html"><a href="elementos-html-react.html"><i class="fa fa-check"></i><b>4</b> Elementos Básicos de HTML em React</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#objetivos-da-aula"><i class="fa fa-check"></i><b>4.1</b> Objetivos da aula</a></li>
+<li class="chapter" data-level="4.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#html-para-componentes"><i class="fa fa-check"></i><b>4.2</b> De HTML “puro” para elementos em componentes React</a></li>
+<li class="chapter" data-level="4.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#estrutura-geral-de-uma-p%C3%A1gina-com-componentes"><i class="fa fa-check"></i><b>4.3</b> Estrutura geral de uma página com componentes</a></li>
+<li class="chapter" data-level="4.4" data-path="elementos-html-react.html"><a href="elementos-html-react.html#criando-elementos-b%C3%A1sicos-de-html-como-componentes"><i class="fa fa-check"></i><b>4.4</b> Criando elementos básicos de HTML como componentes</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#div-section-header-e-footer"><i class="fa fa-check"></i><b>4.4.1</b> <code>div</code>, <code>section</code>, <code>header</code> e <code>footer</code></a></li>
+<li class="chapter" data-level="4.4.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#listas-numeradas-e-n%C3%A3o-numeradas"><i class="fa fa-check"></i><b>4.4.2</b> Listas numeradas e não numeradas</a></li>
+<li class="chapter" data-level="4.4.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#tabelas"><i class="fa fa-check"></i><b>4.4.3</b> Tabelas</a></li>
+<li class="chapter" data-level="4.4.4" data-path="elementos-html-react.html"><a href="elementos-html-react.html#imagens"><i class="fa fa-check"></i><b>4.4.4</b> Imagens</a></li>
+<li class="chapter" data-level="4.4.5" data-path="elementos-html-react.html"><a href="elementos-html-react.html#links"><i class="fa fa-check"></i><b>4.4.5</b> Links</a></li>
+<li class="chapter" data-level="4.4.6" data-path="elementos-html-react.html"><a href="elementos-html-react.html#guia-de-navega%C3%A7%C3%A3o-menu-nav"><i class="fa fa-check"></i><b>4.4.6</b> Guia de navegação (menu / <code>nav</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="elementos-html-react.html"><a href="elementos-html-react.html#incluindo-css-nos-componentes"><i class="fa fa-check"></i><b>4.5</b> Incluindo CSS nos componentes</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#css-por-arquivo-importado-no-componente"><i class="fa fa-check"></i><b>4.5.1</b> 1. CSS por arquivo, importado no componente</a></li>
+<li class="chapter" data-level="4.5.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#estilo-inline-via-objeto-javascript"><i class="fa fa-check"></i><b>4.5.2</b> 2. Estilo inline (via objeto JavaScript)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#bootstrap"><i class="fa fa-check"></i><b>4.5.3</b> 3. Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="elementos-html-react.html"><a href="elementos-html-react.html#express%C3%B5es-no-jsx"><i class="fa fa-check"></i><b>4.6</b> Expressões no JSX</a></li>
+<li class="chapter" data-level="4.7" data-path="elementos-html-react.html"><a href="elementos-html-react.html#renderiza%C3%A7%C3%A3o-condicional"><i class="fa fa-check"></i><b>4.7</b> Renderização condicional</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#operador-tern%C3%A1rio-condi%C3%A7%C3%A3o-sea-seb"><i class="fa fa-check"></i><b>4.7.1</b> Operador ternário (<code>condição ? seA : seB</code>)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#operador-renderiza-s%C3%B3-se-a-condi%C3%A7%C3%A3o-for-verdadeira"><i class="fa fa-check"></i><b>4.7.2</b> Operador <code>&amp;&amp;</code> (renderiza só se a condição for verdadeira)</a></li>
+<li class="chapter" data-level="4.7.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#if-else-fora-do-jsx"><i class="fa fa-check"></i><b>4.7.3</b> <code>if</code> / <code>else</code> fora do JSX</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="elementos-html-react.html"><a href="elementos-html-react.html#exemplo-de-aula-home-page-da-loja-de-ve%C3%ADculos-autostore"><i class="fa fa-check"></i><b>4.8</b> Exemplo de aula: Home page da loja de veículos AutoStore</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-1-criar-o-projeto"><i class="fa fa-check"></i><b>4.8.1</b> Passo 1 — Criar o projeto</a></li>
+<li class="chapter" data-level="4.8.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-2-incluir-o-bootstrap"><i class="fa fa-check"></i><b>4.8.2</b> Passo 2 — Incluir o Bootstrap</a></li>
+<li class="chapter" data-level="4.8.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-3-criar-os-dados-dos-ve%C3%ADculos-mock"><i class="fa fa-check"></i><b>4.8.3</b> Passo 3 — Criar os dados dos veículos (mock)</a></li>
+<li class="chapter" data-level="4.8.4" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-4-componente-header-com-navbar"><i class="fa fa-check"></i><b>4.8.4</b> Passo 4 — Componente <code>Header</code> com <code>NavBar</code></a></li>
+<li class="chapter" data-level="4.8.5" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-5-componente-banner"><i class="fa fa-check"></i><b>4.8.5</b> Passo 5 — Componente <code>Banner</code></a></li>
+<li class="chapter" data-level="4.8.6" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-6-componente-cardveiculo-com-renderiza%C3%A7%C3%A3o-condicional"><i class="fa fa-check"></i><b>4.8.6</b> Passo 6 — Componente <code>CardVeiculo</code> (com renderização condicional)</a></li>
+<li class="chapter" data-level="4.8.7" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-7-componente-listaveiculos-recebe-a-categoria-via-props"><i class="fa fa-check"></i><b>4.8.7</b> Passo 7 — Componente <code>ListaVeiculos</code> (recebe a categoria via props)</a></li>
+<li class="chapter" data-level="4.8.8" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-8-componente-categoriaveiculos-agrupa-as-tr%C3%AAs-listas"><i class="fa fa-check"></i><b>4.8.8</b> Passo 8 — Componente <code>CategoriaVeiculos</code> (agrupa as três listas)</a></li>
+<li class="chapter" data-level="4.8.9" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-9-componente-footer"><i class="fa fa-check"></i><b>4.8.9</b> Passo 9 — Componente <code>Footer</code></a></li>
+<li class="chapter" data-level="4.8.10" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-10-montando-tudo-em-app.jsx"><i class="fa fa-check"></i><b>4.8.10</b> Passo 10 — Montando tudo em <code>App.jsx</code></a></li>
+<li class="chapter" data-level="4.8.11" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-11-testar-o-resultado"><i class="fa fa-check"></i><b>4.8.11</b> Passo 11 — Testar o resultado</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="elementos-html-react.html"><a href="elementos-html-react.html#atividade-pr%C3%A1tica-1"><i class="fa fa-check"></i><b>4.9</b> Atividade prática</a></li>
+<li class="chapter" data-level="4.10" data-path="elementos-html-react.html"><a href="elementos-html-react.html#resumo-dos-conceitos-chave-1"><i class="fa fa-check"></i><b>4.10</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="4.11" data-path="elementos-html-react.html"><a href="elementos-html-react.html#para-saber-mais-leitura-complementar-1"><i class="fa fa-check"></i><b>4.11</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Full Stack: Conceitos Fundamentais</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="elementos-html-react" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Elementos Básicos de HTML em React<a href="elementos-html-react.html#elementos-html-react" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Disciplina:</strong> Programação Web Full Stack — Engenharia de Software
+<strong>Tema da aula:</strong> Construindo a interface com HTML “dentro” do React: elementos, componentes, CSS/Bootstrap e renderização dinâmica
+<strong>Pré-requisito:</strong> Capítulo <a href="introducao-react.html#introducao-react">2</a> — Introdução ao React (JSX, componentes, props, state, Vite)</p>
+<p><strong>Referências desta aula:</strong></p>
+<ul>
+<li>Documentação oficial — <a href="https://react.dev/learn">react.dev/learn</a></li>
+<li>W3Schools React Tutorial — <a href="https://www.w3schools.com/react/react_es6.asp">React ES6</a>, <a href="https://www.w3schools.com/react/react_css_styling.asp">React CSS Styling</a></li>
+<li>Material de apoio da disciplina: <code>04-introdução-ao-react.pptx</code></li>
+</ul>
+<hr />
+<div id="objetivos-da-aula" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Objetivos da aula<a href="elementos-html-react.html#objetivos-da-aula" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Ao final desta aula, o(a) aluno(a) deve ser capaz de:</p>
+<ol style="list-style-type: decimal">
+<li>Criar, em componentes React, os elementos básicos de HTML (listas, tabelas, imagens, seções, links, menus de navegação, <code>div</code>, <code>header</code>, <code>footer</code>, entre outros).</li>
+<li>Organizar esses elementos em componentes reutilizáveis, e não em um único arquivo monolítico.</li>
+<li>Aplicar CSS a componentes React, incluindo o uso do Bootstrap.</li>
+<li>Usar <strong>expressões</strong> dentro do JSX e aplicar <strong>renderização condicional</strong>.</li>
+<li>Construir, passo a passo, a home page de uma loja de veículos com três categorias de produtos (esportivos, luxo e clássicos).</li>
+</ol>
+<hr />
+</div>
+<div id="html-para-componentes" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> De HTML “puro” para elementos em componentes React<a href="elementos-html-react.html#html-para-componentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Até aqui, os componentes que construímos retornavam pouco JSX (um título, um parágrafo, um contador). Nesta aula, o objetivo é aprender a escrever, dentro de componentes React, os mesmos elementos que vocês já usam em HTML — só que agora cada pedaço da página pode virar um <strong>componente independente</strong>, reutilizável e testável separadamente.</p>
+<p>A regra geral do “passo a passo” que seguiremos para qualquer elemento novo é sempre a mesma:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Pensar no HTML puro</strong> que você escreveria para aquele pedaço da página.</li>
+<li><strong>Criar um arquivo de componente</strong> para ele dentro de <code>src/components/</code> (ex.: <code>src/components/Header.jsx</code>).</li>
+<li><strong>Colar a estrutura HTML dentro do <code>return</code></strong> do componente, convertendo os atributos que o JSX exige (<code>class</code> → <code>className</code>, <code>for</code> → <code>htmlFor</code>, etc. — ver Tabela <a href="elementos-html-react.html#tab:tabela-atributos-jsx">4.1</a>).</li>
+<li><strong>Importar e usar o componente</strong> dentro de outro componente (geralmente <code>App.jsx</code>), com a tag <code>&lt;NomeDoComponente /&gt;</code>.</li>
+<li><strong>Testar no navegador</strong>, com <code>npm run dev</code> rodando (ver Seção <a href="introducao-react.html#o-que-e-vite">2.4.4</a> do Capítulo <a href="introducao-react.html#introducao-react">2</a>).</li>
+</ol>
+<table>
+<caption><span id="tab:tabela-atributos-jsx">Table 4.1: </span> Atributos HTML que mudam de nome no JSX</caption>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>HTML</th>
+<th>JSX (React)</th>
+<th>Motivo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>class="..."</code></td>
+<td><code>className="..."</code></td>
+<td><code>class</code> é palavra reservada em JavaScript.</td>
+</tr>
+<tr class="even">
+<td><code>for="..."</code> (em <code>&lt;label&gt;</code>)</td>
+<td><code>htmlFor="..."</code></td>
+<td><code>for</code> também é palavra reservada em JavaScript (usada em laços).</td>
+</tr>
+<tr class="odd">
+<td><code>onclick="..."</code></td>
+<td><code>onClick={...}</code></td>
+<td>Eventos em React usam camelCase e recebem uma função JS, não uma string.</td>
+</tr>
+<tr class="even">
+<td><code>style="color:red"</code></td>
+<td><code>style={{ color: 'red' }}</code></td>
+<td>O <code>style</code> recebe um <strong>objeto</strong> JavaScript, não uma string CSS.</td>
+</tr>
+<tr class="odd">
+<td><code>tabindex</code></td>
+<td><code>tabIndex</code></td>
+<td>Atributos compostos seguem o padrão camelCase do JavaScript.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="estrutura-geral-de-uma-página-com-componentes" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Estrutura geral de uma página com componentes<a href="elementos-html-react.html#estrutura-geral-de-uma-p%C3%A1gina-com-componentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Antes dos exemplos individuais, vale visualizar como os elementos de uma página comum (cabeçalho, menu, seções, rodapé) se transformam em uma <strong>árvore de componentes</strong>. Cada <code>&lt;div&gt;</code>, <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code> etc. deixa de ser só uma tag HTML e passa a ser (ou fazer parte de) um componente:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb13-1"><a href="elementos-html-react.html#cb13-1" tabindex="-1"></a><span class="co">// src/App.jsx</span></span>
+<span id="cb13-2"><a href="elementos-html-react.html#cb13-2" tabindex="-1"></a><span class="im">import</span> Header <span class="im">from</span> <span class="st">&#39;./components/Header&#39;</span><span class="op">;</span></span>
+<span id="cb13-3"><a href="elementos-html-react.html#cb13-3" tabindex="-1"></a><span class="im">import</span> Banner <span class="im">from</span> <span class="st">&#39;./components/Banner&#39;</span><span class="op">;</span></span>
+<span id="cb13-4"><a href="elementos-html-react.html#cb13-4" tabindex="-1"></a><span class="im">import</span> Footer <span class="im">from</span> <span class="st">&#39;./components/Footer&#39;</span><span class="op">;</span></span>
+<span id="cb13-5"><a href="elementos-html-react.html#cb13-5" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;./App.css&#39;</span><span class="op">;</span></span>
+<span id="cb13-6"><a href="elementos-html-react.html#cb13-6" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="elementos-html-react.html#cb13-7" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb13-8"><a href="elementos-html-react.html#cb13-8" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb13-9"><a href="elementos-html-react.html#cb13-9" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;App&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb13-10"><a href="elementos-html-react.html#cb13-10" tabindex="-1"></a>      <span class="fu">&lt;Header</span> <span class="fu">/&gt;</span></span>
+<span id="cb13-11"><a href="elementos-html-react.html#cb13-11" tabindex="-1"></a>      <span class="fu">&lt;Banner</span> <span class="fu">/&gt;</span></span>
+<span id="cb13-12"><a href="elementos-html-react.html#cb13-12" tabindex="-1"></a>      <span class="va">{</span><span class="co">/* outras seções da página entram aqui */</span><span class="va">}</span></span>
+<span id="cb13-13"><a href="elementos-html-react.html#cb13-13" tabindex="-1"></a>      <span class="fu">&lt;Footer</span> <span class="fu">/&gt;</span></span>
+<span id="cb13-14"><a href="elementos-html-react.html#cb13-14" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb13-15"><a href="elementos-html-react.html#cb13-15" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb13-16"><a href="elementos-html-react.html#cb13-16" tabindex="-1"></a>}</span>
+<span id="cb13-17"><a href="elementos-html-react.html#cb13-17" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="elementos-html-react.html#cb13-18" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code></pre></div>
+<p>Repare que <code>App.jsx</code> praticamente não tem HTML “cru” — ele apenas <strong>organiza</strong> outros componentes. Essa é a prática recomendada: cada componente cuida de uma parte pequena e coesa da interface.</p>
+<hr />
+</div>
+<div id="criando-elementos-básicos-de-html-como-componentes" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Criando elementos básicos de HTML como componentes<a href="elementos-html-react.html#criando-elementos-b%C3%A1sicos-de-html-como-componentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Nesta seção, cada subtópico segue o passo a passo da Seção <a href="elementos-html-react.html#html-para-componentes">4.2</a>: pense no HTML, crie o componente, use-o em <code>App.jsx</code>, teste no navegador.</p>
+<div id="div-section-header-e-footer" class="section level3 hasAnchor" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> <code>div</code>, <code>section</code>, <code>header</code> e <code>footer</code><a href="elementos-html-react.html#div-section-header-e-footer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Esses quatro elementos são os “blocos de construção” de qualquer página e, no React, viram componentes de estrutura/layout:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb14-1"><a href="elementos-html-react.html#cb14-1" tabindex="-1"></a><span class="co">// src/components/Header.jsx</span></span>
+<span id="cb14-2"><a href="elementos-html-react.html#cb14-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Header</span>() {</span>
+<span id="cb14-3"><a href="elementos-html-react.html#cb14-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb14-4"><a href="elementos-html-react.html#cb14-4" tabindex="-1"></a>    <span class="kw">&lt;header</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;site-header&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb14-5"><a href="elementos-html-react.html#cb14-5" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;logo&quot;</span><span class="kw">&gt;</span>🚗 AutoStore<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb14-6"><a href="elementos-html-react.html#cb14-6" tabindex="-1"></a>    <span class="kw">&lt;/header&gt;</span></span>
+<span id="cb14-7"><a href="elementos-html-react.html#cb14-7" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb14-8"><a href="elementos-html-react.html#cb14-8" tabindex="-1"></a>}</span>
+<span id="cb14-9"><a href="elementos-html-react.html#cb14-9" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="elementos-html-react.html#cb14-10" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Header<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb15-1"><a href="elementos-html-react.html#cb15-1" tabindex="-1"></a><span class="co">// src/components/Footer.jsx</span></span>
+<span id="cb15-2"><a href="elementos-html-react.html#cb15-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Footer</span>() {</span>
+<span id="cb15-3"><a href="elementos-html-react.html#cb15-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb15-4"><a href="elementos-html-react.html#cb15-4" tabindex="-1"></a>    <span class="kw">&lt;footer</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;site-footer&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb15-5"><a href="elementos-html-react.html#cb15-5" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span><span class="dv">&amp;copy;</span> 2026 AutoStore — Todos os direitos reservados.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb15-6"><a href="elementos-html-react.html#cb15-6" tabindex="-1"></a>    <span class="kw">&lt;/footer&gt;</span></span>
+<span id="cb15-7"><a href="elementos-html-react.html#cb15-7" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb15-8"><a href="elementos-html-react.html#cb15-8" tabindex="-1"></a>}</span>
+<span id="cb15-9"><a href="elementos-html-react.html#cb15-9" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="elementos-html-react.html#cb15-10" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Footer<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb16-1"><a href="elementos-html-react.html#cb16-1" tabindex="-1"></a><span class="co">// src/components/Sobre.jsx</span></span>
+<span id="cb16-2"><a href="elementos-html-react.html#cb16-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Sobre</span>() {</span>
+<span id="cb16-3"><a href="elementos-html-react.html#cb16-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb16-4"><a href="elementos-html-react.html#cb16-4" tabindex="-1"></a>    <span class="kw">&lt;section</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;sobre&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb16-5"><a href="elementos-html-react.html#cb16-5" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;sobre-texto&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb16-6"><a href="elementos-html-react.html#cb16-6" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>Sobre a AutoStore<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb16-7"><a href="elementos-html-react.html#cb16-7" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Vendemos veículos esportivos, de luxo e clássicos há mais de 20 anos.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb16-8"><a href="elementos-html-react.html#cb16-8" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb16-9"><a href="elementos-html-react.html#cb16-9" tabindex="-1"></a>    <span class="kw">&lt;/section&gt;</span></span>
+<span id="cb16-10"><a href="elementos-html-react.html#cb16-10" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb16-11"><a href="elementos-html-react.html#cb16-11" tabindex="-1"></a>}</span>
+<span id="cb16-12"><a href="elementos-html-react.html#cb16-12" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="elementos-html-react.html#cb16-13" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Sobre<span class="op">;</span></span></code></pre></div>
+<p><strong>Onde testar:</strong> importe cada componente em <code>src/App.jsx</code> (como no exemplo da seção anterior) e salve — com o <code>npm run dev</code> rodando, o navegador atualiza sozinho.</p>
+</div>
+<div id="listas-numeradas-e-não-numeradas" class="section level3 hasAnchor" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Listas numeradas e não numeradas<a href="elementos-html-react.html#listas-numeradas-e-n%C3%A3o-numeradas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Listas não numeradas usam <code>&lt;ul&gt;</code>/<code>&lt;li&gt;</code>; listas numeradas usam <code>&lt;ol&gt;</code>/<code>&lt;li&gt;</code>. A prática mais comum em React é gerar os itens <strong>dinamicamente</strong>, a partir de um array, usando o método <code>.map()</code> — isso evita repetir <code>&lt;li&gt;</code> manualmente para cada item.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb17-1"><a href="elementos-html-react.html#cb17-1" tabindex="-1"></a><span class="co">// src/components/Diferenciais.jsx</span></span>
+<span id="cb17-2"><a href="elementos-html-react.html#cb17-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Diferenciais</span>() {</span>
+<span id="cb17-3"><a href="elementos-html-react.html#cb17-3" tabindex="-1"></a>  <span class="kw">const</span> itens <span class="op">=</span> [</span>
+<span id="cb17-4"><a href="elementos-html-react.html#cb17-4" tabindex="-1"></a>    <span class="st">&#39;Veículos revisados e com garantia&#39;</span><span class="op">,</span></span>
+<span id="cb17-5"><a href="elementos-html-react.html#cb17-5" tabindex="-1"></a>    <span class="st">&#39;Financiamento facilitado&#39;</span><span class="op">,</span></span>
+<span id="cb17-6"><a href="elementos-html-react.html#cb17-6" tabindex="-1"></a>    <span class="st">&#39;Avaliação do seu usado na troca&#39;</span><span class="op">,</span></span>
+<span id="cb17-7"><a href="elementos-html-react.html#cb17-7" tabindex="-1"></a>  ]<span class="op">;</span></span>
+<span id="cb17-8"><a href="elementos-html-react.html#cb17-8" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="elementos-html-react.html#cb17-9" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb17-10"><a href="elementos-html-react.html#cb17-10" tabindex="-1"></a>    <span class="kw">&lt;ul</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;lista-diferenciais&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb17-11"><a href="elementos-html-react.html#cb17-11" tabindex="-1"></a>      <span class="va">{</span>itens<span class="op">.</span><span class="fu">map</span>((item<span class="op">,</span> index) <span class="kw">=&gt;</span> (</span>
+<span id="cb17-12"><a href="elementos-html-react.html#cb17-12" tabindex="-1"></a>        <span class="kw">&lt;li</span> <span class="ot">key</span><span class="op">=</span><span class="va">{</span>index<span class="va">}</span><span class="kw">&gt;</span><span class="va">{</span>item<span class="va">}</span><span class="kw">&lt;/li&gt;</span></span>
+<span id="cb17-13"><a href="elementos-html-react.html#cb17-13" tabindex="-1"></a>      ))<span class="va">}</span></span>
+<span id="cb17-14"><a href="elementos-html-react.html#cb17-14" tabindex="-1"></a>    <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb17-15"><a href="elementos-html-react.html#cb17-15" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb17-16"><a href="elementos-html-react.html#cb17-16" tabindex="-1"></a>}</span>
+<span id="cb17-17"><a href="elementos-html-react.html#cb17-17" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="elementos-html-react.html#cb17-18" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Diferenciais<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb18-1"><a href="elementos-html-react.html#cb18-1" tabindex="-1"></a><span class="co">// Exemplo com lista numerada (&lt;ol&gt;)</span></span>
+<span id="cb18-2"><a href="elementos-html-react.html#cb18-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ComoComprar</span>() {</span>
+<span id="cb18-3"><a href="elementos-html-react.html#cb18-3" tabindex="-1"></a>  <span class="kw">const</span> passos <span class="op">=</span> [<span class="st">&#39;Escolha o veículo&#39;</span><span class="op">,</span> <span class="st">&#39;Agende um test-drive&#39;</span><span class="op">,</span> <span class="st">&#39;Feche negócio&#39;</span>]<span class="op">;</span></span>
+<span id="cb18-4"><a href="elementos-html-react.html#cb18-4" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="elementos-html-react.html#cb18-5" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb18-6"><a href="elementos-html-react.html#cb18-6" tabindex="-1"></a>    <span class="kw">&lt;ol</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;lista-passos&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb18-7"><a href="elementos-html-react.html#cb18-7" tabindex="-1"></a>      <span class="va">{</span>passos<span class="op">.</span><span class="fu">map</span>((passo<span class="op">,</span> index) <span class="kw">=&gt;</span> (</span>
+<span id="cb18-8"><a href="elementos-html-react.html#cb18-8" tabindex="-1"></a>        <span class="kw">&lt;li</span> <span class="ot">key</span><span class="op">=</span><span class="va">{</span>index<span class="va">}</span><span class="kw">&gt;</span><span class="va">{</span>passo<span class="va">}</span><span class="kw">&lt;/li&gt;</span></span>
+<span id="cb18-9"><a href="elementos-html-react.html#cb18-9" tabindex="-1"></a>      ))<span class="va">}</span></span>
+<span id="cb18-10"><a href="elementos-html-react.html#cb18-10" tabindex="-1"></a>    <span class="kw">&lt;/ol&gt;</span></span>
+<span id="cb18-11"><a href="elementos-html-react.html#cb18-11" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb18-12"><a href="elementos-html-react.html#cb18-12" tabindex="-1"></a>}</span>
+<span id="cb18-13"><a href="elementos-html-react.html#cb18-13" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="elementos-html-react.html#cb18-14" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> ComoComprar<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<p><strong>Atenção ao <code>key</code>:</strong> sempre que renderizamos uma lista com <code>.map()</code>, o React exige uma prop <code>key</code> única em cada item, para saber identificar o que mudou entre uma renderização e outra. Usar o índice do array (<code>index</code>) é aceitável para listas simples e estáticas; em listas que podem ser reordenadas ou filtradas, o ideal é usar um identificador único do próprio dado (por exemplo, um <code>id</code>).</p>
+</blockquote>
+</div>
+<div id="tabelas" class="section level3 hasAnchor" number="4.4.3">
+<h3><span class="header-section-number">4.4.3</span> Tabelas<a href="elementos-html-react.html#tabelas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tabelas HTML (<code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;td&gt;</code>) funcionam da mesma forma dentro do JSX, também combinadas com <code>.map()</code> quando os dados vêm de um array:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb19-1"><a href="elementos-html-react.html#cb19-1" tabindex="-1"></a><span class="co">// src/components/TabelaVeiculos.jsx</span></span>
+<span id="cb19-2"><a href="elementos-html-react.html#cb19-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">TabelaVeiculos</span>() {</span>
+<span id="cb19-3"><a href="elementos-html-react.html#cb19-3" tabindex="-1"></a>  <span class="kw">const</span> veiculos <span class="op">=</span> [</span>
+<span id="cb19-4"><a href="elementos-html-react.html#cb19-4" tabindex="-1"></a>    { <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Civic Si&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;Esportivo&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="st">&#39;R$ 189.000&#39;</span> }<span class="op">,</span></span>
+<span id="cb19-5"><a href="elementos-html-react.html#cb19-5" tabindex="-1"></a>    { <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;BMW Série 7&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;Luxo&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="st">&#39;R$ 620.000&#39;</span> }<span class="op">,</span></span>
+<span id="cb19-6"><a href="elementos-html-react.html#cb19-6" tabindex="-1"></a>    { <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Fusca 1972&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;Clássico&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="st">&#39;R$ 75.000&#39;</span> }<span class="op">,</span></span>
+<span id="cb19-7"><a href="elementos-html-react.html#cb19-7" tabindex="-1"></a>  ]<span class="op">;</span></span>
+<span id="cb19-8"><a href="elementos-html-react.html#cb19-8" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="elementos-html-react.html#cb19-9" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb19-10"><a href="elementos-html-react.html#cb19-10" tabindex="-1"></a>    <span class="kw">&lt;table</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;tabela-veiculos&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb19-11"><a href="elementos-html-react.html#cb19-11" tabindex="-1"></a>      <span class="kw">&lt;thead&gt;</span></span>
+<span id="cb19-12"><a href="elementos-html-react.html#cb19-12" tabindex="-1"></a>        <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb19-13"><a href="elementos-html-react.html#cb19-13" tabindex="-1"></a>          <span class="kw">&lt;th&gt;</span>Modelo<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb19-14"><a href="elementos-html-react.html#cb19-14" tabindex="-1"></a>          <span class="kw">&lt;th&gt;</span>Categoria<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb19-15"><a href="elementos-html-react.html#cb19-15" tabindex="-1"></a>          <span class="kw">&lt;th&gt;</span>Preço<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb19-16"><a href="elementos-html-react.html#cb19-16" tabindex="-1"></a>        <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb19-17"><a href="elementos-html-react.html#cb19-17" tabindex="-1"></a>      <span class="kw">&lt;/thead&gt;</span></span>
+<span id="cb19-18"><a href="elementos-html-react.html#cb19-18" tabindex="-1"></a>      <span class="kw">&lt;tbody&gt;</span></span>
+<span id="cb19-19"><a href="elementos-html-react.html#cb19-19" tabindex="-1"></a>        <span class="va">{</span>veiculos<span class="op">.</span><span class="fu">map</span>((v) <span class="kw">=&gt;</span> (</span>
+<span id="cb19-20"><a href="elementos-html-react.html#cb19-20" tabindex="-1"></a>          <span class="kw">&lt;tr</span> <span class="ot">key</span><span class="op">=</span><span class="va">{</span>v<span class="op">.</span><span class="at">modelo</span><span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb19-21"><a href="elementos-html-react.html#cb19-21" tabindex="-1"></a>            <span class="kw">&lt;td&gt;</span><span class="va">{</span>v<span class="op">.</span><span class="at">modelo</span><span class="va">}</span><span class="kw">&lt;/td&gt;</span></span>
+<span id="cb19-22"><a href="elementos-html-react.html#cb19-22" tabindex="-1"></a>            <span class="kw">&lt;td&gt;</span><span class="va">{</span>v<span class="op">.</span><span class="at">categoria</span><span class="va">}</span><span class="kw">&lt;/td&gt;</span></span>
+<span id="cb19-23"><a href="elementos-html-react.html#cb19-23" tabindex="-1"></a>            <span class="kw">&lt;td&gt;</span><span class="va">{</span>v<span class="op">.</span><span class="at">preco</span><span class="va">}</span><span class="kw">&lt;/td&gt;</span></span>
+<span id="cb19-24"><a href="elementos-html-react.html#cb19-24" tabindex="-1"></a>          <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb19-25"><a href="elementos-html-react.html#cb19-25" tabindex="-1"></a>        ))<span class="va">}</span></span>
+<span id="cb19-26"><a href="elementos-html-react.html#cb19-26" tabindex="-1"></a>      <span class="kw">&lt;/tbody&gt;</span></span>
+<span id="cb19-27"><a href="elementos-html-react.html#cb19-27" tabindex="-1"></a>    <span class="kw">&lt;/table&gt;</span></span>
+<span id="cb19-28"><a href="elementos-html-react.html#cb19-28" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb19-29"><a href="elementos-html-react.html#cb19-29" tabindex="-1"></a>}</span>
+<span id="cb19-30"><a href="elementos-html-react.html#cb19-30" tabindex="-1"></a></span>
+<span id="cb19-31"><a href="elementos-html-react.html#cb19-31" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> TabelaVeiculos<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="imagens" class="section level3 hasAnchor" number="4.4.4">
+<h3><span class="header-section-number">4.4.4</span> Imagens<a href="elementos-html-react.html#imagens" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O atributo é <code>src</code>, igual ao HTML. Existem duas formas comuns de referenciar uma imagem em um projeto Vite:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb20-1"><a href="elementos-html-react.html#cb20-1" tabindex="-1"></a><span class="co">// 1. Imagem local, importada como módulo (recomendado: o Vite otimiza o arquivo)</span></span>
+<span id="cb20-2"><a href="elementos-html-react.html#cb20-2" tabindex="-1"></a><span class="im">import</span> carroEsportivo <span class="im">from</span> <span class="st">&#39;../assets/carro-esportivo.jpg&#39;</span><span class="op">;</span></span>
+<span id="cb20-3"><a href="elementos-html-react.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="elementos-html-react.html#cb20-4" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ImagemDestaque</span>() {</span>
+<span id="cb20-5"><a href="elementos-html-react.html#cb20-5" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;img</span> <span class="ot">src</span><span class="op">=</span><span class="va">{</span>carroEsportivo<span class="va">}</span> <span class="ot">alt</span><span class="op">=</span><span class="st">&quot;Carro esportivo em destaque&quot;</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;img-destaque&quot;</span> <span class="kw">/&gt;</span><span class="op">;</span></span>
+<span id="cb20-6"><a href="elementos-html-react.html#cb20-6" tabindex="-1"></a>}</span>
+<span id="cb20-7"><a href="elementos-html-react.html#cb20-7" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="elementos-html-react.html#cb20-8" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> ImagemDestaque<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb21-1"><a href="elementos-html-react.html#cb21-1" tabindex="-1"></a><span class="co">// 2. Imagem externa (URL), ou arquivo colocado na pasta public/</span></span>
+<span id="cb21-2"><a href="elementos-html-react.html#cb21-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ImagemExterna</span>() {</span>
+<span id="cb21-3"><a href="elementos-html-react.html#cb21-3" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;img</span> <span class="ot">src</span><span class="op">=</span><span class="st">&quot;https://exemplo.com/carro.jpg&quot;</span> <span class="ot">alt</span><span class="op">=</span><span class="st">&quot;Carro de luxo&quot;</span> <span class="kw">/&gt;</span><span class="op">;</span></span>
+<span id="cb21-4"><a href="elementos-html-react.html#cb21-4" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p><strong>Local vs. <code>public/</code>:</strong> imagens <strong>importadas</strong> (opção 1) ficam em <code>src/assets/</code>, passam pelo processo de build do Vite e têm o caminho final calculado automaticamente. Imagens colocadas em <code>public/</code> são copiadas exatamente como estão e referenciadas por caminho absoluto (ex.: <code>/carro.jpg</code>) — use <code>public/</code> para arquivos que não devem ser processados, como o favicon.</p>
+</blockquote>
+</div>
+<div id="links" class="section level3 hasAnchor" number="4.4.5">
+<h3><span class="header-section-number">4.4.5</span> Links<a href="elementos-html-react.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Enquanto a disciplina ainda não trabalha com bibliotecas de rotas (como o React Router, visto em aulas futuras), links para páginas externas ou âncoras internas usam a tag <code>&lt;a&gt;</code> normalmente:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb22-1"><a href="elementos-html-react.html#cb22-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">LinkContato</span>() {</span>
+<span id="cb22-2"><a href="elementos-html-react.html#cb22-2" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb22-3"><a href="elementos-html-react.html#cb22-3" tabindex="-1"></a>    <span class="kw">&lt;a</span> <span class="ot">href</span><span class="op">=</span><span class="st">&quot;https://wa.me/5511999999999&quot;</span> <span class="ot">target</span><span class="op">=</span><span class="st">&quot;_blank&quot;</span> <span class="ot">rel</span><span class="op">=</span><span class="st">&quot;noopener noreferrer&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb22-4"><a href="elementos-html-react.html#cb22-4" tabindex="-1"></a>      Fale conosco no WhatsApp</span>
+<span id="cb22-5"><a href="elementos-html-react.html#cb22-5" tabindex="-1"></a>    <span class="kw">&lt;/a&gt;</span></span>
+<span id="cb22-6"><a href="elementos-html-react.html#cb22-6" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb22-7"><a href="elementos-html-react.html#cb22-7" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><code>target="_blank"</code> abre o link em uma nova aba.</li>
+<li><code>rel="noopener noreferrer"</code> é uma boa prática de segurança sempre que se usa <code>target="_blank"</code>, evitando que a nova página tenha acesso à página de origem.</li>
+</ul>
+</div>
+<div id="guia-de-navegação-menu-nav" class="section level3 hasAnchor" number="4.4.6">
+<h3><span class="header-section-number">4.4.6</span> Guia de navegação (menu / <code>nav</code>)<a href="elementos-html-react.html#guia-de-navega%C3%A7%C3%A3o-menu-nav" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Um menu de navegação nada mais é do que uma lista (<code>&lt;ul&gt;</code>/<code>&lt;li&gt;</code>) de links (<code>&lt;a&gt;</code>), dentro de uma tag <code>&lt;nav&gt;</code>, tipicamente dentro do <code>&lt;Header /&gt;</code>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb23-1"><a href="elementos-html-react.html#cb23-1" tabindex="-1"></a><span class="co">// src/components/NavBar.jsx</span></span>
+<span id="cb23-2"><a href="elementos-html-react.html#cb23-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">NavBar</span>() {</span>
+<span id="cb23-3"><a href="elementos-html-react.html#cb23-3" tabindex="-1"></a>  <span class="kw">const</span> categorias <span class="op">=</span> [</span>
+<span id="cb23-4"><a href="elementos-html-react.html#cb23-4" tabindex="-1"></a>    { <span class="dt">nome</span><span class="op">:</span> <span class="st">&#39;Esportivos&#39;</span><span class="op">,</span> <span class="dt">href</span><span class="op">:</span> <span class="st">&#39;#esportivos&#39;</span> }<span class="op">,</span></span>
+<span id="cb23-5"><a href="elementos-html-react.html#cb23-5" tabindex="-1"></a>    { <span class="dt">nome</span><span class="op">:</span> <span class="st">&#39;Luxo&#39;</span><span class="op">,</span> <span class="dt">href</span><span class="op">:</span> <span class="st">&#39;#luxo&#39;</span> }<span class="op">,</span></span>
+<span id="cb23-6"><a href="elementos-html-react.html#cb23-6" tabindex="-1"></a>    { <span class="dt">nome</span><span class="op">:</span> <span class="st">&#39;Clássicos&#39;</span><span class="op">,</span> <span class="dt">href</span><span class="op">:</span> <span class="st">&#39;#classicos&#39;</span> }<span class="op">,</span></span>
+<span id="cb23-7"><a href="elementos-html-react.html#cb23-7" tabindex="-1"></a>  ]<span class="op">;</span></span>
+<span id="cb23-8"><a href="elementos-html-react.html#cb23-8" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="elementos-html-react.html#cb23-9" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb23-10"><a href="elementos-html-react.html#cb23-10" tabindex="-1"></a>    <span class="kw">&lt;nav</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;navbar&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb23-11"><a href="elementos-html-react.html#cb23-11" tabindex="-1"></a>      <span class="kw">&lt;ul&gt;</span></span>
+<span id="cb23-12"><a href="elementos-html-react.html#cb23-12" tabindex="-1"></a>        <span class="va">{</span>categorias<span class="op">.</span><span class="fu">map</span>((cat) <span class="kw">=&gt;</span> (</span>
+<span id="cb23-13"><a href="elementos-html-react.html#cb23-13" tabindex="-1"></a>          <span class="kw">&lt;li</span> <span class="ot">key</span><span class="op">=</span><span class="va">{</span>cat<span class="op">.</span><span class="at">href</span><span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb23-14"><a href="elementos-html-react.html#cb23-14" tabindex="-1"></a>            <span class="kw">&lt;a</span> <span class="ot">href</span><span class="op">=</span><span class="va">{</span>cat<span class="op">.</span><span class="at">href</span><span class="va">}</span><span class="kw">&gt;</span><span class="va">{</span>cat<span class="op">.</span><span class="at">nome</span><span class="va">}</span><span class="kw">&lt;/a&gt;</span></span>
+<span id="cb23-15"><a href="elementos-html-react.html#cb23-15" tabindex="-1"></a>          <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb23-16"><a href="elementos-html-react.html#cb23-16" tabindex="-1"></a>        ))<span class="va">}</span></span>
+<span id="cb23-17"><a href="elementos-html-react.html#cb23-17" tabindex="-1"></a>      <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb23-18"><a href="elementos-html-react.html#cb23-18" tabindex="-1"></a>    <span class="kw">&lt;/nav&gt;</span></span>
+<span id="cb23-19"><a href="elementos-html-react.html#cb23-19" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb23-20"><a href="elementos-html-react.html#cb23-20" tabindex="-1"></a>}</span>
+<span id="cb23-21"><a href="elementos-html-react.html#cb23-21" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="elementos-html-react.html#cb23-22" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> NavBar<span class="op">;</span></span></code></pre></div>
+<p>Esse <code>&lt;NavBar /&gt;</code> pode então ser usado <strong>dentro</strong> do <code>&lt;Header /&gt;</code>, mostrando como componentes se combinam:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb24-1"><a href="elementos-html-react.html#cb24-1" tabindex="-1"></a><span class="co">// src/components/Header.jsx (versão com menu)</span></span>
+<span id="cb24-2"><a href="elementos-html-react.html#cb24-2" tabindex="-1"></a><span class="im">import</span> NavBar <span class="im">from</span> <span class="st">&#39;./NavBar&#39;</span><span class="op">;</span></span>
+<span id="cb24-3"><a href="elementos-html-react.html#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="elementos-html-react.html#cb24-4" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Header</span>() {</span>
+<span id="cb24-5"><a href="elementos-html-react.html#cb24-5" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb24-6"><a href="elementos-html-react.html#cb24-6" tabindex="-1"></a>    <span class="kw">&lt;header</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;site-header&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb24-7"><a href="elementos-html-react.html#cb24-7" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;logo&quot;</span><span class="kw">&gt;</span>🚗 AutoStore<span class="kw">&lt;/div&gt;</span></span>
+<span id="cb24-8"><a href="elementos-html-react.html#cb24-8" tabindex="-1"></a>      <span class="fu">&lt;NavBar</span> <span class="fu">/&gt;</span></span>
+<span id="cb24-9"><a href="elementos-html-react.html#cb24-9" tabindex="-1"></a>    <span class="kw">&lt;/header&gt;</span></span>
+<span id="cb24-10"><a href="elementos-html-react.html#cb24-10" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb24-11"><a href="elementos-html-react.html#cb24-11" tabindex="-1"></a>}</span>
+<span id="cb24-12"><a href="elementos-html-react.html#cb24-12" tabindex="-1"></a></span>
+<span id="cb24-13"><a href="elementos-html-react.html#cb24-13" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Header<span class="op">;</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="incluindo-css-nos-componentes" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Incluindo CSS nos componentes<a href="elementos-html-react.html#incluindo-css-nos-componentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Existem três formas comuns de estilizar componentes React, da mais simples à mais robusta:</p>
+<div id="css-por-arquivo-importado-no-componente" class="section level3 hasAnchor" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> 1. CSS por arquivo, importado no componente<a href="elementos-html-react.html#css-por-arquivo-importado-no-componente" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Cada componente pode ter seu próprio arquivo <code>.css</code>, importado diretamente:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb25-1"><a href="elementos-html-react.html#cb25-1" tabindex="-1"></a><span class="co">// src/components/Header.jsx</span></span>
+<span id="cb25-2"><a href="elementos-html-react.html#cb25-2" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;./Header.css&#39;</span><span class="op">;</span></span>
+<span id="cb25-3"><a href="elementos-html-react.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="elementos-html-react.html#cb25-4" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Header</span>() {</span>
+<span id="cb25-5"><a href="elementos-html-react.html#cb25-5" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;header</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;site-header&quot;</span><span class="kw">&gt;</span>...<span class="kw">&lt;/header&gt;</span><span class="op">;</span></span>
+<span id="cb25-6"><a href="elementos-html-react.html#cb25-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb26-1"><a href="elementos-html-react.html#cb26-1" tabindex="-1"></a><span class="co">/* src/components/Header.css */</span></span>
+<span id="cb26-2"><a href="elementos-html-react.html#cb26-2" tabindex="-1"></a><span class="fu">.site-header</span> {</span>
+<span id="cb26-3"><a href="elementos-html-react.html#cb26-3" tabindex="-1"></a>  <span class="kw">display</span><span class="ch">:</span> <span class="dv">flex</span><span class="op">;</span></span>
+<span id="cb26-4"><a href="elementos-html-react.html#cb26-4" tabindex="-1"></a>  <span class="kw">justify-content</span><span class="ch">:</span> <span class="dv">space-between</span><span class="op">;</span></span>
+<span id="cb26-5"><a href="elementos-html-react.html#cb26-5" tabindex="-1"></a>  <span class="kw">padding</span><span class="ch">:</span> <span class="dv">1</span><span class="dt">rem</span> <span class="dv">2</span><span class="dt">rem</span><span class="op">;</span></span>
+<span id="cb26-6"><a href="elementos-html-react.html#cb26-6" tabindex="-1"></a>  <span class="kw">background-color</span><span class="ch">:</span> <span class="cn">#1e293b</span><span class="op">;</span></span>
+<span id="cb26-7"><a href="elementos-html-react.html#cb26-7" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">white</span><span class="op">;</span></span>
+<span id="cb26-8"><a href="elementos-html-react.html#cb26-8" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="estilo-inline-via-objeto-javascript" class="section level3 hasAnchor" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> 2. Estilo inline (via objeto JavaScript)<a href="elementos-html-react.html#estilo-inline-via-objeto-javascript" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Útil para estilos calculados dinamicamente, mas evitado para estilos fixos (prefira CSS separado nesse caso):</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb27-1"><a href="elementos-html-react.html#cb27-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Destaque</span>() {</span>
+<span id="cb27-2"><a href="elementos-html-react.html#cb27-2" tabindex="-1"></a>  <span class="kw">const</span> estilo <span class="op">=</span> { <span class="dt">color</span><span class="op">:</span> <span class="st">&#39;crimson&#39;</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">&#39;bold&#39;</span> }<span class="op">;</span></span>
+<span id="cb27-3"><a href="elementos-html-react.html#cb27-3" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;p</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>estilo<span class="va">}</span><span class="kw">&gt;</span>Oferta especial esta semana!<span class="kw">&lt;/p&gt;</span><span class="op">;</span></span>
+<span id="cb27-4"><a href="elementos-html-react.html#cb27-4" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="bootstrap" class="section level3 hasAnchor" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> 3. Bootstrap<a href="elementos-html-react.html#bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O <strong>Bootstrap</strong> é um framework CSS com classes prontas (<code>container</code>, <code>row</code>, <code>col</code>, <code>btn</code>, <code>card</code>, <code>navbar</code>, etc.) que aceleram a estilização sem escrever CSS do zero. Há duas formas de incluí-lo em um projeto Vite + React:</p>
+<p><strong>Opção A — via CDN, direto no <code>index.html</code></strong> (mais simples para começar):</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb28-1"><a href="elementos-html-react.html#cb28-1" tabindex="-1"></a><span class="co">&lt;!-- index.html --&gt;</span></span>
+<span id="cb28-2"><a href="elementos-html-react.html#cb28-2" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">head</span><span class="dt">&gt;</span></span>
+<span id="cb28-3"><a href="elementos-html-react.html#cb28-3" tabindex="-1"></a>  ...</span>
+<span id="cb28-4"><a href="elementos-html-react.html#cb28-4" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">link</span></span>
+<span id="cb28-5"><a href="elementos-html-react.html#cb28-5" tabindex="-1"></a><span class="ot">    href</span><span class="op">=</span><span class="st">&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css&quot;</span></span>
+<span id="cb28-6"><a href="elementos-html-react.html#cb28-6" tabindex="-1"></a><span class="ot">    rel</span><span class="op">=</span><span class="st">&quot;stylesheet&quot;</span></span>
+<span id="cb28-7"><a href="elementos-html-react.html#cb28-7" tabindex="-1"></a><span class="ot">  </span><span class="dt">/&gt;</span></span>
+<span id="cb28-8"><a href="elementos-html-react.html#cb28-8" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span></code></pre></div>
+<p><strong>Opção B — instalando via npm</strong> (recomendada em projetos reais, pois fica registrada no <code>package.json</code>):</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="elementos-html-react.html#cb29-1" tabindex="-1"></a><span class="ex">npm</span> install bootstrap</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb30-1"><a href="elementos-html-react.html#cb30-1" tabindex="-1"></a><span class="co">// src/main.jsx</span></span>
+<span id="cb30-2"><a href="elementos-html-react.html#cb30-2" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;bootstrap/dist/css/bootstrap.min.css&#39;</span><span class="op">;</span></span></code></pre></div>
+<p>Depois de incluído por qualquer uma das opções, as classes do Bootstrap podem ser usadas normalmente via <code>className</code>:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb31-1"><a href="elementos-html-react.html#cb31-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Banner</span>() {</span>
+<span id="cb31-2"><a href="elementos-html-react.html#cb31-2" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb31-3"><a href="elementos-html-react.html#cb31-3" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;container text-center py-5 bg-light&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb31-4"><a href="elementos-html-react.html#cb31-4" tabindex="-1"></a>      <span class="kw">&lt;h1</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;display-4&quot;</span><span class="kw">&gt;</span>Encontre o carro dos seus sonhos<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb31-5"><a href="elementos-html-react.html#cb31-5" tabindex="-1"></a>      <span class="kw">&lt;button</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;btn btn-primary btn-lg&quot;</span><span class="kw">&gt;</span>Ver ofertas<span class="kw">&lt;/button&gt;</span></span>
+<span id="cb31-6"><a href="elementos-html-react.html#cb31-6" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb31-7"><a href="elementos-html-react.html#cb31-7" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb31-8"><a href="elementos-html-react.html#cb31-8" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p><strong>Para saber:</strong> o Bootstrap não é obrigatório — dá para estilizar só com CSS próprio. Ele é útil quando o objetivo é ganhar tempo com um layout responsivo já pronto (grid de colunas, botões, cards), o que é bastante conveniente para os exercícios e para o projeto da disciplina.</p>
+</blockquote>
+<hr />
+</div>
+</div>
+<div id="expressões-no-jsx" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Expressões no JSX<a href="elementos-html-react.html#express%C3%B5es-no-jsx" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Como já vimos no Capítulo <a href="introducao-react.html#introducao-react">2</a>, qualquer código entre chaves <code>{ }</code> dentro do JSX é uma <strong>expressão JavaScript</strong> avaliada e inserida no lugar. As formas mais comuns de uso são:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb32-1"><a href="elementos-html-react.html#cb32-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ExemploExpressoes</span>() {</span>
+<span id="cb32-2"><a href="elementos-html-react.html#cb32-2" tabindex="-1"></a>  <span class="kw">const</span> nome <span class="op">=</span> <span class="st">&#39;Juliana&#39;</span><span class="op">;</span></span>
+<span id="cb32-3"><a href="elementos-html-react.html#cb32-3" tabindex="-1"></a>  <span class="kw">const</span> precoBase <span class="op">=</span> <span class="dv">150000</span><span class="op">;</span></span>
+<span id="cb32-4"><a href="elementos-html-react.html#cb32-4" tabindex="-1"></a>  <span class="kw">const</span> desconto <span class="op">=</span> <span class="fl">0.1</span><span class="op">;</span></span>
+<span id="cb32-5"><a href="elementos-html-react.html#cb32-5" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="elementos-html-react.html#cb32-6" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb32-7"><a href="elementos-html-react.html#cb32-7" tabindex="-1"></a>    <span class="kw">&lt;div&gt;</span></span>
+<span id="cb32-8"><a href="elementos-html-react.html#cb32-8" tabindex="-1"></a>      <span class="va">{</span><span class="co">/* 1. Exibir uma variável */</span><span class="va">}</span></span>
+<span id="cb32-9"><a href="elementos-html-react.html#cb32-9" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Olá, <span class="va">{</span>nome<span class="va">}</span>!<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb32-10"><a href="elementos-html-react.html#cb32-10" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="elementos-html-react.html#cb32-11" tabindex="-1"></a>      <span class="va">{</span><span class="co">/* 2. Fazer um cálculo */</span><span class="va">}</span></span>
+<span id="cb32-12"><a href="elementos-html-react.html#cb32-12" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Preço com desconto: R$ <span class="va">{</span>precoBase <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> desconto)<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb32-13"><a href="elementos-html-react.html#cb32-13" tabindex="-1"></a></span>
+<span id="cb32-14"><a href="elementos-html-react.html#cb32-14" tabindex="-1"></a>      <span class="va">{</span><span class="co">/* 3. Chamar uma função */</span><span class="va">}</span></span>
+<span id="cb32-15"><a href="elementos-html-react.html#cb32-15" tabindex="-1"></a>      <span class="kw">&lt;p&gt;</span>Hoje é <span class="va">{</span><span class="kw">new</span> <span class="bu">Date</span>()<span class="op">.</span><span class="fu">toLocaleDateString</span>(<span class="st">&#39;pt-BR&#39;</span>)<span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb32-16"><a href="elementos-html-react.html#cb32-16" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="elementos-html-react.html#cb32-17" tabindex="-1"></a>      <span class="va">{</span><span class="co">/* 4. Alterar um estilo diretamente */</span><span class="va">}</span></span>
+<span id="cb32-18"><a href="elementos-html-react.html#cb32-18" tabindex="-1"></a>      <span class="kw">&lt;p</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">color</span><span class="op">:</span> desconto <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">&#39;green&#39;</span> <span class="op">:</span> <span class="st">&#39;black&#39;</span> }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb32-19"><a href="elementos-html-react.html#cb32-19" tabindex="-1"></a>        <span class="va">{</span>desconto <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">&#39;Promoção ativa!&#39;</span> <span class="op">:</span> <span class="st">&#39;Preço normal&#39;</span><span class="va">}</span></span>
+<span id="cb32-20"><a href="elementos-html-react.html#cb32-20" tabindex="-1"></a>      <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb32-21"><a href="elementos-html-react.html#cb32-21" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb32-22"><a href="elementos-html-react.html#cb32-22" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb32-23"><a href="elementos-html-react.html#cb32-23" tabindex="-1"></a>}</span></code></pre></div>
+<p>Em resumo, uma expressão entre <code>{ }</code> pode:</p>
+<ul>
+<li>Ler o valor de uma variável ou de uma prop.</li>
+<li>Realizar operações matemáticas ou concatenações.</li>
+<li>Chamar uma função JavaScript que retorna um valor (inclusive outro JSX).</li>
+<li>Retornar um componente React ou um array (vetor) de componentes React (é assim que o <code>.map()</code> funciona dentro do JSX).</li>
+</ul>
+<p>O que <strong>não</strong> é permitido dentro de <code>{ }</code> são comandos (<em>statements</em>), como <code>if</code>, <code>for</code> ou <code>switch</code> — apenas expressões que produzem um valor. É exatamente por isso que a renderização condicional (próxima seção) usa operadores como o ternário, e não um <code>if</code> tradicional dentro do JSX.</p>
+<hr />
+</div>
+<div id="renderização-condicional" class="section level2 hasAnchor" number="4.7">
+<h2><span class="header-section-number">4.7</span> Renderização condicional<a href="elementos-html-react.html#renderiza%C3%A7%C3%A3o-condicional" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Renderização condicional é a técnica de mostrar (ou não) um trecho de JSX dependendo de uma condição — por exemplo, mostrar “Em promoção” apenas se o veículo tiver desconto.</p>
+<div id="operador-ternário-condição-sea-seb" class="section level3 hasAnchor" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Operador ternário (<code>condição ? seA : seB</code>)<a href="elementos-html-react.html#operador-tern%C3%A1rio-condi%C3%A7%C3%A3o-sea-seb" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ideal quando existem <strong>duas</strong> alternativas possíveis:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb33-1"><a href="elementos-html-react.html#cb33-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Estoque</span>({ quantidade }) {</span>
+<span id="cb33-2"><a href="elementos-html-react.html#cb33-2" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb33-3"><a href="elementos-html-react.html#cb33-3" tabindex="-1"></a>    <span class="kw">&lt;p&gt;</span><span class="va">{</span>quantidade <span class="op">&gt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">&#39;Disponível em estoque&#39;</span> <span class="op">:</span> <span class="st">&#39;Sob encomenda&#39;</span><span class="va">}</span><span class="kw">&lt;/p&gt;</span></span>
+<span id="cb33-4"><a href="elementos-html-react.html#cb33-4" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb33-5"><a href="elementos-html-react.html#cb33-5" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div id="operador-renderiza-só-se-a-condição-for-verdadeira" class="section level3 hasAnchor" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Operador <code>&amp;&amp;</code> (renderiza só se a condição for verdadeira)<a href="elementos-html-react.html#operador-renderiza-s%C3%B3-se-a-condi%C3%A7%C3%A3o-for-verdadeira" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ideal quando existe apenas <strong>uma</strong> alternativa — o elemento aparece ou simplesmente não aparece:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb34-1"><a href="elementos-html-react.html#cb34-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">SeloPromocao</span>({ emPromocao }) {</span>
+<span id="cb34-2"><a href="elementos-html-react.html#cb34-2" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb34-3"><a href="elementos-html-react.html#cb34-3" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;card&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb34-4"><a href="elementos-html-react.html#cb34-4" tabindex="-1"></a>      <span class="kw">&lt;h3&gt;</span>Civic Si<span class="kw">&lt;/h3&gt;</span></span>
+<span id="cb34-5"><a href="elementos-html-react.html#cb34-5" tabindex="-1"></a>      <span class="va">{</span>emPromocao <span class="op">&amp;&amp; </span><span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;selo&quot;</span><span class="kw">&gt;</span>Promoção!<span class="kw">&lt;/span&gt;</span><span class="va">}</span></span>
+<span id="cb34-6"><a href="elementos-html-react.html#cb34-6" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb34-7"><a href="elementos-html-react.html#cb34-7" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb34-8"><a href="elementos-html-react.html#cb34-8" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p><strong>Cuidado:</strong> se a variável testada com <code>&amp;&amp;</code> puder ser <code>0</code> (número zero), o React vai renderizar o próprio <code>0</code> na tela, em vez de “nada” — por isso, com números, prefira transformar a condição em booleana (<code>quantidade &gt; 0 &amp;&amp; ...</code>) em vez de usar a variável numérica diretamente (<code>quantidade &amp;&amp; ...</code>).</p>
+</blockquote>
+</div>
+<div id="if-else-fora-do-jsx" class="section level3 hasAnchor" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> <code>if</code> / <code>else</code> fora do JSX<a href="elementos-html-react.html#if-else-fora-do-jsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para lógicas mais complexas, o mais legível é decidir <strong>antes</strong> do <code>return</code>, guardando o resultado em uma variável (ou usando um retorno antecipado):</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb35-1"><a href="elementos-html-react.html#cb35-1" tabindex="-1"></a><span class="kw">function</span> <span class="fu">StatusVeiculo</span>({ categoria }) {</span>
+<span id="cb35-2"><a href="elementos-html-react.html#cb35-2" tabindex="-1"></a>  <span class="kw">let</span> rotulo<span class="op">;</span></span>
+<span id="cb35-3"><a href="elementos-html-react.html#cb35-3" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="elementos-html-react.html#cb35-4" tabindex="-1"></a>  <span class="cf">if</span> (categoria <span class="op">===</span> <span class="st">&#39;esportivo&#39;</span>) {</span>
+<span id="cb35-5"><a href="elementos-html-react.html#cb35-5" tabindex="-1"></a>    rotulo <span class="op">=</span> <span class="st">&#39;🏁 Esportivo&#39;</span><span class="op">;</span></span>
+<span id="cb35-6"><a href="elementos-html-react.html#cb35-6" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (categoria <span class="op">===</span> <span class="st">&#39;luxo&#39;</span>) {</span>
+<span id="cb35-7"><a href="elementos-html-react.html#cb35-7" tabindex="-1"></a>    rotulo <span class="op">=</span> <span class="st">&#39;💎 Luxo&#39;</span><span class="op">;</span></span>
+<span id="cb35-8"><a href="elementos-html-react.html#cb35-8" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb35-9"><a href="elementos-html-react.html#cb35-9" tabindex="-1"></a>    rotulo <span class="op">=</span> <span class="st">&#39;🚗 Clássico&#39;</span><span class="op">;</span></span>
+<span id="cb35-10"><a href="elementos-html-react.html#cb35-10" tabindex="-1"></a>  }</span>
+<span id="cb35-11"><a href="elementos-html-react.html#cb35-11" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="elementos-html-react.html#cb35-12" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;rotulo&quot;</span><span class="kw">&gt;</span><span class="va">{</span>rotulo<span class="va">}</span><span class="kw">&lt;/span&gt;</span><span class="op">;</span></span>
+<span id="cb35-13"><a href="elementos-html-react.html#cb35-13" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb36-1"><a href="elementos-html-react.html#cb36-1" tabindex="-1"></a><span class="co">// Retorno antecipado: útil para &quot;não renderizar nada&quot; em certos casos</span></span>
+<span id="cb36-2"><a href="elementos-html-react.html#cb36-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">AlertaEstoqueBaixo</span>({ quantidade }) {</span>
+<span id="cb36-3"><a href="elementos-html-react.html#cb36-3" tabindex="-1"></a>  <span class="cf">if</span> (quantidade <span class="op">&gt;</span> <span class="dv">3</span>) {</span>
+<span id="cb36-4"><a href="elementos-html-react.html#cb36-4" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">null</span><span class="op">;</span> <span class="co">// React não renderiza nada</span></span>
+<span id="cb36-5"><a href="elementos-html-react.html#cb36-5" tabindex="-1"></a>  }</span>
+<span id="cb36-6"><a href="elementos-html-react.html#cb36-6" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="elementos-html-react.html#cb36-7" tabindex="-1"></a>  <span class="cf">return </span><span class="kw">&lt;p</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;alerta&quot;</span><span class="kw">&gt;</span>Últimas unidades!<span class="kw">&lt;/p&gt;</span><span class="op">;</span></span>
+<span id="cb36-8"><a href="elementos-html-react.html#cb36-8" tabindex="-1"></a>}</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="exemplo-de-aula-home-page-da-loja-de-veículos-autostore" class="section level2 hasAnchor" number="4.8">
+<h2><span class="header-section-number">4.8</span> Exemplo de aula: Home page da loja de veículos AutoStore<a href="elementos-html-react.html#exemplo-de-aula-home-page-da-loja-de-ve%C3%ADculos-autostore" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vamos aplicar tudo o que foi visto — elementos HTML em componentes, listas, tabelas, CSS/Bootstrap, expressões e renderização condicional — para construir, passo a passo, a <strong>home page</strong> de uma loja fictícia de veículos, a <strong>AutoStore</strong>, com três categorias: <strong>esportivos</strong>, <strong>luxo</strong> e <strong>clássicos</strong>.</p>
+<blockquote>
+<p>Esta página usará, por enquanto, um <strong>array de dados fixo</strong> (<em>mock data</em>) dentro do próprio código. Em uma aula futura, esses dados passarão a vir de uma API REST (temos como referência a API construída no livro <em>Node.js Essencial</em>, de Ricardo R. Lecheta), substituindo o array fixo por dados buscados do servidor.</p>
+</blockquote>
+<p>A Figura <a href="#fig:figura-loja-veiculos-arvore">4.1</a> mostra a árvore de componentes que vamos construir.</p>
+<p><img src="images/04-loja-veiculos-arvore_2.png" alt="Árvore de componentes da home page da AutoStore: App organiza Header, Banner, CategoriaVeiculos e Footer; CategoriaVeiculos renderiza um ListaVeiculos por categoria, e cada ListaVeiculos usa .map() para gerar um CardVeiculo por veículo." /></p>
+<div id="passo-1-criar-o-projeto" class="section level3 hasAnchor" number="4.8.1">
+<h3><span class="header-section-number">4.8.1</span> Passo 1 — Criar o projeto<a href="elementos-html-react.html#passo-1-criar-o-projeto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="elementos-html-react.html#cb37-1" tabindex="-1"></a><span class="ex">npm</span> create vite@latest autostore <span class="at">--</span> <span class="at">--template</span> react</span>
+<span id="cb37-2"><a href="elementos-html-react.html#cb37-2" tabindex="-1"></a><span class="bu">cd</span> autostore</span>
+<span id="cb37-3"><a href="elementos-html-react.html#cb37-3" tabindex="-1"></a><span class="ex">npm</span> install</span>
+<span id="cb37-4"><a href="elementos-html-react.html#cb37-4" tabindex="-1"></a><span class="ex">npm</span> install bootstrap</span>
+<span id="cb37-5"><a href="elementos-html-react.html#cb37-5" tabindex="-1"></a><span class="ex">npm</span> run dev</span></code></pre></div>
+</div>
+<div id="passo-2-incluir-o-bootstrap" class="section level3 hasAnchor" number="4.8.2">
+<h3><span class="header-section-number">4.8.2</span> Passo 2 — Incluir o Bootstrap<a href="elementos-html-react.html#passo-2-incluir-o-bootstrap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb38-1"><a href="elementos-html-react.html#cb38-1" tabindex="-1"></a><span class="co">// src/main.jsx</span></span>
+<span id="cb38-2"><a href="elementos-html-react.html#cb38-2" tabindex="-1"></a><span class="im">import</span> { StrictMode } <span class="im">from</span> <span class="st">&#39;react&#39;</span><span class="op">;</span></span>
+<span id="cb38-3"><a href="elementos-html-react.html#cb38-3" tabindex="-1"></a><span class="im">import</span> { createRoot } <span class="im">from</span> <span class="st">&#39;react-dom/client&#39;</span><span class="op">;</span></span>
+<span id="cb38-4"><a href="elementos-html-react.html#cb38-4" tabindex="-1"></a><span class="im">import</span> App <span class="im">from</span> <span class="st">&#39;./App.jsx&#39;</span><span class="op">;</span></span>
+<span id="cb38-5"><a href="elementos-html-react.html#cb38-5" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;bootstrap/dist/css/bootstrap.min.css&#39;</span><span class="op">;</span></span>
+<span id="cb38-6"><a href="elementos-html-react.html#cb38-6" tabindex="-1"></a><span class="im">import</span> <span class="st">&#39;./index.css&#39;</span><span class="op">;</span></span>
+<span id="cb38-7"><a href="elementos-html-react.html#cb38-7" tabindex="-1"></a></span>
+<span id="cb38-8"><a href="elementos-html-react.html#cb38-8" tabindex="-1"></a><span class="fu">createRoot</span>(<span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&#39;root&#39;</span>))<span class="op">.</span><span class="fu">render</span>(</span>
+<span id="cb38-9"><a href="elementos-html-react.html#cb38-9" tabindex="-1"></a>  <span class="fu">&lt;StrictMode&gt;</span></span>
+<span id="cb38-10"><a href="elementos-html-react.html#cb38-10" tabindex="-1"></a>    <span class="fu">&lt;App</span> <span class="fu">/&gt;</span></span>
+<span id="cb38-11"><a href="elementos-html-react.html#cb38-11" tabindex="-1"></a>  <span class="fu">&lt;/StrictMode&gt;</span><span class="op">,</span></span>
+<span id="cb38-12"><a href="elementos-html-react.html#cb38-12" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-3-criar-os-dados-dos-veículos-mock" class="section level3 hasAnchor" number="4.8.3">
+<h3><span class="header-section-number">4.8.3</span> Passo 3 — Criar os dados dos veículos (mock)<a href="elementos-html-react.html#passo-3-criar-os-dados-dos-ve%C3%ADculos-mock" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb39-1"><a href="elementos-html-react.html#cb39-1" tabindex="-1"></a><span class="co">// src/data/veiculos.js</span></span>
+<span id="cb39-2"><a href="elementos-html-react.html#cb39-2" tabindex="-1"></a><span class="kw">const</span> veiculos <span class="op">=</span> [</span>
+<span id="cb39-3"><a href="elementos-html-react.html#cb39-3" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Civic Si&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;esportivo&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="dv">189000</span><span class="op">,</span> <span class="dt">promocao</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb39-4"><a href="elementos-html-react.html#cb39-4" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Mustang GT&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;esportivo&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="dv">320000</span><span class="op">,</span> <span class="dt">promocao</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb39-5"><a href="elementos-html-react.html#cb39-5" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">3</span><span class="op">,</span> <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;BMW Série 7&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;luxo&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="dv">620000</span><span class="op">,</span> <span class="dt">promocao</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb39-6"><a href="elementos-html-react.html#cb39-6" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">4</span><span class="op">,</span> <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Mercedes Classe S&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;luxo&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="dv">750000</span><span class="op">,</span> <span class="dt">promocao</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb39-7"><a href="elementos-html-react.html#cb39-7" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Fusca 1972&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;classico&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="dv">75000</span><span class="op">,</span> <span class="dt">promocao</span><span class="op">:</span> <span class="kw">false</span> }<span class="op">,</span></span>
+<span id="cb39-8"><a href="elementos-html-react.html#cb39-8" tabindex="-1"></a>  { <span class="dt">id</span><span class="op">:</span> <span class="dv">6</span><span class="op">,</span> <span class="dt">modelo</span><span class="op">:</span> <span class="st">&#39;Opala 1978&#39;</span><span class="op">,</span> <span class="dt">categoria</span><span class="op">:</span> <span class="st">&#39;classico&#39;</span><span class="op">,</span> <span class="dt">preco</span><span class="op">:</span> <span class="dv">98000</span><span class="op">,</span> <span class="dt">promocao</span><span class="op">:</span> <span class="kw">true</span> }<span class="op">,</span></span>
+<span id="cb39-9"><a href="elementos-html-react.html#cb39-9" tabindex="-1"></a>]<span class="op">;</span></span>
+<span id="cb39-10"><a href="elementos-html-react.html#cb39-10" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="elementos-html-react.html#cb39-11" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> veiculos<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-4-componente-header-com-navbar" class="section level3 hasAnchor" number="4.8.4">
+<h3><span class="header-section-number">4.8.4</span> Passo 4 — Componente <code>Header</code> com <code>NavBar</code><a href="elementos-html-react.html#passo-4-componente-header-com-navbar" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb40-1"><a href="elementos-html-react.html#cb40-1" tabindex="-1"></a><span class="co">// src/components/Header.jsx</span></span>
+<span id="cb40-2"><a href="elementos-html-react.html#cb40-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Header</span>() {</span>
+<span id="cb40-3"><a href="elementos-html-react.html#cb40-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb40-4"><a href="elementos-html-react.html#cb40-4" tabindex="-1"></a>    <span class="kw">&lt;header</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;navbar navbar-dark bg-dark px-4&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb40-5"><a href="elementos-html-react.html#cb40-5" tabindex="-1"></a>      <span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;navbar-brand mb-0 h1&quot;</span><span class="kw">&gt;</span>🚗 AutoStore<span class="kw">&lt;/span&gt;</span></span>
+<span id="cb40-6"><a href="elementos-html-react.html#cb40-6" tabindex="-1"></a>      <span class="kw">&lt;nav&gt;</span></span>
+<span id="cb40-7"><a href="elementos-html-react.html#cb40-7" tabindex="-1"></a>        <span class="kw">&lt;ul</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb40-8"><a href="elementos-html-react.html#cb40-8" tabindex="-1"></a>          <span class="kw">&lt;li</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav-item&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb40-9"><a href="elementos-html-react.html#cb40-9" tabindex="-1"></a>            <span class="kw">&lt;a</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav-link text-white&quot;</span> <span class="ot">href</span><span class="op">=</span><span class="st">&quot;#esportivo&quot;</span><span class="kw">&gt;</span>Esportivos<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb40-10"><a href="elementos-html-react.html#cb40-10" tabindex="-1"></a>          <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb40-11"><a href="elementos-html-react.html#cb40-11" tabindex="-1"></a>          <span class="kw">&lt;li</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav-item&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb40-12"><a href="elementos-html-react.html#cb40-12" tabindex="-1"></a>            <span class="kw">&lt;a</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav-link text-white&quot;</span> <span class="ot">href</span><span class="op">=</span><span class="st">&quot;#luxo&quot;</span><span class="kw">&gt;</span>Luxo<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb40-13"><a href="elementos-html-react.html#cb40-13" tabindex="-1"></a>          <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb40-14"><a href="elementos-html-react.html#cb40-14" tabindex="-1"></a>          <span class="kw">&lt;li</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav-item&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb40-15"><a href="elementos-html-react.html#cb40-15" tabindex="-1"></a>            <span class="kw">&lt;a</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;nav-link text-white&quot;</span> <span class="ot">href</span><span class="op">=</span><span class="st">&quot;#classico&quot;</span><span class="kw">&gt;</span>Clássicos<span class="kw">&lt;/a&gt;</span></span>
+<span id="cb40-16"><a href="elementos-html-react.html#cb40-16" tabindex="-1"></a>          <span class="kw">&lt;/li&gt;</span></span>
+<span id="cb40-17"><a href="elementos-html-react.html#cb40-17" tabindex="-1"></a>        <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb40-18"><a href="elementos-html-react.html#cb40-18" tabindex="-1"></a>      <span class="kw">&lt;/nav&gt;</span></span>
+<span id="cb40-19"><a href="elementos-html-react.html#cb40-19" tabindex="-1"></a>    <span class="kw">&lt;/header&gt;</span></span>
+<span id="cb40-20"><a href="elementos-html-react.html#cb40-20" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb40-21"><a href="elementos-html-react.html#cb40-21" tabindex="-1"></a>}</span>
+<span id="cb40-22"><a href="elementos-html-react.html#cb40-22" tabindex="-1"></a></span>
+<span id="cb40-23"><a href="elementos-html-react.html#cb40-23" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Header<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-5-componente-banner" class="section level3 hasAnchor" number="4.8.5">
+<h3><span class="header-section-number">4.8.5</span> Passo 5 — Componente <code>Banner</code><a href="elementos-html-react.html#passo-5-componente-banner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb41"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb41-1"><a href="elementos-html-react.html#cb41-1" tabindex="-1"></a><span class="co">// src/components/Banner.jsx</span></span>
+<span id="cb41-2"><a href="elementos-html-react.html#cb41-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Banner</span>() {</span>
+<span id="cb41-3"><a href="elementos-html-react.html#cb41-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb41-4"><a href="elementos-html-react.html#cb41-4" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;container-fluid text-center py-5 bg-light&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb41-5"><a href="elementos-html-react.html#cb41-5" tabindex="-1"></a>      <span class="kw">&lt;h1</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;display-5&quot;</span><span class="kw">&gt;</span>Encontre o carro dos seus sonhos<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb41-6"><a href="elementos-html-react.html#cb41-6" tabindex="-1"></a>      <span class="kw">&lt;p</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;lead&quot;</span><span class="kw">&gt;</span>Esportivos, luxo e clássicos, tudo em um só lugar.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb41-7"><a href="elementos-html-react.html#cb41-7" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb41-8"><a href="elementos-html-react.html#cb41-8" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb41-9"><a href="elementos-html-react.html#cb41-9" tabindex="-1"></a>}</span>
+<span id="cb41-10"><a href="elementos-html-react.html#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="elementos-html-react.html#cb41-11" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Banner<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-6-componente-cardveiculo-com-renderização-condicional" class="section level3 hasAnchor" number="4.8.6">
+<h3><span class="header-section-number">4.8.6</span> Passo 6 — Componente <code>CardVeiculo</code> (com renderização condicional)<a href="elementos-html-react.html#passo-6-componente-cardveiculo-com-renderiza%C3%A7%C3%A3o-condicional" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb42"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb42-1"><a href="elementos-html-react.html#cb42-1" tabindex="-1"></a><span class="co">// src/components/CardVeiculo.jsx</span></span>
+<span id="cb42-2"><a href="elementos-html-react.html#cb42-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">CardVeiculo</span>({ veiculo }) {</span>
+<span id="cb42-3"><a href="elementos-html-react.html#cb42-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb42-4"><a href="elementos-html-react.html#cb42-4" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;card m-2&quot;</span> <span class="ot">style</span><span class="op">=</span><span class="va">{</span>{ <span class="dt">width</span><span class="op">:</span> <span class="st">&#39;18rem&#39;</span> }<span class="va">}</span><span class="kw">&gt;</span></span>
+<span id="cb42-5"><a href="elementos-html-react.html#cb42-5" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;card-body&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb42-6"><a href="elementos-html-react.html#cb42-6" tabindex="-1"></a>        <span class="kw">&lt;h5</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;card-title&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb42-7"><a href="elementos-html-react.html#cb42-7" tabindex="-1"></a>          <span class="va">{</span>veiculo<span class="op">.</span><span class="at">modelo</span><span class="va">}{</span><span class="st">&#39; &#39;</span><span class="va">}</span></span>
+<span id="cb42-8"><a href="elementos-html-react.html#cb42-8" tabindex="-1"></a>          <span class="va">{</span>veiculo<span class="op">.</span><span class="at">promocao</span> <span class="op">&amp;&amp; </span><span class="kw">&lt;span</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;badge bg-danger&quot;</span><span class="kw">&gt;</span>Promoção<span class="kw">&lt;/span&gt;</span><span class="va">}</span></span>
+<span id="cb42-9"><a href="elementos-html-react.html#cb42-9" tabindex="-1"></a>        <span class="kw">&lt;/h5&gt;</span></span>
+<span id="cb42-10"><a href="elementos-html-react.html#cb42-10" tabindex="-1"></a>        <span class="kw">&lt;p</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;card-text&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb42-11"><a href="elementos-html-react.html#cb42-11" tabindex="-1"></a>          R$ <span class="va">{</span>veiculo<span class="op">.</span><span class="at">promocao</span> <span class="op">?</span> (veiculo<span class="op">.</span><span class="at">preco</span> <span class="op">*</span> <span class="fl">0.9</span>)<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">&#39;pt-BR&#39;</span>) <span class="op">:</span> veiculo<span class="op">.</span><span class="at">preco</span><span class="op">.</span><span class="fu">toLocaleString</span>(<span class="st">&#39;pt-BR&#39;</span>)<span class="va">}</span></span>
+<span id="cb42-12"><a href="elementos-html-react.html#cb42-12" tabindex="-1"></a>        <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb42-13"><a href="elementos-html-react.html#cb42-13" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb42-14"><a href="elementos-html-react.html#cb42-14" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb42-15"><a href="elementos-html-react.html#cb42-15" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb42-16"><a href="elementos-html-react.html#cb42-16" tabindex="-1"></a>}</span>
+<span id="cb42-17"><a href="elementos-html-react.html#cb42-17" tabindex="-1"></a></span>
+<span id="cb42-18"><a href="elementos-html-react.html#cb42-18" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> CardVeiculo<span class="op">;</span></span></code></pre></div>
+<p>Note o uso combinado de <strong>expressão</strong> (<code>veiculo.modelo</code>), <strong>renderização condicional com <code>&amp;&amp;</code></strong> (o selo de promoção) e <strong>ternário</strong> (cálculo do preço com ou sem desconto).</p>
+</div>
+<div id="passo-7-componente-listaveiculos-recebe-a-categoria-via-props" class="section level3 hasAnchor" number="4.8.7">
+<h3><span class="header-section-number">4.8.7</span> Passo 7 — Componente <code>ListaVeiculos</code> (recebe a categoria via props)<a href="elementos-html-react.html#passo-7-componente-listaveiculos-recebe-a-categoria-via-props" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb43-1"><a href="elementos-html-react.html#cb43-1" tabindex="-1"></a><span class="co">// src/components/ListaVeiculos.jsx</span></span>
+<span id="cb43-2"><a href="elementos-html-react.html#cb43-2" tabindex="-1"></a><span class="im">import</span> CardVeiculo <span class="im">from</span> <span class="st">&#39;./CardVeiculo&#39;</span><span class="op">;</span></span>
+<span id="cb43-3"><a href="elementos-html-react.html#cb43-3" tabindex="-1"></a><span class="im">import</span> veiculos <span class="im">from</span> <span class="st">&#39;../data/veiculos&#39;</span><span class="op">;</span></span>
+<span id="cb43-4"><a href="elementos-html-react.html#cb43-4" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="elementos-html-react.html#cb43-5" tabindex="-1"></a><span class="kw">function</span> <span class="fu">ListaVeiculos</span>({ categoria<span class="op">,</span> titulo }) {</span>
+<span id="cb43-6"><a href="elementos-html-react.html#cb43-6" tabindex="-1"></a>  <span class="kw">const</span> filtrados <span class="op">=</span> veiculos<span class="op">.</span><span class="fu">filter</span>((v) <span class="kw">=&gt;</span> v<span class="op">.</span><span class="at">categoria</span> <span class="op">===</span> categoria)<span class="op">;</span></span>
+<span id="cb43-7"><a href="elementos-html-react.html#cb43-7" tabindex="-1"></a></span>
+<span id="cb43-8"><a href="elementos-html-react.html#cb43-8" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb43-9"><a href="elementos-html-react.html#cb43-9" tabindex="-1"></a>    <span class="kw">&lt;section</span> <span class="ot">id</span><span class="op">=</span><span class="va">{</span>categoria<span class="va">}</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;mb-4&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb43-10"><a href="elementos-html-react.html#cb43-10" tabindex="-1"></a>      <span class="kw">&lt;h2</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;px-4 pt-3&quot;</span><span class="kw">&gt;</span><span class="va">{</span>titulo<span class="va">}</span><span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb43-11"><a href="elementos-html-react.html#cb43-11" tabindex="-1"></a>      <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;d-flex flex-wrap px-4&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb43-12"><a href="elementos-html-react.html#cb43-12" tabindex="-1"></a>        <span class="va">{</span>filtrados<span class="op">.</span><span class="fu">map</span>((v) <span class="kw">=&gt;</span> (</span>
+<span id="cb43-13"><a href="elementos-html-react.html#cb43-13" tabindex="-1"></a>          <span class="fu">&lt;CardVeiculo</span> <span class="ot">key</span><span class="op">=</span><span class="va">{</span>v<span class="op">.</span><span class="at">id</span><span class="va">}</span> <span class="ot">veiculo</span><span class="op">=</span><span class="va">{</span>v<span class="va">}</span> <span class="fu">/&gt;</span></span>
+<span id="cb43-14"><a href="elementos-html-react.html#cb43-14" tabindex="-1"></a>        ))<span class="va">}</span></span>
+<span id="cb43-15"><a href="elementos-html-react.html#cb43-15" tabindex="-1"></a>      <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb43-16"><a href="elementos-html-react.html#cb43-16" tabindex="-1"></a>    <span class="kw">&lt;/section&gt;</span></span>
+<span id="cb43-17"><a href="elementos-html-react.html#cb43-17" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb43-18"><a href="elementos-html-react.html#cb43-18" tabindex="-1"></a>}</span>
+<span id="cb43-19"><a href="elementos-html-react.html#cb43-19" tabindex="-1"></a></span>
+<span id="cb43-20"><a href="elementos-html-react.html#cb43-20" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> ListaVeiculos<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-8-componente-categoriaveiculos-agrupa-as-três-listas" class="section level3 hasAnchor" number="4.8.8">
+<h3><span class="header-section-number">4.8.8</span> Passo 8 — Componente <code>CategoriaVeiculos</code> (agrupa as três listas)<a href="elementos-html-react.html#passo-8-componente-categoriaveiculos-agrupa-as-tr%C3%AAs-listas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb44"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb44-1"><a href="elementos-html-react.html#cb44-1" tabindex="-1"></a><span class="co">// src/components/CategoriaVeiculos.jsx</span></span>
+<span id="cb44-2"><a href="elementos-html-react.html#cb44-2" tabindex="-1"></a><span class="im">import</span> ListaVeiculos <span class="im">from</span> <span class="st">&#39;./ListaVeiculos&#39;</span><span class="op">;</span></span>
+<span id="cb44-3"><a href="elementos-html-react.html#cb44-3" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="elementos-html-react.html#cb44-4" tabindex="-1"></a><span class="kw">function</span> <span class="fu">CategoriaVeiculos</span>() {</span>
+<span id="cb44-5"><a href="elementos-html-react.html#cb44-5" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb44-6"><a href="elementos-html-react.html#cb44-6" tabindex="-1"></a>    <span class="kw">&lt;div&gt;</span></span>
+<span id="cb44-7"><a href="elementos-html-react.html#cb44-7" tabindex="-1"></a>      <span class="fu">&lt;ListaVeiculos</span> <span class="ot">categoria</span><span class="op">=</span><span class="st">&quot;esportivo&quot;</span> <span class="ot">titulo</span><span class="op">=</span><span class="st">&quot;🏁 Esportivos&quot;</span> <span class="fu">/&gt;</span></span>
+<span id="cb44-8"><a href="elementos-html-react.html#cb44-8" tabindex="-1"></a>      <span class="fu">&lt;ListaVeiculos</span> <span class="ot">categoria</span><span class="op">=</span><span class="st">&quot;luxo&quot;</span> <span class="ot">titulo</span><span class="op">=</span><span class="st">&quot;💎 Luxo&quot;</span> <span class="fu">/&gt;</span></span>
+<span id="cb44-9"><a href="elementos-html-react.html#cb44-9" tabindex="-1"></a>      <span class="fu">&lt;ListaVeiculos</span> <span class="ot">categoria</span><span class="op">=</span><span class="st">&quot;classico&quot;</span> <span class="ot">titulo</span><span class="op">=</span><span class="st">&quot;🚗 Clássicos&quot;</span> <span class="fu">/&gt;</span></span>
+<span id="cb44-10"><a href="elementos-html-react.html#cb44-10" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb44-11"><a href="elementos-html-react.html#cb44-11" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb44-12"><a href="elementos-html-react.html#cb44-12" tabindex="-1"></a>}</span>
+<span id="cb44-13"><a href="elementos-html-react.html#cb44-13" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="elementos-html-react.html#cb44-14" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> CategoriaVeiculos<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-9-componente-footer" class="section level3 hasAnchor" number="4.8.9">
+<h3><span class="header-section-number">4.8.9</span> Passo 9 — Componente <code>Footer</code><a href="elementos-html-react.html#passo-9-componente-footer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb45"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb45-1"><a href="elementos-html-react.html#cb45-1" tabindex="-1"></a><span class="co">// src/components/Footer.jsx</span></span>
+<span id="cb45-2"><a href="elementos-html-react.html#cb45-2" tabindex="-1"></a><span class="kw">function</span> <span class="fu">Footer</span>() {</span>
+<span id="cb45-3"><a href="elementos-html-react.html#cb45-3" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb45-4"><a href="elementos-html-react.html#cb45-4" tabindex="-1"></a>    <span class="kw">&lt;footer</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;bg-dark text-white text-center py-3&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb45-5"><a href="elementos-html-react.html#cb45-5" tabindex="-1"></a>      <span class="kw">&lt;p</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;mb-0&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;copy;</span> 2026 AutoStore — Todos os direitos reservados.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb45-6"><a href="elementos-html-react.html#cb45-6" tabindex="-1"></a>    <span class="kw">&lt;/footer&gt;</span></span>
+<span id="cb45-7"><a href="elementos-html-react.html#cb45-7" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb45-8"><a href="elementos-html-react.html#cb45-8" tabindex="-1"></a>}</span>
+<span id="cb45-9"><a href="elementos-html-react.html#cb45-9" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="elementos-html-react.html#cb45-10" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> Footer<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-10-montando-tudo-em-app.jsx" class="section level3 hasAnchor" number="4.8.10">
+<h3><span class="header-section-number">4.8.10</span> Passo 10 — Montando tudo em <code>App.jsx</code><a href="elementos-html-react.html#passo-10-montando-tudo-em-app.jsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb46"><pre class="sourceCode jsx"><code class="sourceCode javascriptreact"><span id="cb46-1"><a href="elementos-html-react.html#cb46-1" tabindex="-1"></a><span class="co">// src/App.jsx</span></span>
+<span id="cb46-2"><a href="elementos-html-react.html#cb46-2" tabindex="-1"></a><span class="im">import</span> Header <span class="im">from</span> <span class="st">&#39;./components/Header&#39;</span><span class="op">;</span></span>
+<span id="cb46-3"><a href="elementos-html-react.html#cb46-3" tabindex="-1"></a><span class="im">import</span> Banner <span class="im">from</span> <span class="st">&#39;./components/Banner&#39;</span><span class="op">;</span></span>
+<span id="cb46-4"><a href="elementos-html-react.html#cb46-4" tabindex="-1"></a><span class="im">import</span> CategoriaVeiculos <span class="im">from</span> <span class="st">&#39;./components/CategoriaVeiculos&#39;</span><span class="op">;</span></span>
+<span id="cb46-5"><a href="elementos-html-react.html#cb46-5" tabindex="-1"></a><span class="im">import</span> Footer <span class="im">from</span> <span class="st">&#39;./components/Footer&#39;</span><span class="op">;</span></span>
+<span id="cb46-6"><a href="elementos-html-react.html#cb46-6" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="elementos-html-react.html#cb46-7" tabindex="-1"></a><span class="kw">function</span> <span class="fu">App</span>() {</span>
+<span id="cb46-8"><a href="elementos-html-react.html#cb46-8" tabindex="-1"></a>  <span class="cf">return</span> (</span>
+<span id="cb46-9"><a href="elementos-html-react.html#cb46-9" tabindex="-1"></a>    <span class="kw">&lt;div</span> <span class="ot">className</span><span class="op">=</span><span class="st">&quot;App&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb46-10"><a href="elementos-html-react.html#cb46-10" tabindex="-1"></a>      <span class="fu">&lt;Header</span> <span class="fu">/&gt;</span></span>
+<span id="cb46-11"><a href="elementos-html-react.html#cb46-11" tabindex="-1"></a>      <span class="fu">&lt;Banner</span> <span class="fu">/&gt;</span></span>
+<span id="cb46-12"><a href="elementos-html-react.html#cb46-12" tabindex="-1"></a>      <span class="fu">&lt;CategoriaVeiculos</span> <span class="fu">/&gt;</span></span>
+<span id="cb46-13"><a href="elementos-html-react.html#cb46-13" tabindex="-1"></a>      <span class="fu">&lt;Footer</span> <span class="fu">/&gt;</span></span>
+<span id="cb46-14"><a href="elementos-html-react.html#cb46-14" tabindex="-1"></a>    <span class="kw">&lt;/div&gt;</span></span>
+<span id="cb46-15"><a href="elementos-html-react.html#cb46-15" tabindex="-1"></a>  )<span class="op">;</span></span>
+<span id="cb46-16"><a href="elementos-html-react.html#cb46-16" tabindex="-1"></a>}</span>
+<span id="cb46-17"><a href="elementos-html-react.html#cb46-17" tabindex="-1"></a></span>
+<span id="cb46-18"><a href="elementos-html-react.html#cb46-18" tabindex="-1"></a><span class="im">export</span> <span class="im">default</span> App<span class="op">;</span></span></code></pre></div>
+</div>
+<div id="passo-11-testar-o-resultado" class="section level3 hasAnchor" number="4.8.11">
+<h3><span class="header-section-number">4.8.11</span> Passo 11 — Testar o resultado<a href="elementos-html-react.html#passo-11-testar-o-resultado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Com <code>npm run dev</code> rodando, abra <code>http://localhost:5173</code> no navegador.</li>
+<li>Confira se aparecem: o menu no topo, o banner, as três seções (Esportivos, Luxo, Clássicos) com os cards de veículo, e o rodapé.</li>
+<li>Clique nos links do menu (<code>Esportivos</code>, <code>Luxo</code>, <code>Clássicos</code>) — como cada <code>&lt;section&gt;</code> tem um <code>id</code> igual à categoria, o navegador deve rolar até a seção correspondente (âncoras internas).</li>
+<li>Confirme que os veículos marcados com <code>promocao: true</code> em <code>src/data/veiculos.js</code> aparecem com o selo <strong>“Promoção”</strong> e com o preço já calculado com desconto — essa é a renderização condicional funcionando.</li>
+<li>Altere um valor em <code>src/data/veiculos.js</code> (por exemplo, mude <code>promocao</code> de um item para <code>true</code>) e salve: o navegador deve atualizar sozinho, sem recarregar a página (Hot Module Replacement).</li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="atividade-prática-1" class="section level2 hasAnchor" number="4.9">
+<h2><span class="header-section-number">4.9</span> Atividade prática<a href="elementos-html-react.html#atividade-pr%C3%A1tica-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Seguir os 11 passos desta seção e construir a home page da AutoStore no próprio computador.</li>
+<li>Adicionar um novo componente <code>TabelaComparativa</code>, usando <code>&lt;table&gt;</code>, que compare os veículos de uma categoria à sua escolha (modelo, preço, ano — adicione o campo <code>ano</code> ao array de dados).</li>
+<li>Adicionar um link de <strong>“Fale conosco”</strong> no <code>Footer</code>, apontando para um número de WhatsApp fictício, abrindo em uma nova aba.</li>
+<li>Usar a renderização condicional para exibir a mensagem <strong>“Nenhum veículo encontrado”</strong> caso uma categoria não tenha nenhum item (dica: verifique o tamanho do array <code>filtrados</code> dentro de <code>ListaVeiculos</code>).</li>
+<li><strong>Desafio extra:</strong> trocar as classes de CSS “cruas” (caso tenham sido usadas) pelas classes equivalentes do Bootstrap (<code>card</code>, <code>badge</code>, <code>d-flex</code>, etc.), comparando o antes e o depois.</li>
+</ol>
+<hr />
+</div>
+<div id="resumo-dos-conceitos-chave-1" class="section level2 hasAnchor" number="4.10">
+<h2><span class="header-section-number">4.10</span> Resumo dos conceitos-chave<a href="elementos-html-react.html#resumo-dos-conceitos-chave-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<caption><span id="tab:tabela-resumo-elementos-html">Table 4.2: </span> Resumo dos conceitos-chave apresentados na aula</caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Conceito</th>
+<th>Definição resumida</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Componente de layout</strong></td>
+<td>Componente que organiza a estrutura da página (<code>Header</code>, <code>Footer</code>, <code>section</code>), geralmente sem lógica complexa.</td>
+</tr>
+<tr class="even">
+<td><strong><code>className</code> / <code>htmlFor</code></strong></td>
+<td>Versões em JSX dos atributos HTML <code>class</code> e <code>for</code>, que são palavras reservadas em JavaScript.</td>
+</tr>
+<tr class="odd">
+<td><strong><code>.map()</code> em listas/tabelas</strong></td>
+<td>Técnica padrão para gerar <code>&lt;li&gt;</code>, <code>&lt;tr&gt;</code> ou <code>&lt;Componente /&gt;</code> dinamicamente a partir de um array, sempre com uma prop <code>key</code> única.</td>
+</tr>
+<tr class="even">
+<td><strong>CSS por componente</strong></td>
+<td>Cada componente pode importar seu próprio arquivo <code>.css</code>, mantendo os estilos organizados e isolados.</td>
+</tr>
+<tr class="odd">
+<td><strong>Bootstrap</strong></td>
+<td>Framework CSS com classes prontas, incluído via CDN (<code>index.html</code>) ou via <code>npm install bootstrap</code> + import em <code>main.jsx</code>.</td>
+</tr>
+<tr class="even">
+<td><strong>Expressão no JSX</strong></td>
+<td>Qualquer código entre <code>{ }</code> que produz um valor: variáveis, cálculos, chamadas de função, arrays de componentes.</td>
+</tr>
+<tr class="odd">
+<td><strong>Renderização condicional</strong></td>
+<td>Exibir ou ocultar JSX com base em uma condição, usando ternário (<code>? :</code>), <code>&amp;&amp;</code>, ou lógica antes do <code>return</code>.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="para-saber-mais-leitura-complementar-1" class="section level2 hasAnchor" number="4.11">
+<h2><span class="header-section-number">4.11</span> Para saber mais (leitura complementar)<a href="elementos-html-react.html#para-saber-mais-leitura-complementar-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Documentação oficial: <a href="https://react.dev/learn/conditional-rendering">react.dev/learn/conditional-rendering</a> e <a href="https://react.dev/learn/rendering-lists">react.dev/learn/rendering-lists</a></li>
+<li>Documentação do Bootstrap: <a href="https://getbootstrap.com">getbootstrap.com</a></li>
+<li>Lecheta, Ricardo R. <em>Node.js Essencial</em> — referência para a futura substituição dos dados fixos (mock) por uma API REST consumida pelos componentes <code>ListaVeiculos</code>/<code>CardVeiculo</code>.</li>
+<li>Próximos tópicos recomendados para a disciplina: eventos (<code>onClick</code>, formulários controlados), <code>useEffect</code> para buscar dados de uma API, e consumo da API do livro <em>Node.js Essencial</em> nesta mesma página da AutoStore.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="projeto-1---reactjs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/costasilvati/fullStack/edit/main/03-components.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
