@@ -1,0 +1,1306 @@
+# Consumindo e Enviando Dados a uma API JSON com React {#consumo-api-react}
+
+**Disciplina:** Programação Web Full Stack — Engenharia de Software
+**Tema da aula:** Do HTTP ao React: buscar (GET) e enviar (POST) dados JSON a uma API pública, com validação, tratamento de erros e Context API
+**Pré-requisitos:** Capítulo \@ref(introducao-react) — Introdução ao React; Capítulo \@ref(elementos-html-react) — Elementos Básicos de HTML em React; revisão de AJAX, *callbacks*, *Promises* e `async/await` (materiais `02-revisao-ajax` e `03-revisao-callback-promise-async-ajax`)
+**Duração sugerida:** 2 aulas (2 × 100 min) — 1 teórica + 1 prática guiada
+
+**Referências desta aula:**
+
+- Documentação oficial do React — [Sincronizando com Effects](https://react.dev/learn/synchronizing-with-effects), [Escalando com Reducer e Context](https://react.dev/learn/scaling-up-with-reducer-and-context)
+- MDN Web Docs — [Usando a Fetch API](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch), [Visão geral do HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview), [CORS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS)
+- API usada nos exemplos — [DummyJSON](https://dummyjson.com/docs/products)
+- Lista de APIs públicas sugerida no projeto — [github.com/public-apis/public-apis](https://github.com/public-apis/public-apis)
+- Material de apoio da disciplina: `02-revisao-ajax.pptx`, `05-react-events-states-props.pptx`, `06.1-react-context.pptx`, `13-webservices.pptx`
+
+---
+
+## Objetivos da aula
+
+Ao final desta aula, o(a) aluno(a) deve ser capaz de:
+
+1. Explicar o modelo cliente-servidor e o ciclo **requisição → resposta** do protocolo HTTP (métodos, *status*, cabeçalhos e corpo).
+2. Ler a documentação de uma API REST e identificar seus *endpoints*, parâmetros e formato de resposta em **JSON**.
+3. Entender o que é **CORS** e por que ele determina se uma API pode ser consumida diretamente pelo navegador.
+4. Usar a **Fetch API** com `async/await` para **buscar** (GET) e **enviar** (POST) dados JSON, tratando corretamente erros HTTP e erros de rede.
+5. Integrar requisições a componentes React com `useState`, `useEffect`, `useReducer` e **Context API**, exibindo estados de *carregando*, *erro*, *vazio* e *sucesso*.
+6. Validar campos obrigatórios **antes** do envio e exibir mensagens de erro **depois** do envio (respostas da API).
+7. Gerar o pacote de *deployment* (`npm run build`) e publicar a aplicação em um servidor web.
+
+> **Por que este capítulo?** Ele prepara diretamente para o **Projeto 1 — ReactJS**. Ao final (Seção \@ref(mapa-projeto1)), há uma tabela que relaciona cada critério de avaliação do projeto à seção deste capítulo que o explica.
+
+---
+
+## Onde estamos no desenvolvimento *full stack*? {#visao-geral-api}
+
+No Capítulo \@ref(elementos-html-react), a home page da **AutoStore** exibia veículos a partir de um **array fixo** (`src/data/veiculos.js`). Em uma aplicação real, esses dados **não moram no front-end**: eles ficam em um servidor, normalmente guardados em um banco de dados, e são entregues ao navegador por meio de uma **API**.
+
+```text
+┌──────────────────────────┐    1. Requisição HTTP (GET/POST...)    ┌────────────────────────┐
+│  NAVEGADOR (cliente)     │ ─────────────────────────────────────► │  SERVIDOR (API)        │
+│                          │    ex.: GET /products/search?q=civic   │                        │
+│  React (SPA)             │                                        │  Regras de negócio     │
+│  - componentes           │    2. Resposta HTTP                    │  Banco de dados        │
+│  - estado (state)        │ ◄───────────────────────────────────── │                        │
+│  - fetch / AJAX          │    status 200 + corpo em JSON          │                        │
+└──────────────────────────┘                                        └────────────────────────┘
+        FRONT-END                                                          BACK-END
+     (Projeto 1)                                                        (Projeto 2)
+```
+
+Neste capítulo, construímos somente o **lado esquerdo** (front-end), consumindo uma API que já existe. No Projeto 2, vocês construirão também o lado direito (back-end com Node/Express).
+
+### SPA e AJAX — revisão rápida
+
+- **SPA (*Single Page Application*)**: a aplicação é carregada **uma única vez** (um único `index.html`). A partir daí, o JavaScript atualiza partes da tela sem recarregar a página.
+- **AJAX (*Asynchronous JavaScript and XML*)**: técnica de fazer requisições HTTP **em segundo plano**, sem bloquear a interface. Apesar do "XML" no nome, hoje o formato dominante é o **JSON**, e a ferramenta moderna para isso no navegador é a **Fetch API** (`fetch`).
+
+É a combinação das duas coisas que o Projeto 1 pede: uma **SPA em React** que usa **AJAX** para conversar com uma **API JSON**.
+
+---
+
+## Conceitos fundamentais de HTTP {#conceitos-http}
+
+O **HTTP** (*HyperText Transfer Protocol*) é o protocolo de comunicação da Web. Toda conversa é composta de uma **requisição** (enviada pelo cliente) e uma **resposta** (devolvida pelo servidor). É um protocolo **sem estado** (*stateless*): cada requisição é independente e deve carregar tudo o que o servidor precisa para respondê-la.
+
+### Anatomia de uma requisição e de uma resposta
+
+```http
+POST /products/add HTTP/1.1                     ← método, caminho e versão
+Host: dummyjson.com                             ← cabeçalhos (headers)
+Content-Type: application/json
+Accept: application/json
+
+{"title": "Opala 1978", "price": 98000}         ← corpo (body) — opcional
+```
+
+```http
+HTTP/1.1 201 Created                            ← versão, código de status e texto
+Content-Type: application/json; charset=utf-8   ← cabeçalhos
+Access-Control-Allow-Origin: *
+
+{"id": 195, "title": "Opala 1978", "price": 98000}   ← corpo da resposta
+```
+
+Table: (\#tab:tabela-partes-http) Partes de uma mensagem HTTP
+
+| Parte | Na requisição | Na resposta |
+|---|---|---|
+| **Linha inicial** | Método + caminho (ex.: `GET /products`) | Código de *status* (ex.: `200 OK`) |
+| **Cabeçalhos (*headers*)** | Metadados: tipo do corpo enviado (`Content-Type`), formato aceito (`Accept`), credenciais (`Authorization`) | Metadados: tipo do corpo devolvido, regras de CORS, cache |
+| **Corpo (*body*)** | Dados enviados (em POST/PUT/PATCH) | Dados devolvidos (em geral, JSON) |
+
+### Métodos HTTP (verbos)
+
+Table: (\#tab:tabela-metodos-http) Principais métodos HTTP e seu uso em APIs REST
+
+| Método | Intenção | Tem corpo na requisição? | Exemplo |
+|---|---|---|---|
+| `GET` | **Ler** um recurso ou uma lista | Não | `GET /products/1` |
+| `POST` | **Criar** um novo recurso | Sim | `POST /products/add` |
+| `PUT` | **Substituir** um recurso inteiro | Sim | `PUT /products/1` |
+| `PATCH` | **Alterar parcialmente** um recurso | Sim | `PATCH /products/1` |
+| `DELETE` | **Remover** um recurso | Normalmente não | `DELETE /products/1` |
+
+Os quatro verbos centrais correspondem ao famoso **CRUD** (*Create* = POST, *Read* = GET, *Update* = PUT/PATCH, *Delete* = DELETE).
+
+### Códigos de *status*
+
+O código de *status* é a **primeira coisa** que o front-end deve verificar em uma resposta. Ele é organizado em faixas:
+
+Table: (\#tab:tabela-status-http) Faixas e códigos de *status* HTTP mais comuns
+
+| Código | Significado | O que o front-end deve fazer |
+|---|---|---|
+| `200 OK` | Sucesso | Usar os dados do corpo. |
+| `201 Created` | Recurso criado (resposta típica de POST) | Mostrar mensagem de sucesso; usar o objeto devolvido (com `id`). |
+| `204 No Content` | Sucesso, sem corpo | **Não** chamar `response.json()` (não há JSON para ler). |
+| `400 Bad Request` | Dados enviados inválidos | Exibir a mensagem de erro devolvida pela API. |
+| `401 Unauthorized` / `403 Forbidden` | Falta autenticação / sem permissão | Pedir *login* ou informar falta de acesso. |
+| `404 Not Found` | Recurso ou *endpoint* inexistente | Informar "não encontrado"; conferir a URL. |
+| `422 Unprocessable Entity` | Dados com formato válido, mas regra violada | Exibir as mensagens de validação do servidor. |
+| `429 Too Many Requests` | Limite de requisições excedido | Pedir para tentar novamente mais tarde. |
+| `500`–`503` | Erro no servidor | Mensagem genérica: "serviço indisponível, tente mais tarde". |
+
+Regra prática: **2xx = sucesso**, **4xx = o cliente errou algo**, **5xx = o servidor falhou**.
+
+---
+
+## APIs REST, *endpoints* e parâmetros {#conceitos-rest}
+
+Uma **API** (*Application Programming Interface*) é um "contrato" que define como um programa pode pedir dados ou serviços a outro. Uma **API Web** faz isso por HTTP. Quando ela segue o estilo arquitetural **REST**, os dados são organizados em **recursos** (produtos, usuários, filmes...), identificados por URLs, e manipulados com os métodos HTTP da Tabela \@ref(tab:tabela-metodos-http).
+
+- **URL base**: o endereço comum a todas as rotas da API (ex.: `https://dummyjson.com`).
+- ***Endpoint***: a combinação de **método + caminho** que realiza uma operação (ex.: `GET /products/search`).
+- **Recurso**: a "coisa" manipulada (ex.: `products`).
+
+### Anatomia de uma URL de requisição
+
+```text
+https://dummyjson.com/products/category/vehicle?limit=10&sortBy=price&order=asc
+└─┬─┘   └─────┬─────┘└──────────┬────────────┘ └──────────────┬──────────────┘
+protocolo   domínio        caminho (path)            query string (parâmetros)
+                        └ "vehicle" é um              pares chave=valor
+                          parâmetro de rota            separados por &
+```
+
+Table: (\#tab:tabela-tipos-parametros) Formas de enviar parâmetros para uma API
+
+| Tipo | Onde vai | Exemplo | Uso típico |
+|---|---|---|---|
+| **Parâmetro de rota** (*path param*) | Dentro do caminho | `/products/1`, `/products/category/vehicle` | Identificar **um** recurso ou grupo. |
+| ***Query string*** (*query param*) | Após o `?`, em pares `chave=valor` | `?q=civic&limit=10` | **Buscas, filtros, ordenação e paginação.** |
+| **Corpo (*body*)** | No corpo da requisição, em JSON | `{"title": "Opala"}` | **Enviar dados** para criar/alterar (POST, PUT, PATCH). |
+| **Cabeçalho** | Nos *headers* | `Authorization: Bearer <token>` | Credenciais e metadados. |
+
+> **Para o Projeto 1:** o critério "**busca com envio de parâmetros para a API JSON**" é atendido, em geral, montando uma *query string* (ou um parâmetro de rota) com os valores que o usuário digitou em um formulário. Veremos como fazer isso com segurança usando `URLSearchParams` na Seção \@ref(passo-contexto).
+
+---
+
+## JSON: o formato de troca de dados {#conceitos-json}
+
+**JSON** (*JavaScript Object Notation*) é um formato **de texto** para representar dados estruturados. Sua sintaxe foi inspirada nos objetos literais do JavaScript, mas **JSON não é JavaScript**: é uma *string* com regras próprias, que qualquer linguagem (Python, Java, C#...) consegue ler e escrever. É por isso que ele é o formato padrão entre front-end e back-end.
+
+```json
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Civic Si",
+      "price": 189000,
+      "inStock": true,
+      "tags": ["esportivo", "sedan"],
+      "dimensions": { "width": 1.8, "height": 1.4 },
+      "discount": null
+    }
+  ],
+  "total": 1,
+  "skip": 0,
+  "limit": 10
+}
+```
+
+Table: (\#tab:tabela-json-vs-js) Diferenças entre JSON e um objeto JavaScript
+
+| Regra | JSON | Objeto JavaScript |
+|---|---|---|
+| Chaves | **Sempre** entre aspas duplas: `"title"` | Aspas opcionais: `title` |
+| *Strings* | Apenas aspas duplas | Aspas simples, duplas ou crase |
+| Tipos permitidos | *string*, número, `true`/`false`, `null`, objeto, array | Qualquer valor, inclusive funções, `undefined`, `Date` |
+| Vírgula após o último item | **Proibida** | Permitida |
+| Comentários | **Não existem** | Permitidos |
+
+### Convertendo entre JSON e JavaScript
+
+```js
+// Objeto JavaScript → texto JSON (para ENVIAR à API)
+const veiculo = { title: 'Opala 1978', price: 98000 };
+const texto = JSON.stringify(veiculo);
+// '{"title":"Opala 1978","price":98000}'
+
+// Texto JSON → objeto JavaScript (ao RECEBER da API)
+const objeto = JSON.parse('{"title":"Opala 1978","price":98000}');
+console.log(objeto.title); // "Opala 1978"
+```
+
+Com a Fetch API, a conversão de **entrada** é feita por `await resposta.json()` (que faz o `JSON.parse` por você); a de **saída** continua sendo feita com `JSON.stringify(...)` no corpo da requisição.
+
+---
+
+## CORS: por que algumas APIs "não funcionam" no navegador {#conceitos-cors}
+
+Por segurança, o navegador aplica a **política de mesma origem** (*same-origin policy*): um script carregado de `http://localhost:5173` não pode, por padrão, ler respostas vindas de outra origem (outro domínio, porta ou protocolo), como `https://dummyjson.com`.
+
+O **CORS** (*Cross-Origin Resource Sharing*) é o mecanismo que **o servidor** usa para liberar esse acesso, enviando cabeçalhos como:
+
+```http
+Access-Control-Allow-Origin: *
+```
+
+Se a API **não** enviar esse cabeçalho, a requisição até chega ao servidor, mas o navegador **bloqueia** a leitura da resposta, e o console mostra algo como:
+
+```text
+Access to fetch at 'https://api.exemplo.com/...' from origin 'http://localhost:5173'
+has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present...
+```
+
+Pontos importantes:
+
+- **CORS não se resolve no React.** É uma configuração do servidor. Se a API escolhida não libera CORS, troque de API (ou, no Projeto 2, crie seu próprio back-end que faça a intermediação).
+- A mesma URL pode funcionar no Postman, no `curl` ou digitada na barra do navegador — e falhar no `fetch`. Isso acontece porque essas ferramentas **não aplicam** a política de mesma origem.
+- Requisições com corpo JSON (`Content-Type: application/json`) ou com cabeçalhos personalizados disparam uma requisição prévia do tipo **`OPTIONS`** (*preflight*), que você verá na aba *Network*. Isso é normal. Por isso, só envie `Content-Type: application/json` quando de fato houver corpo.
+
+### Checklist para escolher a API do Projeto 1
+
+Na lista [public-apis](https://github.com/public-apis/public-apis), cada API tem colunas que ajudam na escolha:
+
+Table: (\#tab:tabela-escolha-api) Critérios para escolher uma API pública para o projeto
+
+| Coluna / critério | Valor recomendado | Por quê |
+|---|---|---|
+| **Auth** | `No` (ou `apiKey`, com cuidado) | Sem autenticação, o projeto funciona sem expor chaves. |
+| **HTTPS** | `Yes` | O site publicado usará HTTPS; o navegador bloqueia chamadas HTTP a partir de HTTPS (*mixed content*). |
+| **CORS** | `Yes` | Sem CORS, o `fetch` do navegador falha (ver seção acima). |
+| **Aceita parâmetros de busca?** | Sim | Necessário para o critério "busca com envio de parâmetros". |
+| **Documentação clara** | Sim | Você precisa saber os *endpoints*, parâmetros e o formato do JSON. |
+
+> **Atenção com `apiKey`:** tudo o que vai para o front-end — inclusive variáveis de ambiente do Vite (`VITE_...`) — fica **visível** para qualquer pessoa que abra o DevTools. Nunca coloque no front-end chaves secretas ou pagas. Lembre-se também: **cada grupo deve usar uma API diferente, aprovada previamente pelo professor**.
+
+---
+
+## Explorando uma API antes de programar {#explorando-api}
+
+Antes de escrever uma linha de React, **teste a API manualmente**. Isso evita horas depurando um componente quando o problema é, na verdade, a URL ou o formato do JSON.
+
+Neste capítulo usaremos a **DummyJSON** (`https://dummyjson.com`), uma API pública e gratuita, com CORS liberado, que responde e **recebe** JSON. Os *endpoints* que usaremos:
+
+Table: (\#tab:tabela-endpoints-dummyjson) *Endpoints* da DummyJSON usados no exemplo da aula
+
+| Método | *Endpoint* | Parâmetros | Resposta |
+|---|---|---|---|
+| `GET` | `/products/category/vehicle` | `limit`, `skip`, `select`, `sortBy`, `order` | `{ products: [...], total, skip, limit }` |
+| `GET` | `/products/search` | `q` (termo), `limit`, `skip`, `select`, `sortBy`, `order` | `{ products: [...], total, skip, limit }` |
+| `GET` | `/products/category-list` | — | Array de *strings* com as categorias |
+| `POST` | `/products/add` | Corpo JSON com os dados do produto | Objeto criado, com `id` gerado |
+
+> **Importante:** a DummyJSON **simula** a criação. O `POST` responde como se tivesse salvo o produto (devolvendo um `id`), mas o dado **não é persistido** no servidor. Isso é comum em APIs de teste (como a JSONPlaceholder) e é suficiente para aprender o fluxo de envio.
+
+### Três formas de testar
+
+1. **Barra de endereços do navegador** (somente GET): abra `https://dummyjson.com/products/search?q=phone&limit=2` e observe o JSON.
+2. **Terminal com `curl`** (GET e POST):
+
+```bash
+# GET com parâmetros
+curl "https://dummyjson.com/products/category/vehicle?limit=3&select=title,price"
+
+# POST enviando JSON
+curl -X POST "https://dummyjson.com/products/add" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Opala 1978", "price": 98000, "category": "vehicle"}'
+```
+
+3. **Ferramentas gráficas**: extensão *Thunder Client* ou *REST Client* no VS Code, Postman ou Insomnia.
+
+Anote, para a sua API: a URL base, os *endpoints* que usará, os parâmetros aceitos, **o formato exato do JSON de resposta** (em que chave está o array? como se chamam os campos?) e o formato das respostas de erro.
+
+---
+
+## A Fetch API em detalhe {#fetch-api}
+
+A função `fetch(url, opcoes)` faz uma requisição HTTP e retorna uma **Promise** que se resolve com um objeto `Response`. Como visto na revisão de *Promises* e `async/await`, usaremos a sintaxe `async/await`, mais legível.
+
+### GET — buscando dados
+
+```js
+async function buscarVeiculos() {
+  const resposta = await fetch('https://dummyjson.com/products/category/vehicle?limit=5');
+  const dados = await resposta.json();   // converte o corpo JSON em objeto JS
+  console.log(dados.products);           // array de veículos
+}
+```
+
+São **dois** `await`: o primeiro espera a resposta chegar (cabeçalhos e *status*); o segundo espera o corpo ser lido e convertido.
+
+### POST — enviando dados
+
+```js
+async function cadastrarVeiculo(veiculo) {
+  const resposta = await fetch('https://dummyjson.com/products/add', {
+    method: 'POST',                                   // 1. o método
+    headers: { 'Content-Type': 'application/json' },  // 2. avisa que o corpo é JSON
+    body: JSON.stringify(veiculo),                    // 3. o corpo, convertido em texto
+  });
+  return resposta.json();                             // objeto criado, com id
+}
+```
+
+Os três itens numerados são o que diferencia um POST de um GET. Esquecer o `Content-Type` ou o `JSON.stringify` são os erros mais comuns: o servidor recebe um corpo que não consegue interpretar.
+
+### A armadilha: `fetch` **não** rejeita em erros HTTP
+
+A Promise do `fetch` só é **rejeitada** (cai no `catch`) quando **não há resposta**: falta de internet, DNS inválido, bloqueio de CORS. Uma resposta `404` ou `500` é, para o `fetch`, uma resposta válida! Por isso, **sempre verifique `resposta.ok`** (que é `true` para *status* 200–299):
+
+```js
+async function buscarVeiculoPorId(id) {
+  try {
+    const resposta = await fetch(`https://dummyjson.com/products/${id}`);
+
+    if (!resposta.ok) {
+      // A API respondeu, mas com erro (4xx/5xx). Muitas APIs mandam
+      // uma mensagem explicativa no corpo, ex.: { "message": "..." }
+      const corpo = await resposta.json().catch(() => null);
+      throw new Error(corpo?.message ?? `Erro ${resposta.status}`);
+    }
+
+    return await resposta.json();
+  } catch (erro) {
+    // Chega aqui tanto o erro lançado acima quanto falhas de rede/CORS
+    console.error('Falha na requisição:', erro.message);
+    throw erro; // repassa para quem chamou decidir o que mostrar na tela
+  }
+}
+```
+
+Table: (\#tab:tabela-tipos-erro) Tipos de erro ao consumir uma API
+
+| Situação | Como o `fetch` se comporta | Como detectar |
+|---|---|---|
+| Sucesso (2xx) | Promise resolvida, `resposta.ok === true` | — |
+| Erro HTTP (4xx/5xx) | Promise **resolvida**, `resposta.ok === false` | `if (!resposta.ok)` |
+| Sem rede, DNS, CORS | Promise **rejeitada** com `TypeError` ("Failed to fetch") | `try/catch` |
+| JSON malformado | `resposta.json()` rejeita com `SyntaxError` | `try/catch` |
+| Requisição cancelada | Promise rejeitada com `AbortError` | `erro.name === 'AbortError'` |
+
+### Montando a *query string* com `URLSearchParams`
+
+Concatenar texto do usuário direto na URL é arriscado: espaços, acentos e caracteres como `&` ou `?` quebram a requisição. O `URLSearchParams` faz a **codificação** (*encoding*) automaticamente:
+
+```js
+const params = new URLSearchParams({ q: 'fusca & opala', limit: 10 });
+console.log(params.toString());   // "q=fusca+%26+opala&limit=10"
+
+fetch(`https://dummyjson.com/products/search?${params}`);
+```
+
+> **E o Axios?** O [Axios](https://axios-http.com) é uma biblioteca popular que faz o mesmo que o `fetch`, com algumas conveniências: converte JSON automaticamente e **rejeita** a Promise em respostas 4xx/5xx. Neste capítulo usamos o `fetch` porque ele é nativo do navegador e deixa os conceitos visíveis. Se o grupo quiser usar Axios, lembre-se de que **toda biblioteca precisa de aprovação prévia do professor**.
+
+---
+
+## Requisições dentro de componentes React {#fetch-no-react}
+
+### Onde **não** colocar um `fetch`
+
+Um componente React é uma função que pode ser executada **muitas vezes** (a cada mudança de estado ou de props). Um `fetch` escrito diretamente no corpo do componente seria disparado a cada renderização — e, se ele mudar o estado, causará uma nova renderização, um novo `fetch`... um **laço infinito**:
+
+```jsx
+// ❌ ERRADO — laço infinito de requisições
+function ListaVeiculos() {
+  const [veiculos, setVeiculos] = useState([]);
+
+  fetch('https://dummyjson.com/products/category/vehicle')
+    .then((r) => r.json())
+    .then((dados) => setVeiculos(dados.products)); // muda o estado → renderiza de novo → fetch de novo...
+
+  return <ul>{veiculos.map((v) => <li key={v.id}>{v.title}</li>)}</ul>;
+}
+```
+
+Existem **dois lugares corretos** para fazer requisições em React:
+
+1. **Em um manipulador de evento** (`onSubmit`, `onClick`): quando a requisição é consequência de uma **ação do usuário** — por exemplo, clicar em "Buscar" ou "Cadastrar". **É o caso mais comum no projeto.**
+2. **Em um `useEffect`**: quando a requisição deve acontecer porque o componente **apareceu na tela** (ou porque algum valor mudou) — por exemplo, carregar a lista inicial de veículos ou as opções de um `<select>`.
+
+### O hook `useEffect`
+
+`useEffect(funcao, dependencias)` executa `funcao` **depois** que o componente é desenhado na tela. O **array de dependências** controla quando ele roda de novo:
+
+Table: (\#tab:tabela-dependencias-useeffect) Comportamento do `useEffect` conforme o array de dependências
+
+| Forma | Quando executa |
+|---|---|
+| `useEffect(fn)` | Após **toda** renderização (raramente é o que você quer). |
+| `useEffect(fn, [])` | **Uma vez**, quando o componente aparece (*mount*). |
+| `useEffect(fn, [categoria])` | Quando aparece **e** sempre que `categoria` mudar. |
+
+A função passada ao `useEffect` **não pode ser `async`** diretamente (ela deve retornar nada ou uma função de limpeza, e não uma Promise). Por isso, declaramos uma função `async` **dentro** dele:
+
+```jsx
+import { useEffect, useState } from 'react';
+
+function ListaVeiculos() {
+  const [veiculos, setVeiculos] = useState([]);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState(null);
+
+  useEffect(() => {
+    const controlador = new AbortController();          // permite cancelar a requisição
+
+    async function carregar() {
+      try {
+        const resposta = await fetch(
+          'https://dummyjson.com/products/category/vehicle',
+          { signal: controlador.signal },
+        );
+        if (!resposta.ok) throw new Error(`Erro ${resposta.status}`);
+        const dados = await resposta.json();
+        setVeiculos(dados.products);
+      } catch (e) {
+        if (e.name !== 'AbortError') setErro(e.message); // cancelamento não é erro
+      } finally {
+        setCarregando(false);
+      }
+    }
+
+    carregar();
+
+    return () => controlador.abort();                    // limpeza: cancela se o componente sair da tela
+  }, []);                                                // [] → executa uma vez
+
+  if (carregando) return <p>Carregando...</p>;
+  if (erro) return <p className="text-danger">Não foi possível carregar: {erro}</p>;
+  if (veiculos.length === 0) return <p>Nenhum veículo encontrado.</p>;
+
+  return (
+    <ul>
+      {veiculos.map((v) => <li key={v.id}>{v.title}</li>)}
+    </ul>
+  );
+}
+```
+
+> **Por que a requisição aparece duas vezes no DevTools?** Em modo de desenvolvimento, o `<StrictMode>` (presente no `main.jsx` do Vite) monta, desmonta e monta de novo cada componente, para ajudar a encontrar efeitos sem limpeza. Com o `AbortController`, a primeira requisição é cancelada e tudo funciona. Em produção (`npm run build`), isso não acontece.
+
+### Os quatro estados de uma tela que consome API
+
+Toda interface que depende de uma requisição deve prever **quatro situações**. Esquecer qualquer uma delas é a causa mais comum de telas "em branco":
+
+Table: (\#tab:tabela-estados-requisicao) Estados de interface ao consumir uma API
+
+| Estado | Condição | O que exibir |
+|---|---|---|
+| **Carregando** | Requisição em andamento | *Spinner* ou texto "Carregando..."; desabilitar o botão de envio. |
+| **Erro** | Erro HTTP ou de rede | Mensagem clara e, se possível, como resolver. |
+| **Vazio** | Sucesso, mas lista vazia | "Nenhum resultado para *termo*". |
+| **Sucesso** | Dados disponíveis | Os dados renderizados com `.map()`. |
+
+---
+
+## Organizando o estado global: Context API + `useReducer` {#context-reducer}
+
+Quando o formulário de busca, a lista de resultados e o formulário de cadastro são **componentes diferentes**, eles precisam **compartilhar** os mesmos dados (a lista de veículos, o estado de carregamento, o erro). Passar tudo via props, nível a nível, gera o chamado *prop drilling*. A solução vista no material `06.1-react-context` é a **Context API**:
+
+```text
+                     <VeiculosProvider>   ← guarda o estado e as funções que chamam a API
+                            │
+         ┌──────────────────┼──────────────────┐
+         ▼                  ▼                  ▼
+    <FormBusca />   <ListaResultados />   <FormCadastro />
+   (chama buscar)     (lê o estado)      (chama cadastrar)
+```
+
+Para gerenciar um estado com vários campos que mudam **juntos** (carregando + erro + dados), o hook **`useReducer`** é mais organizado que vários `useState`. Ele centraliza as transições de estado em uma função pura chamada ***reducer***:
+
+```js
+// (estado atual, ação) → novo estado
+function reducer(estado, acao) {
+  switch (acao.type) {
+    case 'BUSCA_INICIOU': return { ...estado, carregando: true, erro: null };
+    case 'BUSCA_SUCESSO': return { ...estado, carregando: false, produtos: acao.produtos };
+    case 'BUSCA_ERRO':    return { ...estado, carregando: false, erro: acao.erro };
+    default: throw new Error(`Ação desconhecida: ${acao.type}`);
+  }
+}
+
+const [estado, dispatch] = useReducer(reducer, estadoInicial);
+dispatch({ type: 'BUSCA_INICIOU' }); // "dispara" uma ação
+```
+
+> **Relação com o projeto:** `useReducer` é **uma** das opções de hook da lista do Projeto 1 (junto com `useMemo`, `useRef`, `memo`, `lazy`, `createPortal`, `react-redux`, etc.). Usamos aqui como exemplo; o seu grupo deve implementar o hook/funcionalidade que **escolheu** e demonstrá-lo de forma significativa.
+
+---
+
+## Exemplo de aula: AutoStore Online — buscando e cadastrando veículos via API {#exemplo-autostore-api}
+
+Vamos evoluir a AutoStore do Capítulo \@ref(elementos-html-react): os veículos deixarão de vir do array fixo e passarão a vir da **DummyJSON**. A aplicação terá:
+
+- **Carga inicial** dos veículos da categoria `vehicle` (GET, via `useEffect`).
+- **Busca com parâmetros** — termo (obrigatório), ordenação e quantidade (GET com *query string*).
+- **Validação** dos campos **antes** do envio e **mensagens de erro depois** do envio (respostas da API).
+- **Cadastro** de um novo veículo (POST com corpo JSON).
+- **Comunicação entre componentes** via Context API + `useReducer`.
+- **Build e publicação** em um servidor web.
+
+A estrutura final respeita a exigência do Projeto 1 de que o código-fonte tenha **apenas** as pastas `src/components` e `src/contexts`:
+
+```text
+autostore-api/
+├── index.html
+├── package.json
+├── vite.config.js
+├── .env                         ← URL da API (opcional)
+└── src/
+    ├── main.jsx
+    ├── App.jsx
+    ├── components/
+    │   ├── Header.jsx
+    │   ├── FormBusca.jsx
+    │   ├── ListaResultados.jsx
+    │   ├── CardVeiculo.jsx
+    │   └── FormCadastro.jsx
+    └── contexts/
+        └── VeiculosContext.jsx  ← estado global + funções de acesso à API
+```
+
+> Como não há uma pasta `services/` permitida, as funções que conversam com a API ficam **no próprio contexto**. Isso tem uma vantagem: nenhum componente precisa saber a URL da API nem como o `fetch` funciona — eles apenas chamam `buscarVeiculos(...)` ou `cadastrarVeiculo(...)`.
+
+### Passo 1 — Criar o projeto e instalar o Bootstrap
+
+```bash
+npm create vite@latest autostore-api -- --template react
+cd autostore-api
+npm install
+npm install bootstrap
+npm run dev
+```
+
+Apague `src/App.css`, `src/index.css` e a pasta `src/assets/` (e seus *imports*), e crie as pastas `src/components` e `src/contexts`.
+
+### Passo 2 — Configurar a URL da API em variável de ambiente
+
+Crie o arquivo `.env` na **raiz** do projeto (fora de `src/`):
+
+```bash
+# .env
+VITE_API_URL=https://dummyjson.com
+```
+
+No Vite, somente variáveis com prefixo `VITE_` ficam disponíveis no código, via `import.meta.env.VITE_API_URL`. Isso permite trocar a API (por exemplo, pelo back-end do Projeto 2) sem mexer nos componentes. **Reinicie o `npm run dev`** após criar ou alterar o `.env`.
+
+### Passo 3 — Criar o contexto com o *reducer* e as funções da API {#passo-contexto}
+
+Este é o "coração" da aplicação. Leia com calma os comentários numerados.
+
+```jsx
+// src/contexts/VeiculosContext.jsx
+import { createContext, useCallback, useContext, useMemo, useReducer } from 'react';
+
+// (1) URL base vinda do .env, com um valor padrão
+const API_URL = import.meta.env.VITE_API_URL ?? 'https://dummyjson.com';
+
+// (2) Somente os campos que a interface usa (menos dados trafegando)
+const CAMPOS = 'id,title,brand,price,category,thumbnail';
+
+// (3) Função genérica de requisição: trata JSON, erros HTTP e erros de rede
+async function requisicao(caminho, opcoes = {}) {
+  let resposta;
+  try {
+    resposta = await fetch(`${API_URL}${caminho}`, {
+      ...opcoes,
+      // Content-Type só quando há corpo (evita preflight desnecessário no GET)
+      headers: opcoes.body ? { 'Content-Type': 'application/json' } : undefined,
+    });
+  } catch (erro) {
+    if (erro.name === 'AbortError') throw erro;
+    throw new Error('Não foi possível conectar à API. Verifique sua conexão.');
+  }
+
+  const dados = await resposta.json().catch(() => null);
+
+  if (!resposta.ok) {
+    throw new Error(dados?.message ?? `A API respondeu com erro ${resposta.status}.`);
+  }
+  return dados;
+}
+
+// (4) Estado inicial e reducer
+const estadoInicial = {
+  produtos: [],
+  total: 0,
+  carregando: false,
+  erro: null,
+  ultimaBusca: null, // termo da última busca realizada (null = carga inicial)
+};
+
+function veiculosReducer(estado, acao) {
+  switch (acao.type) {
+    case 'BUSCA_INICIOU':
+      return { ...estado, carregando: true, erro: null };
+    case 'BUSCA_SUCESSO':
+      return {
+        ...estado,
+        carregando: false,
+        produtos: acao.produtos,
+        total: acao.total,
+        ultimaBusca: acao.termo,
+      };
+    case 'BUSCA_ERRO':
+      return { ...estado, carregando: false, erro: acao.erro, produtos: [], total: 0 };
+    case 'VEICULO_ADICIONADO':
+      return {
+        ...estado,
+        produtos: [acao.veiculo, ...estado.produtos],
+        total: estado.total + 1,
+      };
+    default:
+      throw new Error(`Ação desconhecida: ${acao.type}`);
+  }
+}
+
+// (5) Criação do contexto
+const VeiculosContext = createContext(null);
+
+// (6) Provider: guarda o estado e expõe as operações
+export function VeiculosProvider({ children }) {
+  const [estado, dispatch] = useReducer(veiculosReducer, estadoInicial);
+
+  // GET /products/category/vehicle — carga inicial
+  const carregarVeiculos = useCallback(async (signal) => {
+    dispatch({ type: 'BUSCA_INICIOU' });
+    try {
+      const params = new URLSearchParams({ limit: 12, select: CAMPOS });
+      const dados = await requisicao(`/products/category/vehicle?${params}`, { signal });
+      dispatch({ type: 'BUSCA_SUCESSO', produtos: dados.products, total: dados.total, termo: null });
+    } catch (erro) {
+      if (erro.name !== 'AbortError') dispatch({ type: 'BUSCA_ERRO', erro: erro.message });
+    }
+  }, []);
+
+  // GET /products/search?q=...&sortBy=...&order=...&limit=... — busca com parâmetros
+  const buscarVeiculos = useCallback(async ({ termo, ordenarPor, ordem, limite }) => {
+    dispatch({ type: 'BUSCA_INICIOU' });
+    try {
+      const params = new URLSearchParams({ q: termo, limit: limite, select: CAMPOS });
+      if (ordenarPor) {
+        params.append('sortBy', ordenarPor);
+        params.append('order', ordem);
+      }
+      const dados = await requisicao(`/products/search?${params}`);
+      dispatch({ type: 'BUSCA_SUCESSO', produtos: dados.products, total: dados.total, termo });
+    } catch (erro) {
+      dispatch({ type: 'BUSCA_ERRO', erro: erro.message });
+    }
+  }, []);
+
+  // GET /products/category-list — opções do <select> de categoria
+  const listarCategorias = useCallback(
+    (signal) => requisicao('/products/category-list', { signal }),
+    [],
+  );
+
+  // POST /products/add — envia JSON e devolve o objeto criado
+  const cadastrarVeiculo = useCallback(async (veiculo) => {
+    const criado = await requisicao('/products/add', {
+      method: 'POST',
+      body: JSON.stringify(veiculo),
+    });
+    dispatch({ type: 'VEICULO_ADICIONADO', veiculo: criado });
+    return criado; // o formulário usa o retorno para a mensagem de sucesso
+  }, []);
+
+  // (7) useMemo evita recriar o objeto a cada renderização do Provider
+  const valor = useMemo(
+    () => ({ ...estado, carregarVeiculos, buscarVeiculos, listarCategorias, cadastrarVeiculo }),
+    [estado, carregarVeiculos, buscarVeiculos, listarCategorias, cadastrarVeiculo],
+  );
+
+  return <VeiculosContext.Provider value={valor}>{children}</VeiculosContext.Provider>;
+}
+
+// (8) Hook personalizado para consumir o contexto com segurança
+// eslint-disable-next-line react-refresh/only-export-components
+export function useVeiculos() {
+  const contexto = useContext(VeiculosContext);
+  if (!contexto) {
+    throw new Error('useVeiculos deve ser usado dentro de <VeiculosProvider>.');
+  }
+  return contexto;
+}
+```
+
+Observe a divisão de responsabilidades:
+
+- A função `requisicao` concentra **todo** o tratamento de erros (Tabela \@ref(tab:tabela-tipos-erro)). Os demais trechos só precisam de `try/catch`.
+- As funções de busca **não** recebem nem devolvem JSX: elas só atualizam o estado com `dispatch`. Quem decide o que desenhar são os componentes.
+- `cadastrarVeiculo` **relança** o erro (não tem `catch`), porque quem deve mostrar a mensagem de erro do envio é o próprio formulário de cadastro.
+
+### Passo 4 — Envolver a aplicação com o Provider
+
+```jsx
+// src/main.jsx
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App.jsx';
+import { VeiculosProvider } from './contexts/VeiculosContext.jsx';
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <VeiculosProvider>
+      <App />
+    </VeiculosProvider>
+  </StrictMode>,
+);
+```
+
+Todos os componentes dentro de `<App />` agora podem chamar `useVeiculos()`.
+
+### Passo 5 — Formulário de busca com validação **antes** do envio
+
+O formulário usa **componentes controlados** (vistos no material `05-react-events-states-props`): o valor de cada campo mora no estado, e cada digitação atualiza esse estado.
+
+```jsx
+// src/components/FormBusca.jsx
+import { useState } from 'react';
+import { useVeiculos } from '../contexts/VeiculosContext.jsx';
+
+function validarBusca({ termo, limite }) {
+  const erros = {};
+  if (termo.trim() === '') {
+    erros.termo = 'Informe um termo para a busca.';
+  } else if (termo.trim().length < 2) {
+    erros.termo = 'Digite pelo menos 2 caracteres.';
+  }
+  if (!Number.isInteger(limite) || limite < 1 || limite > 30) {
+    erros.limite = 'Escolha entre 1 e 30 resultados.';
+  }
+  return erros;
+}
+
+function FormBusca() {
+  const { buscarVeiculos, carregando } = useVeiculos();
+
+  const [termo, setTermo] = useState('');
+  const [ordenacao, setOrdenacao] = useState('');   // ex.: "price:asc"
+  const [limite, setLimite] = useState(10);
+  const [erros, setErros] = useState({});
+
+  function handleSubmit(evento) {
+    evento.preventDefault();                          // impede o recarregamento da página (SPA!)
+
+    const errosEncontrados = validarBusca({ termo, limite });
+    setErros(errosEncontrados);
+    if (Object.keys(errosEncontrados).length > 0) return;   // não envia se houver erro
+
+    const [ordenarPor, ordem] = ordenacao ? ordenacao.split(':') : ['', ''];
+    buscarVeiculos({ termo: termo.trim(), ordenarPor, ordem, limite });
+  }
+
+  return (
+    <form className="row g-3 align-items-start" onSubmit={handleSubmit} noValidate>
+      <div className="col-md-5">
+        <label htmlFor="termo" className="form-label">Termo de busca *</label>
+        <input
+          id="termo"
+          type="text"
+          className={`form-control ${erros.termo ? 'is-invalid' : ''}`}
+          placeholder="ex.: car, motorcycle, electric"
+          value={termo}
+          onChange={(e) => setTermo(e.target.value)}
+        />
+        {erros.termo && <div className="invalid-feedback">{erros.termo}</div>}
+      </div>
+
+      <div className="col-md-3">
+        <label htmlFor="ordenacao" className="form-label">Ordenar por</label>
+        <select
+          id="ordenacao"
+          className="form-select"
+          value={ordenacao}
+          onChange={(e) => setOrdenacao(e.target.value)}
+        >
+          <option value="">Relevância</option>
+          <option value="price:asc">Menor preço</option>
+          <option value="price:desc">Maior preço</option>
+          <option value="title:asc">Nome (A–Z)</option>
+        </select>
+      </div>
+
+      <div className="col-md-2">
+        <label htmlFor="limite" className="form-label">Resultados</label>
+        <input
+          id="limite"
+          type="number"
+          min="1"
+          max="30"
+          className={`form-control ${erros.limite ? 'is-invalid' : ''}`}
+          value={limite}
+          onChange={(e) => setLimite(Number(e.target.value))}
+        />
+        {erros.limite && <div className="invalid-feedback">{erros.limite}</div>}
+      </div>
+
+      <div className="col-md-2 d-grid">
+        <label className="form-label invisible">Buscar</label>
+        <button type="submit" className="btn btn-primary" disabled={carregando}>
+          {carregando ? 'Buscando...' : 'Buscar'}
+        </button>
+      </div>
+    </form>
+  );
+}
+
+export default FormBusca;
+```
+
+Pontos-chave:
+
+- **`evento.preventDefault()`**: sem ele, o `<form>` faria o comportamento padrão do HTML (recarregar a página), quebrando a SPA.
+- **`noValidate`**: desliga os balões de validação nativos do navegador, para que as **nossas** mensagens (com Bootstrap `is-invalid` + `invalid-feedback`) sejam exibidas de forma consistente.
+- **Validação antes do envio**: se `validarBusca` encontrar erros, a função retorna **sem chamar a API** — economizando uma requisição inútil e dando retorno imediato ao usuário.
+- **Botão desabilitado** enquanto `carregando` for `true`: evita cliques repetidos e requisições duplicadas.
+
+### Passo 6 — Lista de resultados com os quatro estados (e erros **depois** do envio)
+
+```jsx
+// src/components/ListaResultados.jsx
+import { useEffect } from 'react';
+import { useVeiculos } from '../contexts/VeiculosContext.jsx';
+import CardVeiculo from './CardVeiculo.jsx';
+
+function ListaResultados() {
+  const { produtos, total, carregando, erro, ultimaBusca, carregarVeiculos } = useVeiculos();
+
+  // Carga inicial: executa uma vez, quando o componente aparece
+  useEffect(() => {
+    const controlador = new AbortController();
+    carregarVeiculos(controlador.signal);
+    return () => controlador.abort();
+  }, [carregarVeiculos]);
+
+  // Estado 1 — carregando
+  if (carregando) {
+    return (
+      <div className="text-center my-5">
+        <div className="spinner-border" role="status" aria-label="Carregando" />
+      </div>
+    );
+  }
+
+  // Estado 2 — erro (mensagem vinda DEPOIS do envio: HTTP ou rede)
+  if (erro) {
+    return (
+      <div className="alert alert-danger my-4" role="alert">
+        <strong>Não foi possível concluir a busca.</strong> {erro}
+      </div>
+    );
+  }
+
+  // Estado 3 — vazio
+  if (produtos.length === 0) {
+    return (
+      <div className="alert alert-warning my-4">
+        Nenhum veículo encontrado{ultimaBusca ? ` para "${ultimaBusca}"` : ''}.
+      </div>
+    );
+  }
+
+  // Estado 4 — sucesso
+  return (
+    <section className="my-4">
+      <p className="text-muted">
+        {ultimaBusca
+          ? `Exibindo ${produtos.length} de ${total} resultado(s) para "${ultimaBusca}".`
+          : `Destaques da categoria veículos (${total} no total).`}
+      </p>
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        {produtos.map((veiculo) => (
+          <div className="col" key={veiculo.id}>
+            <CardVeiculo veiculo={veiculo} />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default ListaResultados;
+```
+
+Repare que a *key* agora é o **`id` vindo da API** — exatamente a recomendação do Capítulo \@ref(elementos-html-react) para listas que mudam.
+
+### Passo 7 — Card de veículo
+
+```jsx
+// src/components/CardVeiculo.jsx
+const formatoMoeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD' });
+
+function CardVeiculo({ veiculo }) {
+  return (
+    <div className="card h-100">
+      {veiculo.thumbnail && (
+        <img src={veiculo.thumbnail} className="card-img-top" alt={veiculo.title} />
+      )}
+      <div className="card-body">
+        <h5 className="card-title">{veiculo.title}</h5>
+        {veiculo.brand && <p className="card-subtitle text-muted mb-2">{veiculo.brand}</p>}
+        <p className="card-text fw-bold">{formatoMoeda.format(veiculo.price ?? 0)}</p>
+        <span className="badge bg-secondary">{veiculo.category}</span>
+      </div>
+    </div>
+  );
+}
+
+export default CardVeiculo;
+```
+
+Dados vindos de API podem vir **incompletos** (um produto sem `brand` ou sem imagem). Por isso usamos renderização condicional (`&&`) e o operador `??` para valores padrão — a interface não deve "quebrar" por causa de um campo ausente.
+
+### Passo 8 — Formulário de cadastro: enviando JSON com POST
+
+Este formulário combina **tudo**: `useEffect` para carregar as categorias do `<select>`, validação antes do envio, POST com corpo JSON, e mensagens de sucesso ou de erro depois do envio.
+
+```jsx
+// src/components/FormCadastro.jsx
+import { useEffect, useState } from 'react';
+import { useVeiculos } from '../contexts/VeiculosContext.jsx';
+
+const VAZIO = { title: '', brand: '', price: '', category: 'vehicle' };
+
+function validarCadastro(dados) {
+  const erros = {};
+  if (dados.title.trim().length < 3) erros.title = 'O modelo deve ter pelo menos 3 caracteres.';
+  if (dados.brand.trim() === '') erros.brand = 'Informe a marca.';
+  const preco = Number(dados.price);
+  if (dados.price === '' || Number.isNaN(preco) || preco <= 0) {
+    erros.price = 'Informe um preço maior que zero.';
+  }
+  if (!dados.category) erros.category = 'Selecione uma categoria.';
+  return erros;
+}
+
+function FormCadastro() {
+  const { cadastrarVeiculo, listarCategorias } = useVeiculos();
+
+  const [dados, setDados] = useState(VAZIO);
+  const [erros, setErros] = useState({});
+  const [categorias, setCategorias] = useState([]);
+  const [enviando, setEnviando] = useState(false);
+  const [erroEnvio, setErroEnvio] = useState(null);   // erro DEPOIS do envio
+  const [sucesso, setSucesso] = useState(null);
+
+  // GET das categorias quando o formulário aparece
+  useEffect(() => {
+    const controlador = new AbortController();
+    listarCategorias(controlador.signal)
+      .then(setCategorias)
+      .catch((e) => {
+        if (e.name !== 'AbortError') setErroEnvio(`Categorias indisponíveis: ${e.message}`);
+      });
+    return () => controlador.abort();
+  }, [listarCategorias]);
+
+  // Um único handler para todos os campos, usando o atributo "name"
+  function handleChange(evento) {
+    const { name, value } = evento.target;
+    setDados((anterior) => ({ ...anterior, [name]: value }));
+  }
+
+  async function handleSubmit(evento) {
+    evento.preventDefault();
+    setSucesso(null);
+    setErroEnvio(null);
+
+    // 1. Validação ANTES do envio
+    const errosEncontrados = validarCadastro(dados);
+    setErros(errosEncontrados);
+    if (Object.keys(errosEncontrados).length > 0) return;
+
+    // 2. Envio (POST com JSON)
+    setEnviando(true);
+    try {
+      const criado = await cadastrarVeiculo({
+        title: dados.title.trim(),
+        brand: dados.brand.trim(),
+        price: Number(dados.price),          // envia número, não string
+        category: dados.category,
+      });
+      // 3a. Sucesso DEPOIS do envio
+      setSucesso(`Veículo "${criado.title}" cadastrado com o id ${criado.id}.`);
+      setDados(VAZIO);
+    } catch (erro) {
+      // 3b. Erro DEPOIS do envio (resposta 4xx/5xx ou falha de rede)
+      setErroEnvio(erro.message);
+    } finally {
+      setEnviando(false);
+    }
+  }
+
+  // Função auxiliar para não repetir as classes de validação
+  const classe = (campo, base = 'form-control') => `${base} ${erros[campo] ? 'is-invalid' : ''}`;
+
+  return (
+    <form className="card card-body my-4" onSubmit={handleSubmit} noValidate>
+      <h2 className="h5">Cadastrar veículo</h2>
+
+      {sucesso && <div className="alert alert-success">{sucesso}</div>}
+      {erroEnvio && <div className="alert alert-danger">{erroEnvio}</div>}
+
+      <div className="row g-3">
+        <div className="col-md-4">
+          <label htmlFor="title" className="form-label">Modelo *</label>
+          <input id="title" name="title" className={classe('title')}
+                 value={dados.title} onChange={handleChange} />
+          {erros.title && <div className="invalid-feedback">{erros.title}</div>}
+        </div>
+
+        <div className="col-md-3">
+          <label htmlFor="brand" className="form-label">Marca *</label>
+          <input id="brand" name="brand" className={classe('brand')}
+                 value={dados.brand} onChange={handleChange} />
+          {erros.brand && <div className="invalid-feedback">{erros.brand}</div>}
+        </div>
+
+        <div className="col-md-2">
+          <label htmlFor="price" className="form-label">Preço (US$) *</label>
+          <input id="price" name="price" type="number" min="0" step="0.01"
+                 className={classe('price')} value={dados.price} onChange={handleChange} />
+          {erros.price && <div className="invalid-feedback">{erros.price}</div>}
+        </div>
+
+        <div className="col-md-3">
+          <label htmlFor="category" className="form-label">Categoria *</label>
+          <select id="category" name="category" className={classe('category', 'form-select')}
+                  value={dados.category} onChange={handleChange}>
+            <option value="">Selecione...</option>
+            {categorias.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          {erros.category && <div className="invalid-feedback">{erros.category}</div>}
+        </div>
+      </div>
+
+      <button type="submit" className="btn btn-success mt-3 align-self-start" disabled={enviando}>
+        {enviando ? 'Enviando...' : 'Cadastrar'}
+      </button>
+    </form>
+  );
+}
+
+export default FormCadastro;
+```
+
+> Como a DummyJSON só **simula** a gravação, o veículo cadastrado aparece no topo da lista porque o *reducer* o adiciona ao estado local (ação `VEICULO_ADICIONADO`). Se a página for recarregada, ele não estará mais lá. Com uma API real (como a do Projeto 2), o dado seria persistido no servidor.
+
+### Passo 9 — Cabeçalho e montagem em `App.jsx`
+
+```jsx
+// src/components/Header.jsx
+function Header() {
+  return (
+    <header className="navbar navbar-dark bg-dark px-4">
+      <span className="navbar-brand mb-0 h1">AutoStore Online</span>
+      <span className="text-white-50 small">Dados: DummyJSON</span>
+    </header>
+  );
+}
+
+export default Header;
+```
+
+```jsx
+// src/App.jsx
+import Header from './components/Header.jsx';
+import FormBusca from './components/FormBusca.jsx';
+import ListaResultados from './components/ListaResultados.jsx';
+import FormCadastro from './components/FormCadastro.jsx';
+
+function App() {
+  return (
+    <>
+      <Header />
+      <main className="container my-4">
+        <FormBusca />
+        <ListaResultados />
+        <FormCadastro />
+      </main>
+    </>
+  );
+}
+
+export default App;
+```
+
+Assim como no capítulo anterior, `App.jsx` apenas **organiza** os componentes. Nenhum deles recebe props de dados: todos se comunicam por meio do contexto.
+
+### Passo 10 — Testar e depurar com o DevTools {#testar-devtools}
+
+Com `npm run dev` rodando, abra `http://localhost:5173`, pressione **F12** e use as abas abaixo:
+
+1. **Network (Rede)** → filtre por **Fetch/XHR**. Ao abrir a página, deve aparecer a requisição para `category/vehicle` (e a de `category-list`). Clique nela e confira:
+    - **Headers**: a URL completa, o método e o *status* (`200`).
+    - **Payload** (no POST): o JSON que foi **enviado**.
+    - **Preview/Response**: o JSON que foi **recebido**.
+2. **Busca válida**: digite `car`, escolha "Menor preço" e clique em **Buscar**. Na aba Network, confira que a URL contém `?q=car&limit=10&...&sortBy=price&order=asc` — são os **parâmetros enviados** à API.
+3. **Validação antes do envio**: clique em **Buscar** com o campo vazio. A mensagem vermelha deve aparecer **e nenhuma requisição** deve surgir na aba Network.
+4. **Resultado vazio**: busque por `xyzxyz`. Deve aparecer o alerta amarelo "Nenhum veículo encontrado".
+5. **Erro depois do envio (rede)**: na aba Network, mude *No throttling* para **Offline** e faça uma busca. Deve aparecer o alerta vermelho "Não foi possível conectar à API...". Volte para *No throttling*.
+6. **Erro depois do envio (HTTP)**: altere temporariamente `VITE_API_URL` no `.env` para `https://dummyjson.com/rota-inexistente`, reinicie o servidor e observe a mensagem de erro com o *status* 404. Desfaça a alteração.
+7. **Cadastro**: envie o formulário vazio (erros por campo) e depois preenchido. Confira o POST na aba Network, com *status* `201` e o `id` na resposta; o novo veículo deve aparecer no topo da lista.
+8. **Console**: não deve haver avisos em vermelho — em especial `Each child in a list should have a unique "key" prop` ou erros de CORS.
+
+---
+
+## Mensagens de validação: antes e depois do envio {#validacao-antes-depois}
+
+O Projeto 1 exige **dois momentos** de retorno ao usuário. Eles têm naturezas diferentes e **ambos** são necessários:
+
+Table: (\#tab:tabela-validacao-antes-depois) Validação antes e depois do envio à API
+
+| | **Antes do envio** (cliente) | **Depois do envio** (servidor/rede) |
+|---|---|---|
+| **Quem verifica** | O próprio componente React | A API (ou a infraestrutura de rede) |
+| **Exemplos** | Campo obrigatório vazio; texto curto demais; número fora do intervalo; e-mail em formato inválido | *Status* 400/404/422/500; mensagem de erro no corpo JSON; sem internet; bloqueio de CORS; busca sem resultados |
+| **Onde aparece no código** | Função `validar...()` chamada no `handleSubmit`, antes da requisição | `if (!resposta.ok)` + `try/catch` na função `requisicao` e no componente |
+| **Objetivo** | Retorno imediato e evitar requisições inúteis | Informar o que realmente aconteceu no servidor |
+| **Pode ser dispensado?** | Não — melhora a experiência | **Nunca** — o cliente pode ser burlado; o servidor é a validação definitiva |
+
+Boas práticas para as mensagens:
+
+- Mostre a mensagem **perto do campo** com problema (e não apenas um `alert()` genérico).
+- Diga **como resolver** ("Digite pelo menos 2 caracteres"), e não só que há erro ("Campo inválido").
+- **Limpe** as mensagens antigas a cada novo envio (`setErroEnvio(null)`, `setSucesso(null)`).
+- Nunca exiba objetos de erro crus (`[object Object]`) ou *stack traces* para o usuário.
+
+> **Bibliotecas de formulário:** `react-hook-form`, `Formik` e `Yup` (todas na lista de sugestões do projeto) automatizam exatamente a parte de "validação antes do envio": registro dos campos, regras (obrigatório, tamanho mínimo, formato) e mensagens por campo. Entender a versão manual deste capítulo torna muito mais fácil usar qualquer uma delas.
+
+---
+
+## Gerando o pacote de *deployment* e publicando {#build-deploy}
+
+Durante o desenvolvimento, o Vite serve os arquivos diretamente do `src/`. Para publicar, é preciso gerar o **pacote de produção**: arquivos HTML, CSS e JS otimizados e minificados.
+
+```bash
+npm run build     # gera a pasta dist/
+npm run preview   # serve a pasta dist/ localmente para conferir (http://localhost:4173)
+```
+
+A pasta **`dist/`** contém apenas arquivos estáticos — ela pode ser hospedada em **qualquer servidor web** (Apache, Nginx) ou em serviços gratuitos de hospedagem estática.
+
+### Opção A — Vercel ou Netlify (mais simples)
+
+1. Envie o projeto para um repositório público no GitHub.
+2. Em [vercel.com](https://vercel.com) ou [netlify.com](https://netlify.com), importe o repositório.
+3. Os serviços detectam o Vite automaticamente (comando `npm run build`, pasta `dist`).
+4. Cadastre a variável `VITE_API_URL` nas configurações do projeto (as variáveis `VITE_` são inseridas **no momento do build**).
+
+### Opção B — GitHub Pages
+
+```js
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/autostore-api/',   // nome do SEU repositório, entre barras
+});
+```
+
+```bash
+npm install --save-dev gh-pages
+```
+
+```json
+// package.json (trecho)
+"scripts": {
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "deploy": "npm run build && gh-pages -d dist"
+}
+```
+
+```bash
+npm run deploy
+```
+
+Em seguida, no GitHub, acesse *Settings → Pages* e selecione o *branch* `gh-pages`. O site ficará em `https://<usuario>.github.io/autostore-api/`.
+
+> **Erro comum:** página em branco após o *deploy* no GitHub Pages quase sempre é o `base` ausente ou errado no `vite.config.js`. Abra o Console: se os arquivos `.js` retornam 404, é isso.
+
+---
+
+## Versionamento incremental com Git {#git-incremental}
+
+O Projeto 1 avalia a **atualização incremental** do código no Git e a **participação de cada integrante**. Um único *commit* com o projeto inteiro não demonstra isso. Uma sequência saudável para o exemplo deste capítulo seria:
+
+```bash
+git commit -m "chore: cria projeto Vite + React e instala Bootstrap"
+git commit -m "feat: adiciona VeiculosContext com reducer e carga inicial da API"
+git commit -m "feat: implementa busca com parâmetros (q, sortBy, order, limit)"
+git commit -m "feat: valida campos obrigatórios da busca antes do envio"
+git commit -m "feat: exibe estados de carregando, erro e vazio na lista"
+git commit -m "feat: adiciona formulário de cadastro com POST em JSON"
+git commit -m "build: configura base do Vite e script de deploy no GitHub Pages"
+git commit -m "docs: documenta API, hook, biblioteca e ferramentas (incluindo IA) no README"
+```
+
+Dicas:
+
+- Cada integrante deve *commitar* **com a própria conta**, na parte pela qual é responsável.
+- Faça *commits* pequenos, com mensagens que dizem **o que** mudou.
+- Inclua no `.gitignore` a pasta `node_modules/` e a pasta `dist/` (o Vite já cria esse arquivo).
+- O `README.md` deve documentar a API escolhida, o hook, a biblioteca externa, as ferramentas usadas (inclusive de IA) e o *link* da aplicação publicada.
+
+---
+
+## Erros comuns e como resolvê-los
+
+Table: (\#tab:tabela-erros-comuns) Erros frequentes ao consumir APIs em React
+
+| Sintoma | Causa provável | Solução |
+|---|---|---|
+| Requisições infinitas na aba Network | `fetch` no corpo do componente ou `useEffect` sem array de dependências | Mover para `useEffect(..., [])` ou para um *handler* de evento. |
+| `Cannot read properties of undefined (reading 'map')` | Acessar a chave errada do JSON (ex.: `dados.map` em vez de `dados.products.map`) ou estado inicial `undefined` | Conferir o formato do JSON na aba Network; iniciar arrays com `[]`. |
+| Erro de CORS no console | A API não libera acesso pelo navegador | Escolher outra API com CORS = `Yes`. |
+| Página recarrega ao enviar o formulário | Faltou `evento.preventDefault()` | Chamar no início do `handleSubmit`. |
+| POST chega vazio ou com erro 400 | Faltou `Content-Type: application/json` ou `JSON.stringify` | Conferir o *Payload* na aba Network. |
+| Erro 404 tratado como sucesso | Não verificar `resposta.ok` | Usar a função `requisicao` da Seção \@ref(passo-contexto). |
+| `useVeiculos deve ser usado dentro de <VeiculosProvider>` | Componente fora do Provider | Envolver `<App />` com o Provider em `main.jsx`. |
+| `import.meta.env.VITE_API_URL` é `undefined` | `.env` fora da raiz, sem prefixo `VITE_`, ou servidor não reiniciado | Corrigir e reiniciar o `npm run dev`. |
+| Página em branco após *deploy* | `base` incorreto no `vite.config.js` | Ajustar `base` para `/nome-do-repositorio/`. |
+| *Mixed content* no site publicado | API chamada por `http://` a partir de uma página `https://` | Usar uma API com HTTPS. |
+
+---
+
+## Mapa: Projeto 1 × conteúdo deste capítulo {#mapa-projeto1}
+
+Table: (\#tab:tabela-mapa-projeto1) Relação entre os critérios de avaliação do Projeto 1 e as seções deste capítulo
+
+| Critério do Projeto 1 | Onde está neste capítulo | O que o seu grupo precisa fazer |
+|---|---|---|
+| SPA com React e AJAX, consumindo uma API JSON aberta | Seções \@ref(visao-geral-api), \@ref(fetch-api) e \@ref(fetch-no-react) | Escolher a API (com HTTPS e CORS), obter aprovação do professor e consumi-la com `fetch`. |
+| Estrutura com Vite (ou Webpack/CRA) e apenas `src/components` e `src/contexts` | Exemplo da Seção \@ref(exemplo-autostore-api), Passo 1 e estrutura de pastas | Criar o projeto com Vite e manter a estrutura exigida. |
+| Busca com envio de parâmetros para a API | Seções \@ref(conceitos-rest) e \@ref(passo-contexto); Passo 5 | Montar a URL com `URLSearchParams` a partir dos campos do formulário. |
+| Verificação de preenchimento de campos obrigatórios na busca | Passo 5 e Seção \@ref(validacao-antes-depois) | Validar antes do envio e bloquear a requisição se houver erro. |
+| Mensagens de erro de validação antes e depois do envio | Passos 5, 6 e 8; Tabela \@ref(tab:tabela-validacao-antes-depois) | Mensagens por campo (antes) + tratamento de `!resposta.ok` e falhas de rede (depois). |
+| Comunicação entre componentes com Context API ou Redux | Seção \@ref(context-reducer); Passos 3 e 4 | Criar pelo menos um contexto (ou *store* Redux) compartilhado entre componentes. |
+| Hook/funcionalidade escolhida pelo grupo | Seção \@ref(context-reducer) (exemplo com `useReducer`) | Implementar **o hook que o grupo escolheu**, de forma significativa, e explicá-lo no README. |
+| Biblioteca externa escolhida pelo grupo | Seções \@ref(fetch-api) e \@ref(validacao-antes-depois) (Axios, react-hook-form, Formik, Yup) | Usar a biblioteca **aprovada** em uma funcionalidade real da aplicação. |
+| Pacote de *deployment* e publicação em servidor web | Seção \@ref(build-deploy) | Gerar o `dist/` e publicar (Vercel, Netlify ou GitHub Pages). |
+| Atualização incremental no Git | Seção \@ref(git-incremental) | *Commits* frequentes, de todos os integrantes, com mensagens claras. |
+
+> **Lembrete:** o projeto deve ser uma **aplicação funcional e integrada**, não um conjunto de telas isoladas. Pense em um "produto" coerente com a API escolhida (um catálogo, um buscador, um painel) em que busca, resultados e demais funcionalidades conversem entre si.
+
+---
+
+## Atividade prática sugerida
+
+1. Seguir os 10 passos da Seção \@ref(exemplo-autostore-api) e executar os testes do Passo 10, registrando *prints* da aba Network para: um GET com parâmetros, um POST com *payload* e um erro tratado.
+2. **Paginação:** adicionar botões "Anterior" e "Próxima" à lista de resultados, usando os parâmetros `limit` e `skip` da API e o campo `total` da resposta para desabilitar os botões nos limites.
+3. **Detalhes do veículo:** ao clicar em um card, buscar `GET /products/{id}` e exibir descrição e avaliação (`rating`) em um painel — tratando os estados de carregando e erro.
+4. **Filtro por categoria:** transformar o `<select>` de categorias em filtro da busca, usando o *endpoint* `/products/category/{categoria}`.
+5. **Aplicando ao projeto:** para a API que o seu grupo pretende usar, preencher uma tabela como a Tabela \@ref(tab:tabela-endpoints-dummyjson) (método, *endpoint*, parâmetros, formato da resposta) e testar cada *endpoint* com `curl` ou Thunder Client **antes** de começar a programar.
+6. **Desafio extra:** reescrever o `FormBusca` usando `react-hook-form` (ou `Formik` + `Yup`) e comparar a quantidade de código com a versão manual.
+
+---
+
+## Resumo dos conceitos-chave
+
+Table: (\#tab:tabela-resumo-consumo-api) Resumo dos conceitos-chave apresentados na aula
+
+| Conceito | Definição resumida |
+|---|---|
+| **HTTP** | Protocolo de requisição/resposta da Web; cada mensagem tem linha inicial, cabeçalhos e corpo opcional. |
+| **Métodos HTTP** | GET (ler), POST (criar), PUT/PATCH (alterar), DELETE (remover). |
+| **Código de *status*** | Indica o resultado: 2xx sucesso, 4xx erro do cliente, 5xx erro do servidor. |
+| **API REST / *endpoint*** | Contrato de acesso a recursos via URLs e métodos HTTP; *endpoint* = método + caminho. |
+| ***Query string*** | Parâmetros após o `?` (`chave=valor&...`), usados em buscas, filtros e paginação; monte com `URLSearchParams`. |
+| **JSON** | Formato de texto para troca de dados; `JSON.stringify` para enviar, `resposta.json()` para receber. |
+| **CORS** | Mecanismo do servidor que autoriza o navegador a ler respostas de outra origem; não se resolve no front-end. |
+| **Fetch API** | Função nativa para requisições; **não** rejeita em 4xx/5xx — sempre verificar `resposta.ok`. |
+| **`useEffect`** | Executa efeitos (como requisições) após a renderização; controle pelo array de dependências e limpe com `AbortController`. |
+| **Estados da requisição** | Carregando, erro, vazio e sucesso — todos devem ser tratados na interface. |
+| **Context API + `useReducer`** | Estado global compartilhado entre componentes, com transições centralizadas em um *reducer*. |
+| **Validação antes/depois** | Antes: regras no cliente, evitando envios inválidos. Depois: tratar respostas de erro da API e falhas de rede. |
+| **Build e *deploy*** | `npm run build` gera `dist/` (arquivos estáticos) para publicar em um servidor web. |
+
+---
+
+## Para saber mais (leitura complementar)
+
+- React: [Sincronizando com Effects](https://react.dev/learn/synchronizing-with-effects), [Você pode não precisar de um Effect](https://react.dev/learn/you-might-not-need-an-effect), [Escalando com Reducer e Context](https://react.dev/learn/scaling-up-with-reducer-and-context)
+- MDN: [Fetch API](https://developer.mozilla.org/pt-BR/docs/Web/API/Fetch_API/Using_Fetch), [Códigos de status HTTP](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status), [CORS](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS), [`URLSearchParams`](https://developer.mozilla.org/pt-BR/docs/Web/API/URLSearchParams)
+- Vite: [Variáveis de ambiente](https://vite.dev/guide/env-and-mode) e [Deploy de site estático](https://vite.dev/guide/static-deploy)
+- APIs para praticar: [DummyJSON](https://dummyjson.com), [JSONPlaceholder](https://jsonplaceholder.typicode.com), [lista public-apis](https://github.com/public-apis/public-apis)
+- Próximos tópicos da disciplina: React Router (navegação na SPA), Redux, e a construção do **back-end** com Node/Express (material `12-React-e-Express`), no qual a URL em `VITE_API_URL` passará a apontar para a **sua própria API**.
