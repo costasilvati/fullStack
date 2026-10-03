@@ -2,10 +2,12 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
+      collapse: section
       before: |
         <li><a href="./">Full Stack: Conceitos Fundamentais</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    depth: 1
     edit: https://github.com/costasilvati/fullStack/edit/main/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:

@@ -1,10 +1,5 @@
 # Consumindo e Enviando Dados a uma API JSON com React {#consumo-api-react}
 
-**Disciplina:** Programação Web Full Stack — Engenharia de Software
-**Tema da aula:** Do HTTP ao React: buscar (GET) e enviar (POST) dados JSON a uma API pública, com validação, tratamento de erros e Context API
-**Pré-requisitos:** Capítulo \@ref(introducao-react) — Introdução ao React; Capítulo \@ref(elementos-html-react) — Elementos Básicos de HTML em React; revisão de AJAX, *callbacks*, *Promises* e `async/await` (materiais `02-revisao-ajax` e `03-revisao-callback-promise-async-ajax`)
-**Duração sugerida:** 2 aulas (2 × 100 min) — 1 teórica + 1 prática guiada
-
 **Referências desta aula:**
 
 - Documentação oficial do React — [Sincronizando com Effects](https://react.dev/learn/synchronizing-with-effects), [Escalando com Reducer e Context](https://react.dev/learn/scaling-up-with-reducer-and-context)
