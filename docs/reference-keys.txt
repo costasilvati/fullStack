@@ -189,3 +189,11 @@ erros-comuns-e-como-resolvê-los-1
 atividade-prática-sugerida-1
 resumo-dos-conceitos-chave-3
 para-saber-mais-leitura-complementar-3
+atividade-de-revisão-aplicação-react-consumindo-uma-api
+diagnóstico
+trios-e-papéis
+o-desafio
+requisitos-obrigatórios
+roteiro-dos-100-minutos
+fechamento
+materiais-extras

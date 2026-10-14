@@ -1,0 +1,8 @@
+# Materiais extras
+
+Este conteúdo é uma curadoria de materiais que podem apoiar seus estudos na disciplina. 
+
+
+- [Playlist - Curso Node.JS](https://youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&si=d-xPyWFJCWIDY_rI)
+- [Documentação Node.JS](https://nodejs.org/learn)
+- [Apostila NodeJS - Legal!](https://blog.reativa.dev/apostila-nodejs-completa/)

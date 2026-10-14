@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Materiais extras | Full Stack: Conceitos Fundamentais</title>
+  <meta name="description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Materiais extras | Full Stack: Conceitos Fundamentais" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  <meta name="github-repo" content="costasilvati/fullStack" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Materiais extras | Full Stack: Conceitos Fundamentais" />
+  
+  <meta name="twitter:description" content="Este livro foi construído como conteúdo de apoio a disciplina Desenvolvimento Web Full Stack." />
+  
+
+<meta name="author" content="Juliana Costa-Silva" />
+
+
+<meta name="date" content="2026-10-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Full Stack: Conceitos Fundamentais</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Sobre</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#como-usar"><i class="fa fa-check"></i><b>1.1</b> Como usar?</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introducao-react.html"><a href="introducao-react.html"><i class="fa fa-check"></i><b>2</b> React - Quick start</a>
+<ul>
+<li class="chapter" data-level="" data-path="introducao-react.html"><a href="introducao-react.html#objetivos"><i class="fa fa-check"></i>Objetivos</a></li>
+<li class="chapter" data-level="2.1" data-path="introducao-react.html"><a href="introducao-react.html#o-que-%C3%A9-o-react"><i class="fa fa-check"></i><b>2.1</b> O que é o React?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introducao-react.html"><a href="introducao-react.html#por-que-o-react-%C3%A9-t%C3%A3o-usado"><i class="fa fa-check"></i><b>2.1.1</b> Por que o React é tão usado?</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introducao-react.html"><a href="introducao-react.html#como-o-react-atualiza-a-tela-virtual-dom"><i class="fa fa-check"></i><b>2.1.2</b> Como o React atualiza a tela (Virtual DOM)</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="introducao-react.html"><a href="introducao-react.html#jsx-misturando-html-e-javascript"><i class="fa fa-check"></i><b>2.2</b> JSX: misturando HTML e JavaScript</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introducao-react.html"><a href="introducao-react.html#regras-importantes-do-jsx"><i class="fa fa-check"></i><b>2.2.1</b> Regras importantes do JSX</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="introducao-react.html"><a href="introducao-react.html#componentes"><i class="fa fa-check"></i><b>2.3</b> Componentes</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="introducao-react.html"><a href="introducao-react.html#props-e-state"><i class="fa fa-check"></i><b>2.3.1</b> Props e State</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introducao-react.html"><a href="introducao-react.html#criando-o-primeiro-projeto-react"><i class="fa fa-check"></i><b>2.4</b> Criando o primeiro projeto React</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="introducao-react.html"><a href="introducao-react.html#pr%C3%A9-requisitos"><i class="fa fa-check"></i><b>2.4.1</b> Pré-requisitos</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introducao-react.html"><a href="introducao-react.html#passo-a-passo"><i class="fa fa-check"></i><b>2.4.2</b> Passo a passo</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introducao-react.html"><a href="introducao-react.html#estrutura-de-pastas-gerada"><i class="fa fa-check"></i><b>2.4.3</b> Estrutura de pastas gerada</a></li>
+<li class="chapter" data-level="2.4.4" data-path="introducao-react.html"><a href="introducao-react.html#o-que-e-vite"><i class="fa fa-check"></i><b>2.4.4</b> O que é o Vite e como ele funciona?</a></li>
+<li class="chapter" data-level="2.4.5" data-path="introducao-react.html"><a href="introducao-react.html#arquivo-de-entrada"><i class="fa fa-check"></i><b>2.4.5</b> Onde é definido o arquivo de início do projeto?</a></li>
+<li class="chapter" data-level="2.4.6" data-path="introducao-react.html"><a href="introducao-react.html#conte%C3%BAdo-dos-arquivos-gerados-automaticamente"><i class="fa fa-check"></i><b>2.4.6</b> Conteúdo dos arquivos gerados automaticamente</a></li>
+<li class="chapter" data-level="2.4.7" data-path="introducao-react.html"><a href="introducao-react.html#executando-parando-e-reiniciando-o-projeto"><i class="fa fa-check"></i><b>2.4.7</b> Executando, parando e reiniciando o projeto</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introducao-react.html"><a href="introducao-react.html#primeiro-componente-na-pr%C3%A1tica"><i class="fa fa-check"></i><b>2.5</b> Primeiro componente na prática</a></li>
+<li class="chapter" data-level="2.6" data-path="introducao-react.html"><a href="introducao-react.html#atividade-pr%C3%A1tica"><i class="fa fa-check"></i><b>2.6</b> Atividade prática</a></li>
+<li class="chapter" data-level="2.7" data-path="introducao-react.html"><a href="introducao-react.html#resumo-dos-conceitos-chave"><i class="fa fa-check"></i><b>2.7</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="2.8" data-path="introducao-react.html"><a href="introducao-react.html#para-saber-mais-leitura-complementar"><i class="fa fa-check"></i><b>2.8</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html"><i class="fa fa-check"></i><b>3</b> Projeto 1 - REACTJS</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html#descri%C3%A7%C3%A3o-do-projeto"><i class="fa fa-check"></i><b>3.1</b> Descrição do projeto</a></li>
+<li class="chapter" data-level="3.2" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html#regras-e-orineta%C3%A7%C3%B5es"><i class="fa fa-check"></i><b>3.2</b> Regras e orinetações</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="projeto-1---reactjs.html"><a href="projeto-1---reactjs.html#cada-equipe-dever%C3%A1"><i class="fa fa-check"></i><b>3.2.1</b> Cada equipe deverá:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="elementos-html-react.html"><a href="elementos-html-react.html"><i class="fa fa-check"></i><b>4</b> Elementos Básicos de HTML em React</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#objetivos-da-aula"><i class="fa fa-check"></i><b>4.1</b> Objetivos da aula</a></li>
+<li class="chapter" data-level="4.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#html-para-componentes"><i class="fa fa-check"></i><b>4.2</b> De HTML “puro” para elementos em componentes React</a></li>
+<li class="chapter" data-level="4.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#estrutura-geral-de-uma-p%C3%A1gina-com-componentes"><i class="fa fa-check"></i><b>4.3</b> Estrutura geral de uma página com componentes</a></li>
+<li class="chapter" data-level="4.4" data-path="elementos-html-react.html"><a href="elementos-html-react.html#criando-elementos-b%C3%A1sicos-de-html-como-componentes"><i class="fa fa-check"></i><b>4.4</b> Criando elementos básicos de HTML como componentes</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#div-section-header-e-footer"><i class="fa fa-check"></i><b>4.4.1</b> <code>div</code>, <code>section</code>, <code>header</code> e <code>footer</code></a></li>
+<li class="chapter" data-level="4.4.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#listas-numeradas-e-n%C3%A3o-numeradas"><i class="fa fa-check"></i><b>4.4.2</b> Listas numeradas e não numeradas</a></li>
+<li class="chapter" data-level="4.4.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#tabelas"><i class="fa fa-check"></i><b>4.4.3</b> Tabelas</a></li>
+<li class="chapter" data-level="4.4.4" data-path="elementos-html-react.html"><a href="elementos-html-react.html#imagens"><i class="fa fa-check"></i><b>4.4.4</b> Imagens</a></li>
+<li class="chapter" data-level="4.4.5" data-path="elementos-html-react.html"><a href="elementos-html-react.html#links"><i class="fa fa-check"></i><b>4.4.5</b> Links</a></li>
+<li class="chapter" data-level="4.4.6" data-path="elementos-html-react.html"><a href="elementos-html-react.html#guia-de-navega%C3%A7%C3%A3o-menu-nav"><i class="fa fa-check"></i><b>4.4.6</b> Guia de navegação (menu / <code>nav</code>)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="elementos-html-react.html"><a href="elementos-html-react.html#incluindo-css-nos-componentes"><i class="fa fa-check"></i><b>4.5</b> Incluindo CSS nos componentes</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#css-por-arquivo-importado-no-componente"><i class="fa fa-check"></i><b>4.5.1</b> 1. CSS por arquivo, importado no componente</a></li>
+<li class="chapter" data-level="4.5.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#estilo-inline-via-objeto-javascript"><i class="fa fa-check"></i><b>4.5.2</b> 2. Estilo inline (via objeto JavaScript)</a></li>
+<li class="chapter" data-level="4.5.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#bootstrap"><i class="fa fa-check"></i><b>4.5.3</b> 3. Bootstrap</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="elementos-html-react.html"><a href="elementos-html-react.html#express%C3%B5es-no-jsx"><i class="fa fa-check"></i><b>4.6</b> Expressões no JSX</a></li>
+<li class="chapter" data-level="4.7" data-path="elementos-html-react.html"><a href="elementos-html-react.html#renderiza%C3%A7%C3%A3o-condicional"><i class="fa fa-check"></i><b>4.7</b> Renderização condicional</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#operador-tern%C3%A1rio-condi%C3%A7%C3%A3o-sea-seb"><i class="fa fa-check"></i><b>4.7.1</b> Operador ternário (<code>condição ? seA : seB</code>)</a></li>
+<li class="chapter" data-level="4.7.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#operador-renderiza-s%C3%B3-se-a-condi%C3%A7%C3%A3o-for-verdadeira"><i class="fa fa-check"></i><b>4.7.2</b> Operador <code>&amp;&amp;</code> (renderiza só se a condição for verdadeira)</a></li>
+<li class="chapter" data-level="4.7.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#if-else-fora-do-jsx"><i class="fa fa-check"></i><b>4.7.3</b> <code>if</code> / <code>else</code> fora do JSX</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="elementos-html-react.html"><a href="elementos-html-react.html#exemplo-de-aula-home-page-da-loja-de-ve%C3%ADculos-autostore"><i class="fa fa-check"></i><b>4.8</b> Exemplo de aula: Home page da loja de veículos AutoStore</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-1-criar-o-projeto"><i class="fa fa-check"></i><b>4.8.1</b> Passo 1 — Criar o projeto</a></li>
+<li class="chapter" data-level="4.8.2" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-2-incluir-o-bootstrap"><i class="fa fa-check"></i><b>4.8.2</b> Passo 2 — Incluir o Bootstrap</a></li>
+<li class="chapter" data-level="4.8.3" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-3-criar-os-dados-dos-ve%C3%ADculos-mock"><i class="fa fa-check"></i><b>4.8.3</b> Passo 3 — Criar os dados dos veículos (mock)</a></li>
+<li class="chapter" data-level="4.8.4" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-4-componente-header-com-navbar"><i class="fa fa-check"></i><b>4.8.4</b> Passo 4 — Componente <code>Header</code> com <code>NavBar</code></a></li>
+<li class="chapter" data-level="4.8.5" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-5-componente-banner"><i class="fa fa-check"></i><b>4.8.5</b> Passo 5 — Componente <code>Banner</code></a></li>
+<li class="chapter" data-level="4.8.6" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-6-componente-cardveiculo-com-renderiza%C3%A7%C3%A3o-condicional"><i class="fa fa-check"></i><b>4.8.6</b> Passo 6 — Componente <code>CardVeiculo</code> (com renderização condicional)</a></li>
+<li class="chapter" data-level="4.8.7" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-7-componente-listaveiculos-recebe-a-categoria-via-props"><i class="fa fa-check"></i><b>4.8.7</b> Passo 7 — Componente <code>ListaVeiculos</code> (recebe a categoria via props)</a></li>
+<li class="chapter" data-level="4.8.8" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-8-componente-categoriaveiculos-agrupa-as-tr%C3%AAs-listas"><i class="fa fa-check"></i><b>4.8.8</b> Passo 8 — Componente <code>CategoriaVeiculos</code> (agrupa as três listas)</a></li>
+<li class="chapter" data-level="4.8.9" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-9-componente-footer"><i class="fa fa-check"></i><b>4.8.9</b> Passo 9 — Componente <code>Footer</code></a></li>
+<li class="chapter" data-level="4.8.10" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-10-montando-tudo-em-app.jsx"><i class="fa fa-check"></i><b>4.8.10</b> Passo 10 — Montando tudo em <code>App.jsx</code></a></li>
+<li class="chapter" data-level="4.8.11" data-path="elementos-html-react.html"><a href="elementos-html-react.html#passo-11-testar-o-resultado"><i class="fa fa-check"></i><b>4.8.11</b> Passo 11 — Testar o resultado</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="elementos-html-react.html"><a href="elementos-html-react.html#atividade-pr%C3%A1tica-1"><i class="fa fa-check"></i><b>4.9</b> Atividade prática</a></li>
+<li class="chapter" data-level="4.10" data-path="elementos-html-react.html"><a href="elementos-html-react.html#resumo-dos-conceitos-chave-1"><i class="fa fa-check"></i><b>4.10</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="4.11" data-path="elementos-html-react.html"><a href="elementos-html-react.html#para-saber-mais-leitura-complementar-1"><i class="fa fa-check"></i><b>4.11</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="consumo-api-react.html"><a href="consumo-api-react.html"><i class="fa fa-check"></i><b>5</b> Consumindo e Enviando Dados a uma API JSON com React</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#objetivos-da-aula-1"><i class="fa fa-check"></i><b>5.1</b> Objetivos da aula</a></li>
+<li class="chapter" data-level="5.2" data-path="consumo-api-react.html"><a href="consumo-api-react.html#visao-geral-api"><i class="fa fa-check"></i><b>5.2</b> Onde estamos no desenvolvimento <em>full stack</em>?</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#spa-e-ajax-revis%C3%A3o-r%C3%A1pida"><i class="fa fa-check"></i><b>5.2.1</b> SPA e AJAX — revisão rápida</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="consumo-api-react.html"><a href="consumo-api-react.html#conceitos-http"><i class="fa fa-check"></i><b>5.3</b> Conceitos fundamentais de HTTP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#anatomia-de-uma-requisi%C3%A7%C3%A3o-e-de-uma-resposta"><i class="fa fa-check"></i><b>5.3.1</b> Anatomia de uma requisição e de uma resposta</a></li>
+<li class="chapter" data-level="5.3.2" data-path="consumo-api-react.html"><a href="consumo-api-react.html#m%C3%A9todos-http-verbos"><i class="fa fa-check"></i><b>5.3.2</b> Métodos HTTP (verbos)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="consumo-api-react.html"><a href="consumo-api-react.html#c%C3%B3digos-de-status"><i class="fa fa-check"></i><b>5.3.3</b> Códigos de <em>status</em></a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="consumo-api-react.html"><a href="consumo-api-react.html#conceitos-rest"><i class="fa fa-check"></i><b>5.4</b> APIs REST, <em>endpoints</em> e parâmetros</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#anatomia-de-uma-url-de-requisi%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>5.4.1</b> Anatomia de uma URL de requisição</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="consumo-api-react.html"><a href="consumo-api-react.html#conceitos-json"><i class="fa fa-check"></i><b>5.5</b> JSON: o formato de troca de dados</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#convertendo-entre-json-e-javascript"><i class="fa fa-check"></i><b>5.5.1</b> Convertendo entre JSON e JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="consumo-api-react.html"><a href="consumo-api-react.html#conceitos-cors"><i class="fa fa-check"></i><b>5.6</b> CORS: por que algumas APIs “não funcionam” no navegador</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#checklist-para-escolher-a-api-do-projeto-1"><i class="fa fa-check"></i><b>5.6.1</b> Checklist para escolher a API do Projeto 1</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="consumo-api-react.html"><a href="consumo-api-react.html#explorando-api"><i class="fa fa-check"></i><b>5.7</b> Explorando uma API antes de programar</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#tr%C3%AAs-formas-de-testar"><i class="fa fa-check"></i><b>5.7.1</b> Três formas de testar</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="consumo-api-react.html"><a href="consumo-api-react.html#fetch-api"><i class="fa fa-check"></i><b>5.8</b> A Fetch API em detalhe</a>
+<ul>
+<li class="chapter" data-level="5.8.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#get-buscando-dados"><i class="fa fa-check"></i><b>5.8.1</b> GET — buscando dados</a></li>
+<li class="chapter" data-level="5.8.2" data-path="consumo-api-react.html"><a href="consumo-api-react.html#post-enviando-dados"><i class="fa fa-check"></i><b>5.8.2</b> POST — enviando dados</a></li>
+<li class="chapter" data-level="5.8.3" data-path="consumo-api-react.html"><a href="consumo-api-react.html#a-armadilha-fetch-n%C3%A3o-rejeita-em-erros-http"><i class="fa fa-check"></i><b>5.8.3</b> A armadilha: <code>fetch</code> <strong>não</strong> rejeita em erros HTTP</a></li>
+<li class="chapter" data-level="5.8.4" data-path="consumo-api-react.html"><a href="consumo-api-react.html#montando-a-query-string-com-urlsearchparams"><i class="fa fa-check"></i><b>5.8.4</b> Montando a <em>query string</em> com <code>URLSearchParams</code></a></li>
+</ul></li>
+<li class="chapter" data-level="5.9" data-path="consumo-api-react.html"><a href="consumo-api-react.html#fetch-no-react"><i class="fa fa-check"></i><b>5.9</b> Requisições dentro de componentes React</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#onde-n%C3%A3o-colocar-um-fetch"><i class="fa fa-check"></i><b>5.9.1</b> Onde <strong>não</strong> colocar um <code>fetch</code></a></li>
+<li class="chapter" data-level="5.9.2" data-path="consumo-api-react.html"><a href="consumo-api-react.html#o-hook-useeffect"><i class="fa fa-check"></i><b>5.9.2</b> O hook <code>useEffect</code></a></li>
+<li class="chapter" data-level="5.9.3" data-path="consumo-api-react.html"><a href="consumo-api-react.html#os-quatro-estados-de-uma-tela-que-consome-api"><i class="fa fa-check"></i><b>5.9.3</b> Os quatro estados de uma tela que consome API</a></li>
+</ul></li>
+<li class="chapter" data-level="5.10" data-path="consumo-api-react.html"><a href="consumo-api-react.html#context-reducer"><i class="fa fa-check"></i><b>5.10</b> Organizando o estado global: Context API + <code>useReducer</code></a></li>
+<li class="chapter" data-level="5.11" data-path="consumo-api-react.html"><a href="consumo-api-react.html#exemplo-autostore-api"><i class="fa fa-check"></i><b>5.11</b> Exemplo de aula: AutoStore Online — buscando e cadastrando veículos via API</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-1-criar-o-projeto-e-instalar-o-bootstrap"><i class="fa fa-check"></i><b>5.11.1</b> Passo 1 — Criar o projeto e instalar o Bootstrap</a></li>
+<li class="chapter" data-level="5.11.2" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-2-configurar-a-url-da-api-em-vari%C3%A1vel-de-ambiente"><i class="fa fa-check"></i><b>5.11.2</b> Passo 2 — Configurar a URL da API em variável de ambiente</a></li>
+<li class="chapter" data-level="5.11.3" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-contexto"><i class="fa fa-check"></i><b>5.11.3</b> Passo 3 — Criar o contexto com o <em>reducer</em> e as funções da API</a></li>
+<li class="chapter" data-level="5.11.4" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-4-envolver-a-aplica%C3%A7%C3%A3o-com-o-provider"><i class="fa fa-check"></i><b>5.11.4</b> Passo 4 — Envolver a aplicação com o Provider</a></li>
+<li class="chapter" data-level="5.11.5" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-5-formul%C3%A1rio-de-busca-com-valida%C3%A7%C3%A3o-antes-do-envio"><i class="fa fa-check"></i><b>5.11.5</b> Passo 5 — Formulário de busca com validação <strong>antes</strong> do envio</a></li>
+<li class="chapter" data-level="5.11.6" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-6-lista-de-resultados-com-os-quatro-estados-e-erros-depois-do-envio"><i class="fa fa-check"></i><b>5.11.6</b> Passo 6 — Lista de resultados com os quatro estados (e erros <strong>depois</strong> do envio)</a></li>
+<li class="chapter" data-level="5.11.7" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-7-card-de-ve%C3%ADculo"><i class="fa fa-check"></i><b>5.11.7</b> Passo 7 — Card de veículo</a></li>
+<li class="chapter" data-level="5.11.8" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-8-formul%C3%A1rio-de-cadastro-enviando-json-com-post"><i class="fa fa-check"></i><b>5.11.8</b> Passo 8 — Formulário de cadastro: enviando JSON com POST</a></li>
+<li class="chapter" data-level="5.11.9" data-path="consumo-api-react.html"><a href="consumo-api-react.html#passo-9-cabe%C3%A7alho-e-montagem-em-app.jsx"><i class="fa fa-check"></i><b>5.11.9</b> Passo 9 — Cabeçalho e montagem em <code>App.jsx</code></a></li>
+<li class="chapter" data-level="5.11.10" data-path="consumo-api-react.html"><a href="consumo-api-react.html#testar-devtools"><i class="fa fa-check"></i><b>5.11.10</b> Passo 10 — Testar e depurar com o DevTools</a></li>
+</ul></li>
+<li class="chapter" data-level="5.12" data-path="consumo-api-react.html"><a href="consumo-api-react.html#validacao-antes-depois"><i class="fa fa-check"></i><b>5.12</b> Mensagens de validação: antes e depois do envio</a></li>
+<li class="chapter" data-level="5.13" data-path="consumo-api-react.html"><a href="consumo-api-react.html#build-deploy"><i class="fa fa-check"></i><b>5.13</b> Gerando o pacote de <em>deployment</em> e publicando</a>
+<ul>
+<li class="chapter" data-level="5.13.1" data-path="consumo-api-react.html"><a href="consumo-api-react.html#op%C3%A7%C3%A3o-a-vercel-ou-netlify-mais-simples"><i class="fa fa-check"></i><b>5.13.1</b> Opção A — Vercel ou Netlify (mais simples)</a></li>
+<li class="chapter" data-level="5.13.2" data-path="consumo-api-react.html"><a href="consumo-api-react.html#op%C3%A7%C3%A3o-b-github-pages"><i class="fa fa-check"></i><b>5.13.2</b> Opção B — GitHub Pages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.14" data-path="consumo-api-react.html"><a href="consumo-api-react.html#git-incremental"><i class="fa fa-check"></i><b>5.14</b> Versionamento incremental com Git</a></li>
+<li class="chapter" data-level="5.15" data-path="consumo-api-react.html"><a href="consumo-api-react.html#erros-comuns-e-como-resolv%C3%AA-los"><i class="fa fa-check"></i><b>5.15</b> Erros comuns e como resolvê-los</a></li>
+<li class="chapter" data-level="5.16" data-path="consumo-api-react.html"><a href="consumo-api-react.html#mapa-projeto1"><i class="fa fa-check"></i><b>5.16</b> Mapa: Projeto 1 × conteúdo deste capítulo</a></li>
+<li class="chapter" data-level="5.17" data-path="consumo-api-react.html"><a href="consumo-api-react.html#atividade-pr%C3%A1tica-sugerida"><i class="fa fa-check"></i><b>5.17</b> Atividade prática sugerida</a></li>
+<li class="chapter" data-level="5.18" data-path="consumo-api-react.html"><a href="consumo-api-react.html#resumo-dos-conceitos-chave-2"><i class="fa fa-check"></i><b>5.18</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="5.19" data-path="consumo-api-react.html"><a href="consumo-api-react.html#para-saber-mais-leitura-complementar-2"><i class="fa fa-check"></i><b>5.19</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html"><i class="fa fa-check"></i><b>6</b> Comunicação entre Componentes em React</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#objetivos-da-aula-2"><i class="fa fa-check"></i><b>6.1</b> Objetivos da aula</a></li>
+<li class="chapter" data-level="6.2" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#visao-geral-comunicacao"><i class="fa fa-check"></i><b>6.2</b> Visão geral: as quatro formas de comunicação</a></li>
+<li class="chapter" data-level="6.3" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#composicao"><i class="fa fa-check"></i><b>6.3</b> 1. Componentes compostos por outros componentes</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#pensando-em-react-da-tela-%C3%A0-%C3%A1rvore-de-componentes"><i class="fa fa-check"></i><b>6.3.1</b> Pensando em React: da tela à árvore de componentes</a></li>
+<li class="chapter" data-level="6.3.2" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#rela%C3%A7%C3%B5es-na-%C3%A1rvore-pai-filho-irm%C3%A3o-ancestral"><i class="fa fa-check"></i><b>6.3.2</b> Relações na árvore: pai, filho, irmão, ancestral</a></li>
+<li class="chapter" data-level="6.3.3" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#vers%C3%A3o-est%C3%A1tica-compondo-componentes"><i class="fa fa-check"></i><b>6.3.3</b> Versão estática: compondo componentes</a></li>
+<li class="chapter" data-level="6.3.4" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#composi%C3%A7%C3%A3o-com-children-componentes-moldura"><i class="fa fa-check"></i><b>6.3.4</b> Composição com <code>children</code>: componentes “moldura”</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#props-pai-filho"><i class="fa fa-check"></i><b>6.4</b> 2. Props: comunicação de pai para filho</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#o-que-s%C3%A3o-props"><i class="fa fa-check"></i><b>6.4.1</b> O que são props</a></li>
+<li class="chapter" data-level="6.4.2" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#valores-padr%C3%A3o-e-repasse-de-props"><i class="fa fa-check"></i><b>6.4.2</b> Valores padrão e repasse de props</a></li>
+<li class="chapter" data-level="6.4.3" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#props-s%C3%A3o-somente-leitura-e-o-fluxo-%C3%A9-unidirecional"><i class="fa fa-check"></i><b>6.4.3</b> Props são somente leitura e o fluxo é unidirecional</a></li>
+<li class="chapter" data-level="6.4.4" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#fun%C3%A7%C3%B5es-como-props-o-filho-avisando-o-pai"><i class="fa fa-check"></i><b>6.4.4</b> Funções como props: o filho avisando o pai</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#props-irmaos"><i class="fa fa-check"></i><b>6.5</b> 3. Props: comunicação de irmão para irmão</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#o-problema"><i class="fa fa-check"></i><b>6.5.1</b> O problema</a></li>
+<li class="chapter" data-level="6.5.2" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#a-solu%C3%A7%C3%A3o-elevar-o-estado-lifting-state-up"><i class="fa fa-check"></i><b>6.5.2</b> A solução: elevar o estado (<em>lifting state up</em>)</a></li>
+<li class="chapter" data-level="6.5.3" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#implementa%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>6.5.3</b> Implementação</a></li>
+<li class="chapter" data-level="6.5.4" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#erro-cl%C3%A1ssico-duplicar-estado"><i class="fa fa-check"></i><b>6.5.4</b> Erro clássico: duplicar estado</a></li>
+<li class="chapter" data-level="6.5.5" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#quando-elevar-estado-deixa-de-ser-suficiente"><i class="fa fa-check"></i><b>6.5.5</b> Quando elevar estado deixa de ser suficiente</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#context-api"><i class="fa fa-check"></i><b>6.6</b> 4. Context API e o <em>Provider</em></a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#a-ideia"><i class="fa fa-check"></i><b>6.6.1</b> A ideia</a></li>
+<li class="chapter" data-level="6.6.2" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#primeiro-exemplo-tema-claroescuro"><i class="fa fa-check"></i><b>6.6.2</b> Primeiro exemplo: tema claro/escuro</a></li>
+<li class="chapter" data-level="6.6.3" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#exemplo-principal-favoritos-da-autostore"><i class="fa fa-check"></i><b>6.6.3</b> Exemplo principal: favoritos da AutoStore</a></li>
+<li class="chapter" data-level="6.6.4" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#v%C3%A1rios-contextos-e-providers-aninhados"><i class="fa fa-check"></i><b>6.6.4</b> Vários contextos e <em>Providers</em> aninhados</a></li>
+<li class="chapter" data-level="6.6.5" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#quando-usar-e-quando-n%C3%A3o-usar-context"><i class="fa fa-check"></i><b>6.6.5</b> Quando usar (e quando não usar) Context</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#useeffect"><i class="fa fa-check"></i><b>6.7</b> 5. <code>useEffect</code>: ciclo de vida e efeitos colaterais</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#renderizar-deve-ser-puro-efeitos-ficam-fora-da-renderiza%C3%A7%C3%A3o"><i class="fa fa-check"></i><b>6.7.1</b> Renderizar deve ser puro; efeitos ficam fora da renderização</a></li>
+<li class="chapter" data-level="6.7.2" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#o-ciclo-de-vida-de-um-componente-funcional"><i class="fa fa-check"></i><b>6.7.2</b> O ciclo de vida de um componente funcional</a></li>
+<li class="chapter" data-level="6.7.3" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#anatomia-do-useeffect"><i class="fa fa-check"></i><b>6.7.3</b> Anatomia do <code>useEffect</code></a></li>
+<li class="chapter" data-level="6.7.4" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#observando-o-ciclo-de-vida-no-console"><i class="fa fa-check"></i><b>6.7.4</b> Observando o ciclo de vida no console</a></li>
+<li class="chapter" data-level="6.7.5" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#efeito-simples-sincronizando-o-t%C3%ADtulo-da-aba"><i class="fa fa-check"></i><b>6.7.5</b> Efeito simples: sincronizando o título da aba</a></li>
+<li class="chapter" data-level="6.7.6" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#settimeout-em-um-efeito-notifica%C3%A7%C3%A3o-que-some-sozinha"><i class="fa fa-check"></i><b>6.7.6</b> <code>setTimeout</code> em um efeito: notificação que some sozinha</a></li>
+<li class="chapter" data-level="6.7.7" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#contagem-regressiva-com-setinterval"><i class="fa fa-check"></i><b>6.7.7</b> Contagem regressiva com <code>setInterval</code></a></li>
+<li class="chapter" data-level="6.7.8" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#busca-com-atraso-debounce-usando-settimeout"><i class="fa fa-check"></i><b>6.7.8</b> Busca com atraso (<em>debounce</em>) usando <code>setTimeout</code></a></li>
+<li class="chapter" data-level="6.7.9" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#voc%C3%AA-talvez-n%C3%A3o-precise-de-um-efeito"><i class="fa fa-check"></i><b>6.7.9</b> Você talvez não precise de um efeito</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#exemplo-integrado"><i class="fa fa-check"></i><b>6.8</b> Exemplo integrado: o painel completo</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#roteiro-de-testes-no-navegador"><i class="fa fa-check"></i><b>6.8.1</b> Roteiro de testes no navegador</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#erros-comuns-e-como-resolv%C3%AA-los-1"><i class="fa fa-check"></i><b>6.9</b> Erros comuns e como resolvê-los</a></li>
+<li class="chapter" data-level="6.10" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#atividade-pr%C3%A1tica-sugerida-1"><i class="fa fa-check"></i><b>6.10</b> Atividade prática sugerida</a></li>
+<li class="chapter" data-level="6.11" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#resumo-dos-conceitos-chave-3"><i class="fa fa-check"></i><b>6.11</b> Resumo dos conceitos-chave</a></li>
+<li class="chapter" data-level="6.12" data-path="comunicacao-componentes.html"><a href="comunicacao-componentes.html#para-saber-mais-leitura-complementar-3"><i class="fa fa-check"></i><b>6.12</b> Para saber mais (leitura complementar)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><i class="fa fa-check"></i><b>7</b> Atividade de revisão: Aplicação React Consumindo uma API</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html#diagn%C3%B3stico"><i class="fa fa-check"></i><b>7.1</b> Diagnóstico</a></li>
+<li class="chapter" data-level="7.2" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html#trios-e-pap%C3%A9is"><i class="fa fa-check"></i><b>7.2</b> Trios e papéis</a></li>
+<li class="chapter" data-level="7.3" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html#o-desafio"><i class="fa fa-check"></i><b>7.3</b> O desafio</a></li>
+<li class="chapter" data-level="7.4" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html#requisitos-obrigat%C3%B3rios"><i class="fa fa-check"></i><b>7.4</b> Requisitos obrigatórios</a></li>
+<li class="chapter" data-level="7.5" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html#roteiro-dos-100-minutos"><i class="fa fa-check"></i><b>7.5</b> Roteiro dos 100 minutos</a></li>
+<li class="chapter" data-level="7.6" data-path="atividade-de-revisão-aplicação-react-consumindo-uma-api.html"><a href="atividade-de-revisão-aplicação-react-consumindo-uma-api.html#fechamento"><i class="fa fa-check"></i><b>7.6</b> Fechamento</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="materiais-extras.html"><a href="materiais-extras.html"><i class="fa fa-check"></i><b>8</b> Materiais extras</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Full Stack: Conceitos Fundamentais</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="materiais-extras" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> Materiais extras<a href="materiais-extras.html#materiais-extras" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Este conteúdo é uma curadoria de materiais que podem apoiar seus estudos na disciplina.</p>
+<ul>
+<li><a href="https://youtube.com/playlist?list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B&amp;si=d-xPyWFJCWIDY_rI">Playlist - Curso Node.JS</a></li>
+<li><a href="https://nodejs.org/learn">Documentação Node.JS</a></li>
+<li><a href="https://blog.reativa.dev/apostila-nodejs-completa/">Apostila NodeJS - Legal!</a></li>
+</ul>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/costasilvati/fullStack/edit/main/09-Extras.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section"
+  },
+  "depth": 1
+});
+});
+</script>
+
+</body>
+
+</html>

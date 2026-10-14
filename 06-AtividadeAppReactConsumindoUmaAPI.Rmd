@@ -1,0 +1,99 @@
+# Atividade de revisão: Aplicação React Consumindo uma API
+
+**Combinados da aula:**
+
+- Consulta livre à documentação ([react.dev](https://react.dev/learn)), às anotações e à própria prova corrigida.
+- Quem foi bem em um conceito ajuda por meio de perguntas e explicações, mas não digita no lugar do colega.
+- Errar faz parte: o código não precisa ficar completo, e sim ser entendido por quem o escreveu.
+
+## Diagnóstico
+
+Com as correções, cada aluno preenche em 5 minutos o formulário [NESTE LINK](https://forms.gle/7CWuMN4svHxeKLqh6). Ela define o seu papel na atividade e com quem você vai formar trio.
+
+| Conceito | Questões do projeto | Fui bem | Errei parcialmente | Errei |
+| --- | --- | --- | --- | --- |
+| `useState` |  |  |  |  |
+| `useEffect` |  |  |  |  |
+| Context API |  |  |  |  |
+| Props |  |  |  |  |
+| Renderização condicional |  |  |  |  |
+
+Abaixo da tabela, o aluno deve escrever em uma frase o erro que cometeu no conceito mais fraco (ex.: "esqueci o array de dependências e o `useEffect` rodava sem parar"). 
+
+## Trios e papéis
+
+O professor monta os trios com base nas fichas, de modo que os pontos fracos de um aluno sejam pontos fortes de outro. Cada aluno lidera a implementação do conceito em que mais errou e apoia os colegas onde foi bem.
+
+| Papel na atividade | Quem assume | O que faz |
+| --- | --- | --- |
+| Responsável pelo conceito | O aluno que errou aquele conceito na prova | Pesquisa na documentação, digita o código e explica ao trio como funciona |
+| Apoio | Um colega do trio que foi bem naquele conceito | Faz perguntas, aponta onde olhar na documentação e revisa, sem assumir o teclado |
+
+Como são cinco conceitos para três pessoas, cada aluno fica com seu conceito mais fraco e os restantes são divididos pelo trio. Se ninguém no trio dominar um conceito, o professor indica um "padrinho" de outra equipe que pode ser consultado durante o desenvolvimento. Essa troca entre equipes é incentivada.
+
+## O desafio
+
+Cada equipe sorteia uma das APIs abaixo e constrói um "explorador": uma lista de itens vindos da API, um campo de busca ou filtro, a exibição de detalhes de um item selecionado e uma lista de favoritos. Todas são gratuitas, não exigem chave e devem ser testadas pelo professor no dia anterior.
+
+| API | Endpoint inicial sugerido | Ideia de aplicação |
+| --- | --- | --- |
+| [Rick and Morty API](https://rickandmortyapi.com/documentation) | `/api/character` | Catálogo de personagens |
+| [PokéAPI](https://pokeapi.co/docs/v2) | `/api/v2/pokemon?limit=50` | Pokédex |
+| [REST Countries](https://restcountries.com) | `/v3.1/region/americas` | Explorador de países |
+| [TheMealDB](https://www.themealdb.com/api.php) | `/api/json/v1/1/search.php?s=` | Livro de receitas |
+| [API do IBGE](https://servicodados.ibge.gov.br/api/docs/localidades) | `/api/v1/localidades/estados` | Estados e municípios do Brasil |
+
+Como há mais equipes do que APIs, duas equipes podem ter a mesma API, mas não sentam próximas. Isso ajuda na integração: na rodada de troca, equipes com a mesma API comparam soluções diferentes para o mesmo problema.
+
+## Requisitos obrigatórios
+
+Cada requisito corresponde a um conteúdo cobrado no projeto, e a tabela serve de checklist para a equipe. Se o tempo apertar, a prioridade são os conceitos marcados no diagnóstico do trio.
+
+| Conceito | Requisito mínimo |
+| --- | --- |
+| `useState` | Guardar a lista vinda da API, o estado de carregamento, o erro e o texto da busca |
+| `useEffect` | Buscar os dados da API ao carregar a página, com array de dependências correto (sem loop infinito) |
+| Context API | Um `FavoritosContext` com Provider envolvendo a aplicação e usado em pelo menos 2 componentes (ex.: o botão de favoritar no card e o contador/lista de favoritos) |
+| Props | Pelo menos 3 componentes recebendo props, sendo um deles um `Card` reutilizado na lista e uma função passada como prop (ex.: `onSelecionar`) |
+| Renderização condicional | Mostrar "Carregando...", mensagem de erro, "Nenhum resultado" quando a busca não encontra nada, e o painel de detalhes só quando houver item selecionado |
+
+Estrutura mínima esperada:
+
+```
+src/
+  components/   Card.jsx, Lista.jsx, Detalhes.jsx, Favoritos.jsx
+  context/      FavoritosContext.jsx
+  App.jsx
+```
+
+Estilização não é o foco; CSS simples basta.
+
+## Roteiro dos 100 minutos
+
+Os primeiros 20 minutos são da vista de prova; os 80 restantes vão para diagnóstico, pesquisa, programação e troca entre equipes.
+
+| Tempo | Etapa | O que acontece |
+| --- | --- | --- |
+| 0–20 min | Vista de prova | Devolução das provas, comentário geral do professor sobre os erros mais comuns e dúvidas individuais |
+| 20–25 min | Diagnóstico | Cada aluno preenche a ficha de diagnóstico |
+| 25–30 min | Trios | Professor forma os trios a partir das fichas e sorteia as APIs |
+| 30–40 min | Pesquisa dirigida | Cada aluno estuda na documentação o conceito em que errou, com o colega de apoio ao lado |
+| 40–75 min | Desenvolvimento | O trio implementa a aplicação; cada responsável escreve o código do seu conceito |
+| 75–90 min | Mostra cruzada | Trios se juntam em pares: cada aluno explica à outra equipe, em 2 minutos, o conceito que revisou e mostra no código onde ele aparece |
+| 90–100 min | Fechamento | Ficha de reforço e roda de dúvidas que ainda restaram |
+
+Na mostra cruzada, quem explica é sempre o aluno que errou o conceito na prova. Explicar a alguém de fora é o melhor sinal de que o conteúdo foi de fato revisado.
+
+## Fechamento
+
+No lugar de nota, cada aluno entrega uma ficha de reforço de meia página. Ela mostra ao professor o que foi superado e o que ainda precisa de atenção.
+
+**Ficha de reforço (individual):**
+
+1. Qual conceito eu revisei hoje?
+2. Qual foi meu erro na prova e como eu escreveria aquele trecho agora?
+3. De 1 a 5, quanto me sinto seguro nesse conceito antes e depois da aula?
+4. O que aprendi com um colega de outra equipe?
+5. Que dúvida ainda tenho?
+
+<!-- **Para o professor:** reúna as respostas da pergunta 5 para abrir a próxima aula, e acompanhe de perto os alunos que mantiverem nota de segurança 1 ou 2 depois da atividade. Quem quiser pode terminar a aplicação em casa e subir no GitHub para receber feedback, sem valer nota. -->
